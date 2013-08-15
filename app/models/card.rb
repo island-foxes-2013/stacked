@@ -5,7 +5,6 @@
 #  id             :integer          not null, primary key
 #  name           :string(255)
 #  twitter_handle :string(255)
-#  board_id       :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
@@ -15,6 +14,6 @@ class Card < ActiveRecord::Base
   attr_accessible :name
 
   validates_presence_of :name
-  belongs_to :board
+  has_many :boards, through: :board_cards
 
 end
