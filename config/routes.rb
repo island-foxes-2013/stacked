@@ -1,4 +1,7 @@
 Stacked::Application.routes.draw do
+  root to: 'board#index'
+
+  resources :board, only: [:index]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

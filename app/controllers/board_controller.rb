@@ -1,0 +1,2 @@
+class BoardController < ApplicationController
+end
