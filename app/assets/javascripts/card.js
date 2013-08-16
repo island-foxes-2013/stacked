@@ -7,7 +7,10 @@ $(document).ready(function() {
 	});
 
 	$(document).on('click','.card.flipped',function(){
-		$(this).css('width', '400px');
+		var hgt_string = $(this).css('height');
+		var	hgt = parseInt(hgt_string.slice(0,hgt_string.length-2))
+		// $(this).parent().append($(this));
+		// $(this).css('height', String(hgt*2)+'px');
 	});
 });
 
