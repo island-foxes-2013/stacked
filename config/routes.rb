@@ -3,7 +3,7 @@ Stacked::Application.routes.draw do
 
   resources :boards, only: [:index]
 
-  resources :cards, only: [:index, :new, :create, :show]
+  resources :cards, only: [:index, :new, :create, :show, :edit, :delete, :update]
 
   resources :sessions, only: [:new, :destroy]
 
