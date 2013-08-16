@@ -38,10 +38,10 @@ group :development, :test do
 #   gem 'guard-rspec'
 #   # gem 'capybara-webkit', '~> 1.0.0'
 #   # gem 'selenium-webdriver'
-#   gem 'factory_girl_rails'
+  gem 'factory_girl_rails'
 #   gem 'faker'
   gem 'shoulda-matchers'
-#   gem 'database_cleaner'
+  gem 'database_cleaner'
 #   gem 'launchy'
   gem 'simplecov', require: false
 end

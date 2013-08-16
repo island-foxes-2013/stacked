@@ -20,4 +20,8 @@ describe Authorization do
 
   it { should belong_to(:user) }
 
+  context "#new" do 
+  	
+  end
+
 end
