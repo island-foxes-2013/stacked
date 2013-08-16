@@ -1,6 +1,5 @@
 %h1 All Cards
-
 .cards
-  -@cards.each do |card|
-    =card.name 
-    =card.twitter_handle
+	-@cards.each do |card|
+		- @card = card
+		= render partial: 'card'
