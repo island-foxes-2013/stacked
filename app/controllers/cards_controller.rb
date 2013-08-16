@@ -8,7 +8,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    Card.create(name: params[:twitter_handle], twitter_handle: params[:twitter_handle])
+    Card.create(name: params[:card][:twitter_handle], twitter_handle: params[:card][:twitter_handle])
     redirect_to cards_path
   end
 
