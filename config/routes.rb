@@ -5,6 +5,8 @@ Stacked::Application.routes.draw do
 
   resources :cards, only: [:index, :new, :create, :show]
 
+  resources :sessions, only: [:new, :destroy]
+
   match '/auth/:provider/callback', to: 'sessions#create'
 
   # The priority is based upon order of creation:

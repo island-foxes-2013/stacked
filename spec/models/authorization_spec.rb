@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  provider   :string(255)
 #  uid        :string(255)
-#  user_id    :string(255)
+#  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -15,7 +15,7 @@ require 'spec_helper'
 describe Authorization do
 
   let(:authorization) { create(:authorization) }
-  let(:auth_hash) { { 'provider'=> "Twitter", 'uid'=> '1234567890', 'user_info'=>{ 'name'=>"Eric Chen" } } }
+  let(:auth_hash) { { 'provider'=> "Twitter", 'uid'=> '1234567890', 'info'=>{ 'name'=>"Eric Chen" } } }
 
   it { should be_a Authorization }
   it { should validate_presence_of(:provider) }
