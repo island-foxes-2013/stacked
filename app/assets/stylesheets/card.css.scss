@@ -1,6 +1,8 @@
-@import "foundation/variables";
-/*@import "foundation/components/global";
+/*@import "foundation/variables";
+@import "foundation/components/global";
 @import "foundation/components/alert-boxes";*/
+@import "foundation";
+
 
 $small-screen: emCalc(0);
 $medium-screen: emCalc(768);
@@ -10,21 +12,25 @@ $small: "only screen and (min-width:"#{$small-screen}")";
 $medium: "only screen and (min-width:"#{$medium-screen}")";
 $large: "only screen and (min-width:"#{$large-screen}")";
 
-@media #{$small} { 
-	
+.board {
+	@include outerRow();
 }
 
-/* Used to alter styles for screens at least 1280px wide. */
-@media #{$medium} { 
-	body {
-		background-color: red !important;
+@media #{$small} { 
+	.flip {
+		/*@include */
 	}
 }
 
-/* Used to alter styles for screens at least 1440px wide. */
+@media #{$medium} { 
+	.flip {
+		
+	}
+}
+
 @media #{$large} { 
-	body {
-		background-color: black !important;
+	.flip {
+		
 	}
 }
 
