@@ -16,4 +16,3 @@ class CardsController < ApplicationController
   end
 
 end
-git 
