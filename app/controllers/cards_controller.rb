@@ -5,6 +5,9 @@ class CardsController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
+    @users_tweets = Twitter.user_timeline(@card.twitter_handle)
+    @tweets_text = []
+    @users_tweets.each {|tweet| @tweets_text << tweet.text} 
   end
 
   def new

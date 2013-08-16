@@ -15,6 +15,14 @@ body {
 	background-color: lighten($card, 20);
 }
 
+.board{
+	margin: auto 0;
+}
+
+.all_cards{
+	margin: auto 0;
+}
+
 @mixin rounded-corners($radius) {
   -webkit-border-radius: $radius;
 	-moz-border-radius: $radius;
@@ -36,16 +44,25 @@ body {
 	border-top-right-radius: $radius;
 }
 
+.tweet {
+	color: rgba(0,0,0,.5);
+
+}
+
 
 .flip {
-  -webkit-perspective: 800;
- 	width: 200px; 
+	display: none;
+	-webkit-perspective: 800;
+	width: 100%; 
+	max-width: 350px;
+	min-width: 320px;
 	height: 20em;
 	min-width: 290px;
 	max-width: 310px;
 	margin-bottom: 1em;
- 	position: relative;
- 	float: left;
+	margin-right: 1em;
+	position: relative;
+	float: left;
 }
 
 .flip .card.flipped {
@@ -109,7 +126,7 @@ body {
 			float: right;
 			position: relative;
 			margin-top: 20px;
-			color: lighten($card, 10);
+			color: $card;
 		}
 
 		@include rounded-top-corners($corner_radius)
