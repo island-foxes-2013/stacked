@@ -1,7 +1,15 @@
-.card.back
-	=@card.name 
-	=@card.twitter_handle
+.card
+	.front	
+		=@card.name 
+		=@card.twitter_handle
+	.back	
+		.header
+			.mini-pic
 
-.card.front	
-	=@card.name 
-	=@card.twitter_handle
+			.name
+				=@card.name
+			.last-updated
+				37m
+		/ #=@card.twitter_handle
+
+

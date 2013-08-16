@@ -1,8 +1,12 @@
-$color-purple: #890CFF;
-$color-blue: #0BAFE8;
-$color-green: #4CFF3F;
-$color-yellow: E8BB0B; 
-$color-red: FF3501;
+$purple: #890CFF;
+$blue: #0BAFE8;
+$green: #4CFF3F;
+$yellow: #E8BB0B; 
+$red: #FF3501;
+$header-size: 40px;
+$name-padding: 10px;
+
+
 
 @mixin rounded-corners($radius) {
   -webkit-border-radius: $radius;
@@ -11,19 +15,42 @@ $color-red: FF3501;
 }
 
 .card {
-	width: 300px;
-	height: 350px;
-
+	
 	.front {
-		
+		width: 200px;
+		height: 330px;
+		background-color: $purple;
+		@include rounded-corners(5px);
 	}
 
 	.back {
+		width: 200px;
+		height: 330px;
+		background-color: $yellow;
+		@include rounded-corners(5px);
 
-		header {
+		.header {
+			background-color: lighten($yellow, 20);
+			height: $header-size;
 
+			.mini-pic {
+				width: $header-size;
+				height: $header-size;
+				background-color: grey;
+				display: inline-block;
+			}
+
+			.name {
+				margin-bottom: $name_padding; 
+				font-family: sans-serif;
+				display: inline-block;
+			}
+
+			.last-updated {
+				float: right;
+				position: relative;
+				margin-top: 20px;
+			}
 		}
 	}
-
-	@include rounded-corners(3px);
 }
