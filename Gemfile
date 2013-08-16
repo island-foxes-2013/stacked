@@ -10,7 +10,8 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'thin'
 gem 'haml-rails'
-
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'rest-client'
 
 # Gems used only for assets and not required
@@ -34,13 +35,13 @@ group :development, :test do
 #   gem 'capybara'
 #   gem 'spork'
 #   gem 'guard'
-#   gem 'guard-rspec'
+  gem 'guard-rspec'
 #   # gem 'capybara-webkit', '~> 1.0.0'
 #   # gem 'selenium-webdriver'
-#   gem 'factory_girl_rails'
+  gem 'factory_girl_rails'
 #   gem 'faker'
   gem 'shoulda-matchers'
-#   gem 'database_cleaner'
+  gem 'database_cleaner'
 #   gem 'launchy'
   gem 'simplecov', require: false
 end
