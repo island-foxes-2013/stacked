@@ -21,7 +21,7 @@ $(document).ready(function() {
 	  	$('.flip').removeClass().addClass('flip large-10 columns');
 	  }
 	  else if (windowSize <= 767){
-	  	$('.flip').removeClass().addClass('flip large-1 columns');
+	  	$('.flip').removeClass().addClass('flip small-5 columns');
 	  }
 	  else if (windowSize <= 1000){
 	  	$('.flip').removeClass().addClass('flip large-4 columns');
