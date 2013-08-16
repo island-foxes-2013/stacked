@@ -1,8 +1,7 @@
 %h1 All Cards
 .row
-	.large-2.columns
 	.large-12.columns
-		.cards
+		.row
 			-@cards.each do |card|
 				= render partial: 'card', locals: { card: card }
 

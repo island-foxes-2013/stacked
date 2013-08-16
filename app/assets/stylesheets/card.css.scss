@@ -1,15 +1,23 @@
-@import "foundation/variables";
+/*@import "foundation/variables";
 @import "foundation/components/global";
-@import "foundation/components/alert-boxes";
+@import "foundation/components/alert-boxes";*/
 
 $purple: #890CFF;
 $blue: #0BAFE8;
 $green: #4CFF3F;
 $yellow: #E8BB0B; 
 $red: #FF3501;
+$light-blue: #C3D5E8;
+
+$card: #C3D5E8;
+
 $header-size: 40px;
 $name-padding: 10px;
 $corner_radius: 5px;
+
+body {
+	background-color: lighten($card, 20);
+}
 
 @mixin rounded-corners($radius) {
   -webkit-border-radius: $radius;
@@ -35,7 +43,7 @@ $corner_radius: 5px;
 
 .flip {
   -webkit-perspective: 800;
- 	width: 200px;
+ 	width: 15em;
 	height: 330px;
 	margin: 1em;
  	margin-bottom: 0;
@@ -43,6 +51,7 @@ $corner_radius: 5px;
  	position: relative;
  	float: left;
 }
+
 .flip .card.flipped {
   -webkit-transform: rotatey(-180deg);
 }
@@ -62,7 +71,7 @@ $corner_radius: 5px;
 .flip .card .front {
   position: absolute;
   z-index: 1;
-  background-color: $purple;
+  background-color: darken($card, 8);
   color: white;
   cursor: pointer;
   @include rounded-corners($corner_radius);
@@ -74,11 +83,11 @@ $corner_radius: 5px;
   background: white;
   color: black;
   cursor: pointer;
-  background-color: $yellow;
+  background-color: $card;
   @include rounded-corners($corner_radius);
 
   .header {
-		background-color: lighten($yellow, 30);
+		background-color: lighten($card, 30);
 		height: $header-size;
 		
 
@@ -89,6 +98,7 @@ $corner_radius: 5px;
 			float: left;
 			position: relative;
 
+
 			@include rounded-top-left-corner($corner_radius)
 		}
 
@@ -98,12 +108,14 @@ $corner_radius: 5px;
 			position: relative;
 			float: left;
 			margin-top: 10%;
+			color: darken($card, 35);
 		}
 
 		.last-updated {
 			float: right;
 			position: relative;
 			margin-top: 20px;
+			color: lighten($card, 10);
 		}
 
 		@include rounded-top-corners($corner_radius)
