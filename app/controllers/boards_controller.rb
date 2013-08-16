@@ -1,6 +1,7 @@
 class BoardsController < ApplicationController
 
 	def index
+		@boards = Board.order('created_at DESC').limit(10)
 	end
 
 end

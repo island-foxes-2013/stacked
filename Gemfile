@@ -17,6 +17,7 @@ gem 'twitter'
 gem 'oauth'
 gem 'httparty'
 
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -48,6 +49,7 @@ group :development, :test do
   gem 'database_cleaner'
 #   gem 'launchy'
   gem 'simplecov', require: false
+  gem 'dotenv-rails' # Dot env, saves keys in the environment
 end
 
 gem 'jquery-rails'
