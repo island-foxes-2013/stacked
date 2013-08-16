@@ -53,6 +53,9 @@ GEM
     daemons (1.1.9)
     database_cleaner (1.1.1)
     diff-lcs (1.2.4)
+    dotenv (0.8.0)
+    dotenv-rails (0.8.0)
+      dotenv (= 0.8.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
@@ -231,6 +234,7 @@ DEPENDENCIES
   capybara
   compass-rails
   database_cleaner
+  dotenv-rails
   factory_girl_rails
   guard-rspec
   haml-rails
