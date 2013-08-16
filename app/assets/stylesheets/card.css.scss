@@ -1,0 +1,29 @@
+$color-purple: #890CFF;
+$color-blue: #0BAFE8;
+$color-green: #4CFF3F;
+$color-yellow: E8BB0B; 
+$color-red: FF3501;
+
+@mixin rounded-corners(radius) {
+  -webkit-border-radius: radius;
+	-moz-border-radius: radius;
+	border-radius: radius;
+}
+
+.card {
+	width: 300px;
+	height: 350px;
+
+	.front {
+		
+	}
+
+	.back {
+
+		header {
+
+		}
+	}
+
+	@include rounded-corners(3px);
+}
