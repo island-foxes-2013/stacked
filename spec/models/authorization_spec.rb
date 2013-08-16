@@ -21,7 +21,11 @@ describe Authorization do
   it { should belong_to(:user) }
 
   context "#new" do 
-  	
+  	subject { create(:authorization) }
+
+  	it { should be_a Authorization }
+
+  	its(:user) { should be_a User }
   end
 
 end
