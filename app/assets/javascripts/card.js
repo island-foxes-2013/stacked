@@ -26,8 +26,11 @@ $(document).ready(function() {
 	  else if (windowSize <= 1000){
 	  	$('.flip').removeClass().addClass('flip large-4 columns');
 	  }
-	  else if (windowSize <= 1200){
+	  else if (windowSize <= 1500){
 	  	$('.flip').removeClass().addClass('flip large-3 columns');
+	  }
+	  else if (windowSize > 1500) {
+	  	$('.flip').removeClass().addClass('flip large-2 columns');
 	  }
 	});
 });
