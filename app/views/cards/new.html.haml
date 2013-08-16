@@ -1,0 +1,14 @@
+%h1 New Card
+
+/ for error handling, if we want it
+/ - if @card.errors.any? 
+/   %h2 Invalid form
+/   %ul
+/     -@user.errors.full_messages.each do |message|
+/       %li= message
+
+=form_for @card do |f|
+  %p
+    = f.label :twitter_handle
+    = f.text_field :twitter_handle
+    = f.submit

@@ -13,7 +13,8 @@ class Card < ActiveRecord::Base
 
   attr_accessible :name, :twitter_handle
 
-  validates_presence_of :name
+  # may remove twitter_handle validation once we auth more users
+  validates_presence_of :name, :twitter_handle
   has_many :boards, through: :board_cards
 
 end
