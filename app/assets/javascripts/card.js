@@ -20,8 +20,8 @@ $(document).ready(function() {
 	  if (windowSize <= 400){
 	  	$('.flip').removeClass().addClass('flip large-10 columns');
 	  }
-	  else if (windowSize <= 766){
-	  	$('.flip').removeClass().addClass('flip large-2 large-5 columns');
+	  else if (windowSize <= 767){
+	  	$('.flip').removeClass().addClass('flip large-1 columns');
 	  }
 	  else if (windowSize <= 1000){
 	  	$('.flip').removeClass().addClass('flip large-4 columns');
