@@ -1,6 +1,33 @@
-/*@import "foundation/variables";
-@import "foundation/components/global";
+@import "foundation/variables";
+/*@import "foundation/components/global";
 @import "foundation/components/alert-boxes";*/
+
+$small-screen: emCalc(0);
+$medium-screen: emCalc(768);
+$large-screen: emCalc(1280);
+
+$small: "only screen and (min-width:"#{$small-screen}")";
+$medium: "only screen and (min-width:"#{$medium-screen}")";
+$large: "only screen and (min-width:"#{$large-screen}")";
+
+@media #{$small} { 
+	
+}
+
+/* Used to alter styles for screens at least 1280px wide. */
+@media #{$medium} { 
+	body {
+		background-color: red !important;
+	}
+}
+
+/* Used to alter styles for screens at least 1440px wide. */
+@media #{$large} { 
+	body {
+		background-color: black !important;
+	}
+}
+
 
 $purple: #890CFF;
 $blue: #0BAFE8;
@@ -11,8 +38,8 @@ $light-blue: #C3D5E8;
 
 $card: #C3D5E8;
 
-$header-size: 40px;
-$name-padding: 10px;
+$header-size: 2.5em;
+$name-padding: 1em;
 $corner_radius: 5px;
 
 body {
@@ -43,8 +70,8 @@ body {
 
 .flip {
   -webkit-perspective: 800;
- 	width: 15em;
-	height: 330px;
+ 	/*width: 100%;*/
+	height: 20em;
 	margin: 1em;
  	margin-bottom: 0;
  	margin-right: 0;
@@ -107,7 +134,6 @@ body {
 			font-family: sans-serif;
 			position: relative;
 			float: left;
-			margin-top: 10%;
 			color: darken($card, 35);
 		}
 
