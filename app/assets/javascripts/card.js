@@ -12,5 +12,23 @@ $(document).ready(function() {
 		// $(this).parent().append($(this));
 		// $(this).css('height', String(hgt*2)+'px');
 	});
+
+	$(window).resize(function() {
+	  var windowSize = $(window).width();
+	  console.log(windowSize);
+
+	  if (windowSize <= 400){
+	  	$('.flip').removeClass().addClass('flip large-10 columns');
+	  }
+	  else if (windowSize <= 766){
+	  	$('.flip').removeClass().addClass('flip large-2 large-5 columns');
+	  }
+	  else if (windowSize <= 1000){
+	  	$('.flip').removeClass().addClass('flip large-4 columns');
+	  }
+	  else if (windowSize <= 1200){
+	  	$('.flip').removeClass().addClass('flip large-3 columns');
+	  }
+	});
 });
 
