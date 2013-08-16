@@ -89,11 +89,11 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    method_source (0.8.2)
     meta_request (0.2.8)
       callsite
       rack-contrib
       railties
+    method_source (0.8.2)
     mime-types (1.24)
     multi_json (1.7.9)
     oauth (0.4.7)
@@ -206,6 +206,9 @@ DEPENDENCIES
   guard-rspec
   haml-rails
   jquery-rails
+  meta_request
+  omniauth
+  omniauth-twitter
   pg
   rails (= 3.2.13)
   rest-client
