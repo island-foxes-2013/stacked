@@ -206,12 +206,6 @@ DEPENDENCIES
   guard-rspec
   haml-rails
   jquery-rails
-<<<<<<< HEAD
-  omniauth
-  omniauth-twitter
-=======
-  meta_request
->>>>>>> Added Card#new page and quick form. Added :twitter_handle validation to Card. Removed description validation on board.
   pg
   rails (= 3.2.13)
   rest-client
