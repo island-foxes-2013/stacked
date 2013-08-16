@@ -1,0 +1,8 @@
+<h1>Edit Card</h1>
+
+= render partial: 'form', locals: {card: @card}
+
+%p
+  = link_to "View Card", @card 
+  = link_to "View All", cards_path
+
