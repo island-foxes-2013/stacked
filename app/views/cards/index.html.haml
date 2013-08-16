@@ -1,5 +1,4 @@
 %h1 All Cards
 .cards
 	-@cards.each do |card|
-		- @card = card
-		= render partial: 'card'
+		= render partial: 'card', locals: { card: card }
