@@ -51,4 +51,15 @@ RSpec.configure do |config|
   config.after(:all) do
     DatabaseCleaner.clean
   end
+
+  OmniAuth.config.test_mode = true
+
+  OmniAuth.config.mock_auth[:twitter] = {
+    'uid' => '1337',
+    'provider' => 'twitter',
+    'info' => {
+      'name' => 'Daniel Willems'
+    }
+  }
+
 end
