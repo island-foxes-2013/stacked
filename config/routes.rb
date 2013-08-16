@@ -1,5 +1,5 @@
 Stacked::Application.routes.draw do
-  root to: 'board#index'
+  root to: 'boards#index'
 
   resources :boards, only: [:index]
 
