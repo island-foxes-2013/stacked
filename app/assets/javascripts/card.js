@@ -1,8 +1,9 @@
 $(document).ready(function() {
-	$('.card').click(function(){
-    $(this).find('.card').addClass('flipped').mouseleave(function(){
+	$(document).on('mouseover','.card', function(){
+    $(document).find('.card').addClass('flipped').mouseleave(function(){
         $(this).removeClass('flipped');
     });
     return false;
 	});
 });
+
