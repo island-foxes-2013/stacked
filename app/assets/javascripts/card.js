@@ -5,5 +5,9 @@ $(document).ready(function() {
     });
     return false;
 	});
+
+	$(document).on('click','.card.flipped',function(){
+		$(this).css('width', '400px');
+	});
 });
 

@@ -115,7 +115,7 @@ $default-float: left;
 
 // $small-screen: 768px;
 // $medium-screen: 1280px;
-// $large-screen: 1440px;
+$large-screen: 1440px;
 
 // $screen: "only screen";
 // $small: "only screen and (min-width: #{$small-screen})";
@@ -137,7 +137,7 @@ $default-float: left;
 // Grid Variables
 //
 
-// $row-width: emCalc(1000);
+// $row-width: emCalc(1400);
 // $column-gutter: emCalc(30);
 // $total-columns: 12;
 
@@ -147,7 +147,7 @@ $default-float: left;
 
 // We use this to control the maximum number of block grid elements per row
 
-// $block-grid-elements: 12;
+// $block-grid-elements: 1;
 // $block-grid-default-spacing: emCalc(20);
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
