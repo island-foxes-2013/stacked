@@ -1,7 +1,9 @@
 /*@import "foundation/variables";
 @import "foundation/components/global";
 @import "foundation/components/alert-boxes";*/
-@import "foundation";
+/*@import 'foundation';*/
+/*@import 'foundation/foundation-global';
+@import 'foundation/components/grid';
 
 
 $small-screen: emCalc(0);
@@ -13,7 +15,7 @@ $medium: "only screen and (min-width:"#{$medium-screen}")";
 $large: "only screen and (min-width:"#{$large-screen}")";
 
 .board {
-	@include outerRow();
+	@include column(2);
 }
 
 @media #{$small} { 
@@ -22,18 +24,18 @@ $large: "only screen and (min-width:"#{$large-screen}")";
 	}
 }
 
-@media #{$medium} { 
+/*@media #{$medium} { 
 	.flip {
 		
 	}
-}
-
+}*/
+/*
 @media #{$large} { 
 	.flip {
 		
 	}
 }
-
+*/
 
 $purple: #890CFF;
 $blue: #0BAFE8;
