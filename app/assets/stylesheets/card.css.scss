@@ -15,7 +15,11 @@ body {
 	background-color: lighten($card, 20);
 }
 
-.all-cards{
+.board{
+	margin: auto 0;
+}
+
+.all_cards{
 	margin: auto 0;
 }
 
@@ -54,6 +58,7 @@ body {
 	min-width: 320px;
 	height: 20em;
 	margin-bottom: 1em;
+	margin-right: 1em;
 	position: relative;
 	float: left;
 }
