@@ -2,7 +2,7 @@ Stacked::Application.routes.draw do
 
   root to: 'boards#index'
 
-  resources :boards, only: [:index]
+  resources :boards
 
   resources :cards, only: [:index, :new, :create, :show, :edit, :delete, :update]
 

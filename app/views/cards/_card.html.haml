@@ -10,5 +10,5 @@
           =card.name
         .last-updated
       .tweet
-      -recent_tweets[0..4].each do |tweet|
-        %p= tweet
+        -recent_tweets.each do |tweet|
+          = tweet
