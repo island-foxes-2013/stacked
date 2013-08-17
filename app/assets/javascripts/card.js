@@ -6,6 +6,12 @@ $(document).ready(function() {
     return false;
   });
 
+  $('a#delete').on("ajax:success", function(event, xhr, status, error){
+    console.log(event);
+    console.log(xhr);
+    console.log(status);
+    console.log(error);
+  });
     
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);
@@ -47,9 +53,6 @@ function loadCards(){
     $('.flip').css('width', '18%')
   }
 }
-
-
-
 
 function tweetFormat(handle, content) {
   return "<div class='tweet'>"+
