@@ -4,6 +4,7 @@ class CardsController < ApplicationController
   end
 
   def show
+
     @card = Card.find(params[:id])
 
     # http://rdoc.info/gems/twitter/Twitter/API/Timelines
