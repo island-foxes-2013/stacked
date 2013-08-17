@@ -1,20 +1,18 @@
 $(document).ready(function() {
-  // $(document).on('mouseover','.flip', function(){
-  //   $(this).find('.card').addClass('flipped').mouseleave(function(){
-  //       $(this).removeClass('flipped');
-  //   });
-  //   return false;
-  // });
+  $(document).on('mouseover','.flip', function(){
+    $(this).find('.card').addClass('flipped').mouseleave(function(){
+        $(this).removeClass('flipped');
+    });
+    return false;
+  });
 
     
-  
-
-  $(document).on('click','.card.flipped',function(){
-    console.log(this);
-    var handle = '@CrabCaker'
-    var content = 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Pellentesque in erat cras amet.'
-    $(this).find('.face.back').append(tweetFormat(handle,content));
-  });
+  // $(document).on('click','.card.flipped',function(){
+  //   console.log(this);
+  //   var handle = '@CrabCaker'
+  //   var content = 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Pellentesque in erat cras amet.'
+  //   $(this).find('.face.back').append(tweetFormat(handle,content));
+  // });
 
   $(window).resize(function() {
     loadCards();
