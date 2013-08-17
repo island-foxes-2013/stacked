@@ -1,6 +1,10 @@
 .flip
   .card
-    .face.front 
+    .face.front
+      .header
+        .mega-pic
+          -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_200,h_200,c_fill/#{card.twitter_handle}.jpg"
+          = image_tag(img_url)
     .face.back  
       .header
         .mini-pic
