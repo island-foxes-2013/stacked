@@ -1,4 +1,4 @@
-$(document).ready(function() {
+	$(document).ready(function() {
 	console.log("frosting");
 	$('.frosty').blurjs({
 		source: 'body',
