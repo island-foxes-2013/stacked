@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   end
 
   def show
-    @card = Card.find(params[:id])
+    @card = Card.find(params[:id]) # :id at this point is a string, not a number
     @users_tweets = Twitter.user_timeline(@card.twitter_handle)
     @tweets_text = []
     @users_tweets.each {|tweet| @tweets_text << tweet.text} 
