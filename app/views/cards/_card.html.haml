@@ -1,13 +1,12 @@
 .flip
-  .card
-    .face.front	
-    .face.back	
-      .header
-        .mini-pic
+	.card
+		.face.front	
+		.face.back	
+			.header
+				.mini-pic
 
-        .name
-          =card.name
-        .last-updated
-      .tweet
-        -recent_tweets.each do |tweet|
-          = tweet
+				.name
+					=card.name
+				.last-updated
+					= link_to 'Update', get_tweets_card_path(card), {remote: true, class: 'update'} 
+					37m

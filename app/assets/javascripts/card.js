@@ -4,6 +4,7 @@ $(document).ready(function() {
     radius: 10,
     overlay: 'rgba(255,255,255,0.4)'
   });
+
   // $(document).on('mouseover','.flip', function(){
   //   $(this).find('.card').addClass('flipped').mouseleave(function(){
   //       $(this).removeClass('flipped');
@@ -11,6 +12,13 @@ $(document).ready(function() {
   //   return false;
   // });
 
+  $('.update').on("ajax:success", function(event, xhr, status, error){
+    htmlString = ''
+    for (i in xhr) {
+      htmlString += tweet(xhr[i])
+    }
+    $(this).closest('.face.back').append(htmlString);
+  });
     
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);
@@ -53,28 +61,31 @@ function loadCards(){
   }
 }
 
+function tweet(tweet){
+  if (tweet.url) {
+    return tweetPicture(tweet.tweet_id, tweet.text, tweet.picUrl)
+  }
+  return tweetFormat(tweet.tweet_id, tweet.text)
+}
 
-
-
-function tweetFormat(handle, content) {
+function tweetFormat(tweet_id, content) {
   return "<div class='tweet'>"+
-            "<span>"+handle+"</span>" + 
+            "<span>"+tweet_id+"</span>" + 
             "<div class='content'>" +
               content +
             "</div>" +
           "</div>"
 }
 
-function tweetPicture(handle, content, picUrl) {
+function tweetPicture(tweet_id, content, picUrl) {
   return "<div class='tweet'>"+
             "<img src='"+picUrl+"' alt='Shiiit'>" +
-            "<span>"+handle+"</span>" + 
+            "<span>"+tweet_id+"</span>" + 
             "<div class='content'>" +
               content +
             "</div>" +
           "</div>"
 }
-
 
 
 
