@@ -1,4 +1,7 @@
 class CardsController < ApplicationController
+
+  include Twitter::Autolink
+
   def index
     @cards = Card.all
   end
@@ -13,7 +16,7 @@ class CardsController < ApplicationController
     @api.each_with_index do |tweet,i|
       tweets[i] = {}
       tweets[i][:tweet_id] = tweet.id
-      tweets[i][:text]     = tweet.text
+      tweets[i][:text]     = auto_link(tweet.text)
       tweets[i][:created]  = tweet.created_at
       unless tweet.urls.empty?
         tweets[i][:url] = tweet.urls[0].url
@@ -67,7 +70,8 @@ class CardsController < ApplicationController
     @api.each_with_index do |tweet,i|
       tweets[i] = {}
       tweets[i][:tweet_id] = tweet.id
-      tweets[i][:text]     = tweet.text
+      ap auto_link(tweet.text)
+      tweets[i][:text]     = auto_link(tweet.text)
       tweets[i][:created]  = tweet.created_at
       unless tweet.urls.empty?
         tweets[i][:url] = tweet.urls[0].url
