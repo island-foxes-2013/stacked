@@ -16,6 +16,7 @@ gem 'rest-client'
 gem 'twitter'
 gem 'oauth'
 gem 'httparty'
+gem "friendly_id", "~> 4.0.0.beta8"
 
 
 # Gems used only for assets and not required
