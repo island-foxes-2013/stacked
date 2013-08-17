@@ -17,7 +17,7 @@
     = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
   %body
-    .contain-to-grid.fixed
+    .contain-to-grid.fixed.frosty
       %nav.top-bar
         %ul.title-area
           %li.name
@@ -44,7 +44,7 @@
               %li= link_to "Log In or Sign Up!", '/auth/twitter'
     .container
       .row
-        .left-sidebar.small-2.large-2.columns
+        .left-sidebar.small-2.large-2.columns.frosty
           %h2 Boards
           %ul.side-nav
             -if @boards
