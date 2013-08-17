@@ -8,6 +8,8 @@ Stacked::Application.routes.draw do
 
   resources :sessions, only: [:new, :destroy]
 
+  resources :users, only: [:update]
+
   match '/auth/:provider/callback', to: 'sessions#create'
 
   # The priority is based upon order of creation:
