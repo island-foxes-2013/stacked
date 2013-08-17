@@ -137,7 +137,7 @@ $large-screen: 1440px;
 // Grid Variables
 //
 
-// $row-width: emCalc(1400);
+$row-width: emCalc(1400);
 // $column-gutter: emCalc(30);
 // $total-columns: 12;
 
@@ -1234,7 +1234,10 @@ $large-screen: 1440px;
 
 // Background color for the top bar
 
-// $topbar-bg: #111;
+$topbar-bg:#A0A0A0;
+$topbar-dropdown-bg:#A0A0A0;
+// $topbar-bg: rgba(255,255,255,0.5);
+// $topbar-dropdown-bg: rgba(255,255,255,0.5);
 
 // Height and margin
 

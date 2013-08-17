@@ -6,6 +6,7 @@ $red: #FF3501;
 $light-blue: #C3D5E8;
 
 $card: #C3D5E8;
+$card-trans: rgba($card, .7);
 
 $header-size: 2.5em;
 $name-padding: 1em;
@@ -38,8 +39,7 @@ body {
 }
 
 .tweet {
-	color: rgba(0,0,0,.5);
-
+	color: rgba(darken($card, 40), .6);
 }
 
 
@@ -47,11 +47,11 @@ body {
 	display: none;
 	-webkit-perspective: 800;
 	width: 32%;
-/*	min-width: 250px;*/
+	/*min-width: 250px;*/
 	height: 20em;
 	min-width: 290px;
 	max-width: 310px;
-	margin-bottom: 1em;
+	margin-top: 1em;
 	margin-left: 1em;
 	position: relative;
 	float: left;
@@ -79,16 +79,19 @@ body {
   background-color: darken($card, 8);
   color: white;
   cursor: pointer;
+  height: 100%;
+  /*width: 200px;*/
+  overflow: auto;
   @include rounded-corners($corner_radius);
-
 }
+
 .flip .card .back {
   -webkit-transform: rotatey(-180deg);
   background: blue;
   background: white;
   color: black;
   cursor: pointer;
-  background-color: $card;
+  background-color: $card-trans;
   @include rounded-corners($corner_radius);
 
   .header {

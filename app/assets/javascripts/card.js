@@ -7,20 +7,11 @@ $(document).ready(function() {
   });
 
     
-  
-
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);
   //   var handle = '@CrabCaker'
   //   var content = 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Pellentesque in erat cras amet.'
-  //   $(this).find('.face.back').append(
-  //     "<div class='tweet'>"+
-  //       "<span>"+handle+"</span>" + 
-  //       "<div class='content'>" +
-  //         content +
-  //       "</div>" +
-  //     "</div>"
-  //     );
+  //   $(this).find('.face.back').append(tweetFormat(handle,content));
   // });
 
   $(window).resize(function() {
@@ -56,6 +47,29 @@ function loadCards(){
     $('.flip').css('width', '18%')
   }
 }
+
+
+
+
+function tweetFormat(handle, content) {
+  return "<div class='tweet'>"+
+            "<span>"+handle+"</span>" + 
+            "<div class='content'>" +
+              content +
+            "</div>" +
+          "</div>"
+}
+
+function tweetPicture(handle, content, picUrl) {
+  return "<div class='tweet'>"+
+            "<img src='"+picUrl+"' alt='Shiiit'>" +
+            "<span>"+handle+"</span>" + 
+            "<div class='content'>" +
+              content +
+            "</div>" +
+          "</div>"
+}
+
 
 
 

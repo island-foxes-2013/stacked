@@ -4,6 +4,7 @@ class CardsController < ApplicationController
   end
 
   def show
+
     @card = Card.find(params[:id])
     # http://rdoc.info/gems/twitter/Twitter/API/Timelines
     # user_timeline(user, options={count: 200, since_id: , max_id:})
@@ -13,6 +14,7 @@ class CardsController < ApplicationController
     @recent_tweets = []
     @api.each do |tweet|
       @recent_tweets << tweet.text
+      ap tweet.attrs
     end
   end
 
