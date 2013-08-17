@@ -7,10 +7,13 @@
 %p
   %strong Description:
   = @board.description
-
-
 %p
   = link_to "Edit", edit_board_path(@board)
   = link_to "Destroy", @board, :confirm => 'Are you sure?', :method => :delete |
   = link_to "View All", boards_path
+
+.board
+  .all_cards
+    -@board.cards.each do |card|
+      = render partial: 'board', locals: { card: card }
 
