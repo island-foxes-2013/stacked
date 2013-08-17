@@ -1,12 +1,8 @@
-%h1 Board
+.board-name
+  %strong= @board.name
 
-%p
-  %strong Name:
-  = @board.name
-
-%p
-  %strong Description:
-  = @board.description
+.board_desc
+  %em= "#{@board.description}" 
 %p
   = link_to "Edit", edit_board_path(@board)
   = link_to "Destroy", @board, :confirm => 'Are you sure?', :method => :delete |
