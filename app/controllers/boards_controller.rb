@@ -39,4 +39,5 @@ class BoardsController < ApplicationController
     @board.destroy
     redirect_to boards_url, :notice => "Successfully destroyed board."
   end
+
 end

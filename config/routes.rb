@@ -8,7 +8,10 @@ Stacked::Application.routes.draw do
 
   resources :sessions, only: [:new, :destroy]
 
+  resources :users, only: [:update]
+
   match '/auth/:provider/callback', to: 'sessions#create'
+  # match '/boards/:board_id/cards/:card_id/remove', to: 'boards#remove_card'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

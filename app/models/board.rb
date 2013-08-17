@@ -5,11 +5,14 @@
 #  id          :integer          not null, primary key
 #  name        :string(255)
 #  description :string(255)
+#  slug        :string(255)      not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 class Board < ActiveRecord::Base
+	extend FriendlyId	
+	friendly_id :name, :use => :slugged
   attr_accessible :name, :description
 
   validates_presence_of :name
