@@ -47,11 +47,11 @@ body {
 	display: none;
 	-webkit-perspective: 800;
 	width: 32%;
-/*	min-width: 250px;*/
+	/*min-width: 250px;*/
 	height: 20em;
 	min-width: 290px;
 	max-width: 310px;
-	margin-bottom: 1em;
+	margin-top: 1em;
 	margin-left: 1em;
 	position: relative;
 	float: left;
@@ -79,6 +79,9 @@ body {
   background-color: darken($card, 8);
   color: white;
   cursor: pointer;
+  height: 100%;
+  width: 200px;
+  overflow: auto;
   @include rounded-corners($corner_radius);
 
 }

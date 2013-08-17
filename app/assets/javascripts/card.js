@@ -20,7 +20,7 @@ $(document).ready(function() {
           content +
         "</div>" +
       "</div>"
-      );
+      ).css('position', 'relative');
   });
 
   $(window).resize(function() {

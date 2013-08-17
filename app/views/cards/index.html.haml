@@ -2,4 +2,4 @@
 	.all_cards
 		-@cards.each do |card|
 			= render partial: 'card', locals: { card: card }
-
+		%br{clear: 'left'}
