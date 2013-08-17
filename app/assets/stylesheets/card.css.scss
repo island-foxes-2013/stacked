@@ -80,11 +80,11 @@ body {
   color: white;
   cursor: pointer;
   height: 100%;
-  width: 200px;
+  /*width: 200px;*/
   overflow: auto;
   @include rounded-corners($corner_radius);
-
 }
+
 .flip .card .back {
   -webkit-transform: rotatey(-180deg);
   background: blue;

@@ -14,6 +14,7 @@ class CardsController < ApplicationController
     @recent_tweets = []
     @api.each do |tweet|
       @recent_tweets << tweet.text
+      ap tweet.attrs
     end
   end
 
