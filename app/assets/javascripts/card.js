@@ -1,16 +1,16 @@
 $(document).ready(function() {
-  $(document).on('mouseover','.flip', function(){
-    $(this).find('.card').addClass('flipped').mouseleave(function(){
-        $(this).removeClass('flipped');
-    });
-    return false;
-  });
+  // $(document).on('mouseover','.flip', function(){
+  //   $(this).find('.card').addClass('flipped').mouseleave(function(){
+  //       $(this).removeClass('flipped');
+  //   });
+  //   return false;
+  // });
 
-  $('a#delete').on("ajax:success", function(event, xhr, status, error){
-    console.log(event);
-    console.log(xhr);
-    console.log(status);
-    console.log(error);
+  $('.update').on("ajax:success", function(event, xhr, status, error){
+    htmlString = ''
+    for (i in xhr) {
+      htmlString += tweet(xhr[i])
+    }
   });
     
   // $(document).on('click','.card.flipped',function(){
@@ -52,6 +52,11 @@ function loadCards(){
     // $('.flip').removeClass().addClass('flip large-2 columns');
     $('.flip').css('width', '18%')
   }
+}
+
+function tweet(tweet){
+  console.log(tweet);
+
 }
 
 function tweetFormat(handle, content) {

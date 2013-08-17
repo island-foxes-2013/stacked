@@ -61,4 +61,20 @@ class CardsController < ApplicationController
     end
   end
 
+  def get_tweets
+    @card = Card.find(params[:id])
+    @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
+    tweets = []
+    @api.each_with_index do |tweet,i|
+      tweets[i] = {}
+      tweets[i][:tweet_id] = tweet.id
+      tweets[i][:text]     = tweet.text
+      tweets[i][:created]  = tweet.created_at
+      unless tweet.urls.empty?
+        tweets[i][:url] = tweet.urls[0].url
+      end
+    end
+    render json: tweets 
+  end
+
 end

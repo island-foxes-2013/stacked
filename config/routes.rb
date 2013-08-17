@@ -10,7 +10,12 @@ Stacked::Application.routes.draw do
     end
   end
 
-  resources :cards, only: [:index, :new, :create, :show, :edit, :delete, :update]
+
+  resources :cards, only: [:index, :new, :create, :show, :edit, :delete, :update] do
+    member do
+      get 'get_tweets'
+    end
+  end
 
   resources :sessions, only: [:new, :destroy]
 
