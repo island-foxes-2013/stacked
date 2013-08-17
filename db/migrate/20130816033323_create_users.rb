@@ -3,8 +3,11 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :name
       t.string :image_url
+      t.string :slug, :null => false
 
       t.timestamps
     end
+
+    add_index :users, :slug, :unique => true
   end
 end

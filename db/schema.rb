@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20130816033323) do
   create_table "boards", :force => true do |t|
     t.string   "name"
     t.string   "description"
+    t.string   "slug",        :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130816033323) do
   create_table "cards", :force => true do |t|
     t.string   "name"
     t.string   "twitter_handle"
+    t.string   "slug",           :null => false
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
@@ -45,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20130816033323) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "image_url"
+    t.string   "slug",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
