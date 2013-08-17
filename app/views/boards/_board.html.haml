@@ -1,12 +1,13 @@
 .flip
-	.card
-		.face.front	
-		.face.back	
-			.header
-				.mini-pic
-
-				.name
-					=card.name
-				.last-updated
-					= link_to 'Update', get_tweets_card_path(card), {remote: true, class: 'update'} 
-					37m
+  .card
+    .face.front 
+    .face.back  
+      .header
+        .mini-pic
+          -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
+          = image_tag(img_url)
+        .name
+          =card.name
+        .last-updated
+          = link_to 'Update', get_tweets_card_path(card), {remote: true, class: 'update'} 
+          37m
