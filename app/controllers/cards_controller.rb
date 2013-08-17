@@ -4,10 +4,18 @@ class CardsController < ApplicationController
   end
 
   def show
-    @card = Card.find(params[:id]) # :id at this point is a string, not a number
-    @users_tweets = Twitter.user_timeline(@card.twitter_handle)
-    @tweets_text = []
-    @users_tweets.each {|tweet| @tweets_text << tweet.text} 
+
+    @card = Card.find(params[:id])
+
+    # http://rdoc.info/gems/twitter/Twitter/API/Timelines
+    # user_timeline(user, options={count: 200, since_id: , max_id:})
+    # returns (Array<Twitter::Tweet>)
+    @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
+
+    @recent_tweets = []
+    @api.each do |tweet|
+      @recent_tweets << tweet.text
+    end
   end
 
   def new

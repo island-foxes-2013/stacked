@@ -15,13 +15,6 @@ body {
 	background-color: lighten($card, 20);
 }
 
-.board{
-	margin: auto 0;
-}
-
-.all_cards{
-	margin: auto 0;
-}
 
 @mixin rounded-corners($radius) {
   -webkit-border-radius: $radius;
@@ -53,14 +46,13 @@ body {
 .flip {
 	display: none;
 	-webkit-perspective: 800;
-	width: 100%; 
-	max-width: 350px;
-	min-width: 320px;
+	width: 32%;
+/*	min-width: 250px;*/
 	height: 20em;
 	min-width: 290px;
 	max-width: 310px;
 	margin-bottom: 1em;
-	margin-right: 1em;
+	margin-left: 1em;
 	position: relative;
 	float: left;
 }

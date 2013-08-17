@@ -1,11 +1,14 @@
 .flip
-	.card
-		.face.front	
-		.face.back	
-			.header
-				.mini-pic
+  .card
+    .face.front 
+        
+    .face.back  
+      .header
+        .mini-pic
 
-				.name
-					=card.name
-				.last-updated
-					37m
+        .name
+          =card.name
+        .last-updated
+      .tweet
+      -recent_tweets[0..4].each do |tweet|
+        %p= tweet
