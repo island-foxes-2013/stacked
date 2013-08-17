@@ -4,7 +4,7 @@
     .face.back  
       .header
         .mini-pic
-          -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{current_user.username}.jpg"
+          -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
           = image_tag(img_url)
         .name
           =card.name
