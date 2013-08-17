@@ -16,6 +16,8 @@ class Board < ActiveRecord::Base
   attr_accessible :name, :description
 
   validates_presence_of :name
+
+  belongs_to :user
   has_many :board_cards
   has_many :cards, through: :board_cards
 

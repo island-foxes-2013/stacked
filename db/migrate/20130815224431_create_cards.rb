@@ -4,6 +4,7 @@ class CreateCards < ActiveRecord::Migration
     	t.string :name
     	t.string :twitter_handle
     	t.string :slug, :null => false
+    	t.belongs_to :user
 
       t.timestamps
     end

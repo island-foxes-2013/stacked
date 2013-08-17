@@ -19,6 +19,8 @@ class Card < ActiveRecord::Base
 
   # may remove twitter_handle validation once we auth more users
   validates_presence_of :name, :twitter_handle
+
+  belongs_to :user
   has_many :board_cards
   has_many :boards, through: :board_cards
 
