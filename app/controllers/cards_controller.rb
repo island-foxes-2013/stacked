@@ -70,7 +70,6 @@ class CardsController < ApplicationController
     @api.each_with_index do |tweet,i|
       tweets[i] = {}
       tweets[i][:tweet_id] = tweet.id
-      ap auto_link(tweet.text)
       tweets[i][:text]     = auto_link(tweet.text)
       tweets[i][:created]  = tweet.created_at
       unless tweet.urls.empty?
