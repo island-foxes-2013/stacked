@@ -5,6 +5,8 @@ $(document).ready(function() {
     overlay: 'rgba(255,255,255,0.4)'
   });
 
+  // BoardCard();
+
   // $(document).on('mouseover','.flip', function(){
   //   $(this).find('.card').addClass('flipped').mouseleave(function(){
   //       $(this).removeClass('flipped');
@@ -87,6 +89,13 @@ function tweetPicture(tweet_id, content, picUrl) {
           "</div>"
 }
 
+
+function BoardCard() {
+  $('.card .face.back').on('click',function() {
+    console.log("in card click listener")
+  })
+
+}
 
 
 
