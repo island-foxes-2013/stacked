@@ -41,6 +41,7 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(name: params[:card][:twitter_handle], twitter_handle: params[:card][:twitter_handle])
+    @card.user = current_user
     if @card.save
       redirect_to @card, :notice => "Successfully created card."
     else

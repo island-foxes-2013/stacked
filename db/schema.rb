@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130816033323) do
     t.string   "name"
     t.string   "description"
     t.string   "slug",        :null => false
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20130816033323) do
     t.string   "name"
     t.string   "twitter_handle"
     t.string   "slug",           :null => false
+    t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end

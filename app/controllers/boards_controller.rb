@@ -14,6 +14,7 @@ class BoardsController < ApplicationController
 
   def create
     @board = Board.new(params[:board])
+    @board.user = current_user
     if @board.save
       redirect_to @board, :notice => "Successfully created board."
     else
