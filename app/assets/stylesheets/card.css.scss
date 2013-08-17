@@ -6,6 +6,7 @@ $red: #FF3501;
 $light-blue: #C3D5E8;
 
 $card: #C3D5E8;
+$card-trans: rgba($card, .7);
 
 $header-size: 2.5em;
 $name-padding: 1em;
@@ -38,8 +39,7 @@ body {
 }
 
 .tweet {
-	color: rgba(0,0,0,.5);
-
+	color: rgba(darken($card, 40), .6);
 }
 
 
@@ -91,7 +91,7 @@ body {
   background: white;
   color: black;
   cursor: pointer;
-  background-color: $card;
+  background-color: $card-trans;
   @include rounded-corners($corner_radius);
 
   .header {

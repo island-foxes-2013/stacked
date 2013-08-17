@@ -2,13 +2,20 @@ Stacked::Application.routes.draw do
 
   root to: 'boards#index'
 
-  resources :boards, only: [:index]
+  resources :boards, only: [:index] do
+    resources :cards, only: [:delete] do 
+      member do
+        delete 'remove' #remove a card from a board
+      end
+    end
+  end
 
   resources :cards, only: [:index, :new, :create, :show, :edit, :delete, :update]
 
   resources :sessions, only: [:new, :destroy]
 
   match '/auth/:provider/callback', to: 'sessions#create'
+  # match '/boards/:board_id/cards/:card_id/remove', to: 'boards#remove_card'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
