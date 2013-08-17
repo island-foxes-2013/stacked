@@ -12,10 +12,11 @@ $header-size: 2.5em;
 $name-padding: 1em;
 $corner_radius: 5px;
 
-body {
-	background-color: lighten($card, 20);
+@mixin shadow($x,$y, $blur){
+	-webkit-box-shadow: $x $y $blur rgba(50, 50, 50, 0.58);
+	-moz-box-shadow:    $x $y $blur rgba(50, 50, 50, 0.58);
+	box-shadow:         $x $y $blur rgba(50, 50, 50, 0.58);
 }
-
 
 @mixin rounded-corners($radius) {
   -webkit-border-radius: $radius;
@@ -29,10 +30,13 @@ body {
 	border-top-left-radius: $radius;
 }
 
-@mixin rounded-bottom-corner($radius) {
+@mixin rounded-bottom-corners($radius) {
   -webkit-border-bottom-left-radius: $radius;
+	-webkit-border-bottom-right-radius: $radius;
 	-moz-border-radius-bottomleft: $radius;
+	-moz-border-radius-bottomright: $radius;
 	border-bottom-left-radius: $radius;
+	border-bottom-right-radius: $radius;
 }
 
 @mixin rounded-top-corners($radius) {
@@ -103,6 +107,7 @@ body {
   .header {
 		background-color: lighten($card, 30);
 		height: $header-size;
+		@include shadow(0px, 2px, 8px);
 		
 		.mini-pic {
 			width: $header-size;
@@ -110,9 +115,7 @@ body {
 			background-color: grey;
 			float: left;
 			position: relative;
-
-
-			@include rounded-top-left-corner($corner_radius)
+			@include rounded-top-left-corner($corner_radius);
 		}
 
 		.name {
@@ -129,14 +132,18 @@ body {
 			margin-top: 20px;
 			color: $card;
 		}
-		@include rounded-top-corners($corner_radius)
+		@include rounded-top-corners($corner_radius);
 	}
 
 	.footer {
-		background-color: black;
-		min-height: 50px;
+		background-color: white;
+		height: .9em;
 		position: absolute;
 		bottom: 0;
+		width: 100%;
+		text-align: center;
+		@include shadow(2px, 0px, 8px);
+		@include rounded-bottom-corners($corner_radius);
 	}
 
 }
