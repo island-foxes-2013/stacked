@@ -69,7 +69,7 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  -webkit-backface-visibility: hidden ;
+  -webkit-backface-visibility: hidden;
   z-index: 2;
 }
 .flip .card .front {
@@ -90,6 +90,7 @@ body {
   color: black;
   cursor: pointer;
   background-color: $card-trans;
+  overflow: hidden;
   @include rounded-corners($corner_radius);
 
   .header {

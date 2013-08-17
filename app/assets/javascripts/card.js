@@ -35,7 +35,6 @@ $(document).ready(function() {
   });
 });
 
-
 function loadCards(){
   var windowSize = $(window).width();
   // console.log(windowSize);
