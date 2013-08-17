@@ -29,6 +29,12 @@ body {
 	border-top-left-radius: $radius;
 }
 
+@mixin rounded-bottom-corner($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+	-moz-border-radius-bottomleft: $radius;
+	border-bottom-left-radius: $radius;
+}
+
 @mixin rounded-top-corners($radius) {
   -webkit-border-top-left-radius: $radius;
 	-webkit-border-top-right-radius: $radius;
@@ -91,6 +97,7 @@ body {
   cursor: pointer;
   background-color: $card-trans;
   overflow: hidden;
+  position: relative;
   @include rounded-corners($corner_radius);
 
   .header {
@@ -122,8 +129,14 @@ body {
 			margin-top: 20px;
 			color: $card;
 		}
-
 		@include rounded-top-corners($corner_radius)
+	}
+
+	.footer {
+		background-color: black;
+		min-height: 50px;
+		position: absolute;
+		bottom: 0;
 	}
 
 }

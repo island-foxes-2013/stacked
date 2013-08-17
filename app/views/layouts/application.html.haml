@@ -48,7 +48,7 @@
           %ul.side-nav
             -if @boards
               -@boards.each do |board|
-                %p=board.name
+                =link_to "#{board.name}"
         .main.small-10.large-10.columns
           = yield
         / .right-sidebar.large-2.small-3.columns
