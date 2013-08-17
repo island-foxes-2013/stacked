@@ -45,10 +45,10 @@
       .row
         .left-sidebar.small-2.large-2.columns.frosty
           %h2 Boards
-          %ul.side-nav
+          %ul.side-nav.board-list
             -if @boards
               -@boards.each do |board|
-                =link_to "#{board.name}"
+                =link_to "#{board.name}", board_url(board)
         .main.small-10.large-10.columns
           = yield
         / .right-sidebar.large-2.small-3.columns
