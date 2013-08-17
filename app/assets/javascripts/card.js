@@ -17,7 +17,7 @@ $(document).ready(function() {
     for (i in xhr) {
       htmlString += tweet(xhr[i])
     }
-    $(this).closest('.face.back').append(htmlString);
+    $(this).closest('.face.back').find('.news').append(htmlString);
   });
     
   // $(document).on('click','.card.flipped',function(){

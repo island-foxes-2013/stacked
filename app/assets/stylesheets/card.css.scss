@@ -8,7 +8,9 @@ $light-blue: #C3D5E8;
 $card: #C3D5E8;
 $card-trans: rgba($card, .7);
 
-$header-size: 2.5em;
+$card-height: 20em; /*this*/
+$header-size: 2.5em; /*minus this*/
+$content-size: 17.3em; /*equals this*/
 $name-padding: 1em;
 $corner_radius: 5px;
 
@@ -56,7 +58,7 @@ $corner_radius: 5px;
 .flip {
 	-webkit-perspective: 800;
 	width: 32%;
-	height: 20em;
+	height: $card-height;
 	min-width: 250px;
 	max-width: 310px;
 	margin-top: 1em;
@@ -99,7 +101,6 @@ $corner_radius: 5px;
   color: black;
   cursor: pointer;
   background-color: $card-trans;
-  overflow: hidden;
   position: relative;
   @include rounded-corners($corner_radius);
 
@@ -133,6 +134,11 @@ $corner_radius: 5px;
 			color: $card;
 		}
 		@include rounded-top-corners($corner_radius);
+	}
+
+	.news {
+		height: $content-size;
+	  overflow: hidden;
 	}
 
 	.footer {
