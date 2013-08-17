@@ -17,6 +17,7 @@ gem 'twitter'
 gem 'oauth'
 gem 'httparty'
 gem "friendly_id", "~> 4.0.0.beta8"
+gem 'twitter-text'
 
 
 # Gems used only for assets and not required

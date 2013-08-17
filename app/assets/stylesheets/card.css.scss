@@ -12,10 +12,11 @@ $header-size: 2.5em;
 $name-padding: 1em;
 $corner_radius: 5px;
 
-body {
-	background-color: lighten($card, 20);
+@mixin shadow($x,$y, $blur){
+	-webkit-box-shadow: $x $y $blur rgba(50, 50, 50, 0.58);
+	-moz-box-shadow:    $x $y $blur rgba(50, 50, 50, 0.58);
+	box-shadow:         $x $y $blur rgba(50, 50, 50, 0.58);
 }
-
 
 @mixin rounded-corners($radius) {
   -webkit-border-radius: $radius;
@@ -27,6 +28,15 @@ body {
   -webkit-border-top-left-radius: $radius;
 	-moz-border-radius-topleft: $radius;
 	border-top-left-radius: $radius;
+}
+
+@mixin rounded-bottom-corners($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+	-webkit-border-bottom-right-radius: $radius;
+	-moz-border-radius-bottomleft: $radius;
+	-moz-border-radius-bottomright: $radius;
+	border-bottom-left-radius: $radius;
+	border-bottom-right-radius: $radius;
 }
 
 @mixin rounded-top-corners($radius) {
@@ -47,9 +57,10 @@ body {
 	-webkit-perspective: 800;
 	width: 32%;
 	height: 20em;
-/*	min-width: 250px;
-	max-width: 310px;*/
-	margin: 0.5em;
+	min-width: 250px;
+	max-width: 310px;
+	margin-top: 1em;
+	margin-left: 1em;
 	position: relative;
 	float: left;
 }
@@ -67,7 +78,7 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  -webkit-backface-visibility: hidden ;
+  -webkit-backface-visibility: hidden;
   z-index: 2;
 }
 .flip .card .front {
@@ -88,11 +99,15 @@ body {
   color: black;
   cursor: pointer;
   background-color: $card-trans;
+  overflow: hidden;
+  position: relative;
   @include rounded-corners($corner_radius);
 
   .header {
 		background-color: lighten($card, 30);
 		height: $header-size;
+		@include shadow(0px, 2px, 8px);
+		margin-bottom: 2px;
 		
 		.mini-pic {
 			width: $header-size;
@@ -100,9 +115,7 @@ body {
 			background-color: grey;
 			float: left;
 			position: relative;
-
-
-			@include rounded-top-left-corner($corner_radius)
+			@include rounded-top-left-corner($corner_radius);
 		}
 
 		.name {
@@ -119,8 +132,18 @@ body {
 			margin-top: 20px;
 			color: $card;
 		}
+		@include rounded-top-corners($corner_radius);
+	}
 
-		@include rounded-top-corners($corner_radius)
+	.footer {
+		background-color: white;
+		height: .9em;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		text-align: center;
+		@include shadow(2px, 0px, 8px);
+		@include rounded-bottom-corners($corner_radius);
 	}
 
 }

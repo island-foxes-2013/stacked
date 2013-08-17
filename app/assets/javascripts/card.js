@@ -28,6 +28,7 @@ $(document).ready(function() {
   // });
 
   $(window).resize(function() {
+    console.log($('.all_cards').width());
     loadCards();
     $('.flip').fadeIn(600);
     $('.card').addClass('flipped');
@@ -36,10 +37,9 @@ $(document).ready(function() {
 
 });
 
-
 function loadCards(){
   var windowSize = $(window).width();
-  console.log(windowSize);
+  // console.log(windowSize);
 
   if (windowSize <= 500){
     // $('.flip').removeClass().addClass('flip large-10 columns');

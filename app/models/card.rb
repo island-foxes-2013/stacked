@@ -12,17 +12,15 @@
 
 class Card < ActiveRecord::Base
 	extend FriendlyId	
+
 	friendly_id :name, :use => :slugged
 
   attr_accessible :name, :twitter_handle
-
-  # before_create :create_slug
 
   # may remove twitter_handle validation once we auth more users
   validates_presence_of :name, :twitter_handle
   has_many :board_cards
   has_many :boards, through: :board_cards
-
 
 end
 
