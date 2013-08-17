@@ -31,22 +31,32 @@ ActiveRecord::Schema.define(:version => 20130816033323) do
   create_table "boards", :force => true do |t|
     t.string   "name"
     t.string   "description"
+    t.string   "slug",        :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "boards", ["slug"], :name => "index_boards_on_slug", :unique => true
+
   create_table "cards", :force => true do |t|
     t.string   "name"
     t.string   "twitter_handle"
+    t.string   "slug",           :null => false
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "cards", ["slug"], :name => "index_cards_on_slug", :unique => true
+
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.string   "image_url"
+    t.string   "email"
+    t.string   "username"
+    t.string   "slug",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
 end

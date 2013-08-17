@@ -5,4 +5,6 @@ $(document).ready(function() {
 		radius: 10,
 		overlay: 'rgba(255,255,255,0.4)'
 	});
+
+	
 });

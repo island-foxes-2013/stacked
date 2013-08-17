@@ -3,8 +3,11 @@ class CreateCards < ActiveRecord::Migration
     create_table :cards do |t|
     	t.string :name
     	t.string :twitter_handle
+    	t.string :slug, :null => false
 
       t.timestamps
     end
+
+    add_index :cards, :slug, :unique => true
   end
 end
