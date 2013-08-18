@@ -28,7 +28,6 @@ $(document).ready(function() {
   // });
 
   $(window).resize(function() {
-    console.log($('.all_cards').width());
     loadCards();
     $('.flip').fadeIn(600);
     $('.card').addClass('flipped');
@@ -65,18 +64,15 @@ function loadCards(){
 }
 
 function tweet(tweet){
-  // if (tweet.url) {
-  //   return tweetPicture(tweet.tweet_id, tweet.text, tweet.url)
-  // }
   return tweetFormat(tweet.tweet_id, tweet.text, tweet.user_id)
 }
 
 function tweetFormat(tweet_id, text, user_id) {
   return "<div class='tweet'>"+
-            "<div class='text'>" +
+            "<div class='content'>" +
               text +
             "</div>" +
-            "<a href='https://twitter.com/"+user_id+"/statuses/"+tweet_id+"'>t</a>"
+            "<a href='https://twitter.com/"+user_id+"/statuses/"+tweet_id+"'>t</a>"+
           "</div>"
 }
 
@@ -90,7 +86,6 @@ function tweetFormat(tweet_id, text, user_id) {
 // }
 
 function makeCardsDraggable() {
-  console.log("in makeCardsDraggable");
   $(".card").find(".header").draggable({
     helper: 'clone',
     cursor: 'move'
@@ -98,7 +93,6 @@ function makeCardsDraggable() {
 }
 
 function makeDecksDroppable() {
-  console.log("in makeDecksDroppable");
   $(".board-link").droppable({
     drop: addCardToDeck
   })
