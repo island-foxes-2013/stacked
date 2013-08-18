@@ -12,7 +12,8 @@
           =card.name
         .last-updated
           %span{class: 'delete'}
-            = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
+            - if board
+              = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
           = link_to 'U', get_tweets_card_path(card), {remote: true, class: 'update'} 
           %span{class: 'last'}
             37m
