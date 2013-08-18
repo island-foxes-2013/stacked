@@ -2,6 +2,11 @@ class BoardsController < ApplicationController
 
 	def index
 		@boards = Board.order('created_at DESC').limit(10)
+
+    # Ransack gem search objects
+    @search = Board.search(params[:q])
+    # will retsurn a list of objects
+    @search_suggestions = @search.result
 	end
 
   def show

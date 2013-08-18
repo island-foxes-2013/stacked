@@ -28,9 +28,10 @@
               .row.collapse
                 = form_tag('/search', method: 'get') do
                   .small-8.columns
-                    =text_field_tag 'search', nil, placeholder: "Find someone!"
+                    =text_field_tag :q, nil, placeholder: "Search..."
                   .small-4.columns
                     =submit_tag "Search", :class => "button prefix"
+
             %li.divider
             -if signed_in?
               %li.has-dropdown
