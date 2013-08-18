@@ -5,10 +5,12 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		ap "*" * 100
-		ap request.env['omniauth.auth']
-		ap "*" * 100
 		auth = request.env['omniauth.auth']
+
+		# ap auth
+
+		self.twitter_credentials = auth
+
 		unless @auth = Authorization.find_from_hash(auth)
 			# Create a new user or add an auth to existing user, depending on 
 			# whether there is already a user signed in 
