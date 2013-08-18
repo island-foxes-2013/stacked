@@ -1,7 +1,7 @@
 # Stacked Application's consumer_key and secret
 Twitter.configure do |config|
-  config.consumer_key = '6Oapz9UjwVsbpQQCDaL9FQ'
-  config.consumer_secret = 'bFFjgddZVEbfv2x3Ak6vaG8NeCqY2nFazLCKgJ68'
+  config.consumer_key = ENV['TWTTER_KEY']
+  config.consumer_secret = ENV['TWITTER_SECRET']
 end
 
 # Then, for each user's access token/secret pair, instantiate a Twitter::Client:

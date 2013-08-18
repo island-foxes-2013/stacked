@@ -18,11 +18,16 @@ $(document).ready(function() {
       htmlString += tweet(xhr[i])
     }
     $(this).closest('.face.back').find('.news').append(htmlString);
+    $(this).closest('.card').addClass('flipped');
+    handleExternalLinks();
   });
 
   $(document).on('ajax:success','.delete', function(event, xhr, status, error) {
     $(this).closest('.flip').fadeOut('slow');  
   });
+
+  $('.update').click();
+
     
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);
@@ -34,7 +39,7 @@ $(document).ready(function() {
   $(window).resize(function() {
     loadCards();
     $('.flip').fadeIn(600);
-    $('.card').addClass('flipped');
+    // $('.card').addClass('flipped');
     makeCardsDraggable();
     makeDecksDroppable();
   });
@@ -89,6 +94,17 @@ function tweetFormat(tweet_id, text, user_id) {
 //           "</div>"
 // }
 
+function handleExternalLinks() {
+ $("a[href^=http]").each(function(){
+    if(this.href.indexOf(location.hostname) == -1) {
+       $(this).attr({
+          target: "_blank",
+          title: "Opens in a new window"
+       });
+    }
+ });
+}
+
 function makeCardsDraggable() {
   $(".card").find(".header").draggable({
     helper: 'clone',
@@ -103,7 +119,7 @@ function makeDecksDroppable() {
 }
 
 function addCardToDeck(event,ui) {
-  var card = ui.draggable;
+  var card = ui.draggable.closest('.card');
   var board = $(this);
   console.log( 'The square with ID "' + card.attr('id') + '" was dropped onto ' + board.attr('id'));
   $.ajax({
