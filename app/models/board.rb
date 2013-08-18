@@ -21,4 +21,11 @@ class Board < ActiveRecord::Base
   has_many :board_cards
   has_many :cards, through: :board_cards
 
+  def search
+    @search = Board.search(params[:q])
+    p @search
+    @search_suggestions = @search.result(distinct:true)
+    p @search_suggestions
+  end
+
 end

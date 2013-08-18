@@ -1,8 +1,8 @@
 class CreateBoardCards < ActiveRecord::Migration
   def change
     create_table :board_cards do |t|
-    	t.index :board
-    	t.index :card
+    	t.belongs_to :board
+    	t.belongs_to :card
 
       t.timestamps
     end
