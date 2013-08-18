@@ -26,8 +26,7 @@ $(document).ready(function() {
     $(this).closest('.flip').fadeOut('slow');  
   });
 
-  $('.update').click();
-
+  // $('.update').click();
     
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);
@@ -39,7 +38,7 @@ $(document).ready(function() {
   $(window).resize(function() {
     loadCards();
     $('.flip').fadeIn(600);
-    // $('.card').addClass('flipped');
+    $('.card').addClass('flipped');
     makeCardsDraggable();
     makeDecksDroppable();
   });
