@@ -39,7 +39,7 @@ require 'spec_helper'
 
 		end
 
-		context "editing a board" do
+		context "editing a board" do 
 
 			before [:each] do
 				visit '/boards/new'
@@ -70,6 +70,21 @@ require 'spec_helper'
     		page.should have_content('Edit Board')
     	end
 
+		end
+
+		context "destory board" do
+
+			before do
+				visit '/boards/new'
+      	fill_in 'board_name', :with => 'Cool'
+      	fill_in 'board_description', :with => 'This is a cool test board'
+    		click_button 'Create'
+			end
+
+    		it "should destroy board" do
+    			pending
+    		end
+  
 		end
 
 	end
