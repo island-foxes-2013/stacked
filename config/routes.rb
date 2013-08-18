@@ -17,7 +17,7 @@ Stacked::Application.routes.draw do
   resources :users, only: [:update]
 
   match '/auth/:provider/callback', to: 'sessions#create'
-  match '/search', to: 'application#search'
+  match '/search', to: 'boards#index'
 
   # match '/boards/:board_id/cards/:card_id/remove', to: 'boards#remove_card'
 

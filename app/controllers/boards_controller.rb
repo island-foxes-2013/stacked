@@ -4,9 +4,14 @@ class BoardsController < ApplicationController
 		@boards = Board.order('created_at DESC').limit(10)
 
     # Ransack gem search objects
-    @search = Board.search(params[:q])
-    # will retsurn a list of objects
-    @search_suggestions = @search.result
+    # @search = Board.search(params[:q])
+    # # will retsurn a list of objects
+    # @search_suggestions = @search.result
+
+    q = params[:q]
+    @boards_searchresults = Board.search(name_cont: q).result
+    @cards_searchresults = Card.search(name_cont: q).result
+    @users_searchresults = User.search(name_cont: q).result
 	end
 
   def show
