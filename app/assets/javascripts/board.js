@@ -8,4 +8,14 @@ $(document).ready(function(){
 		$('.delete').slideToggle();
 		$('.last').slideToggle();
 	});
+
+	$('.follow').on('ajax:success', function(){
+		$(this).fadeOut();
+		$('.unfollow').fadeIn();
+	});
+
+	$('.unfollow').on('ajax:success', function(){
+		$(this).fadeOut();
+		$('.follow').fadeIn();
+	});
 });
