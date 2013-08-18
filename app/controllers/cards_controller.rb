@@ -2,6 +2,8 @@ class CardsController < ApplicationController
 
   include Twitter::Autolink
 
+  include CardHelper
+
   def index
     @cards = Card.all
   end
@@ -40,9 +42,20 @@ class CardsController < ApplicationController
   # end
 
   def create
-    @card = Card.new(name: params[:card][:twitter_handle], twitter_handle: params[:card][:twitter_handle])
+    @card = Card.new(
+      name: params[:card][:twitter_handle], 
+      twitter_handle: params[:card][:twitter_handle],
+      instagram_handle: params[:card][:instagram_handle])
     @card.user = current_user
+
+    if @card.instagram_handle
+      ap instagram_id(@card.instagram_handle)
+      @card.instagram_id = instagram_id(@card.instagram_handle)
+    end
+
     if @card.save
+      # instagram = Instagram.client(access_token: instagram_token)
+      # ap instagram.user_recent_media(@card.instagram_id, count: 4)
       redirect_to @card, :notice => "Successfully created card."
     else
       render action: 'new'
@@ -70,12 +83,36 @@ class CardsController < ApplicationController
     tweets = []
     @api.each_with_index do |tweet,i|
       tweets[i] = {}
-      tweets[i][:tweet_id] = String(tweet.id)
+      tweets[i][:tweet_id] = tweet.id
       tweets[i][:text]     = auto_link(tweet.text)
       tweets[i][:created]  = tweet.created_at
-      tweets[i][:user_id]  = tweet.user.screen_name
+      unless tweet.urls.empty?
+        tweets[i][:url] = tweet.urls[0].url
+      end
     end
     render json: tweets 
   end
+
+  def get_instagrams
+    # instagram = Instagram.client(access_token: instagram_token)
+    @card = Card.find(params[:id])
+    @response = instagram.user_recent_media(@card.instagram_id)
+    instagrams = []
+    @response.each_with_index do |instagram,i|
+      instagrams[i] = {}
+      instagrams[i][:instagram_id] = instagram['data'][0]
+      instagrams[i][:text] = instagram['text']
+      instagrams[i][:images][:thumbnail] = instagram['images']['thumbnail']['url']
+      instagrams[i][:images][:small] = instagram['images']['low_resolution']['url']
+      instagrams[i][:images][:standard] = instagram['images']['standard_resolution']['url']
+
+      instagrams[i][:created]  = instagram['created_time']
+      instagrams[i][:url] = instagram['link']
+    end
+    render json: instagrams
+    # ap instagram.user_recent_media(@card.instagram_id)
+  end
+
+
 
 end
