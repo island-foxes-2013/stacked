@@ -1,9 +1,11 @@
-= search_form_for @search do |f|
-  .field
-    = f.label :name_cont, "Board contains"
-    = f.text_field :name_cont
-  .actions= f.submit 'Search Boards'
+.searchbox-board
+  = search_form_for @search do |f|
+    .field
+      = f.label :name_cont, "Board contains"
+      = f.text_field :name_cont
+    .actions= f.submit 'Search Boards'
 
-- if @search_suggestions
-  - @search_suggestions.each do |suggestion|
-    = link_to suggestion.name, board_path(suggestion)
+    .suggestions
+      - if @search_suggestions
+        - @search_suggestions.each do |suggestion|
+          = link_to suggestion.name, board_path(suggestion)
