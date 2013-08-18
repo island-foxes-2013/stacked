@@ -56,6 +56,20 @@ require 'spec_helper'
 				page.should have_content('Description')
 			end
 
+			it "should edit board name and description" do
+				fill_in 'board_name', :with => 'Very Cool'
+      	fill_in 'board_description', :with => 'Even more better'
+    		click_button 'Update Board'
+    		page.should have_content('Very Cool')
+    	end
+
+    	it "should not edit board name with blank name" do
+				fill_in 'board_name', :with => ''
+      	fill_in 'board_description', :with => 'Even more better'
+    		click_button 'Update Board'
+    		page.should have_content('Edit Board')
+    	end
+
 		end
 
 	end
