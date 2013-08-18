@@ -5,7 +5,7 @@ class BoardsController < ApplicationController
 
     # Ransack gem search objects
     @search = Board.search(params[:q])
-    # will resturn a list of objects
+    # will retsurn a list of objects
     @search_suggestions = @search.result
 	end
 

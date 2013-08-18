@@ -12,7 +12,7 @@
 
 class Board < ActiveRecord::Base
 	extend FriendlyId	
-	friendly_id :name, :use => :slugged
+	friendly_id :name, use: :slugged
   attr_accessible :name, :description
 
   validates_presence_of :name
@@ -23,9 +23,7 @@ class Board < ActiveRecord::Base
 
   def search
     @search = Board.search(params[:q])
-    p @search
     @search_suggestions = @search.result(distinct:true)
-    p @search_suggestions
   end
 
 end
