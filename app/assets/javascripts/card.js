@@ -20,9 +20,9 @@ $(document).ready(function() {
     $(this).closest('.face.back').find('.news').append(htmlString);
   });
 
-  // $('.delete').on('ajax:success', function(event, xhr, status, error) {
-  //   console.log('didit')
-  // });
+  $(document).on('ajax:success','.delete', function(event, xhr, status, error) {
+    $(this).closest('.flip').fadeOut('slow');  
+  });
     
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);

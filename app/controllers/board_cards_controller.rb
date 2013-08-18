@@ -8,7 +8,7 @@ class BoardCardsController < ApplicationController
 	end
 
 	def destroy
-		BoardCard.where(board_id: params[:format], card_id: params[:id]).first.destroy
-		render: json { true }
+		kill_me = BoardCard.where(board_id: params[:format], card_id: params[:id]).first
+		kill_me.destroy if kill_me
 	end
 end
