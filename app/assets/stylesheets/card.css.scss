@@ -8,9 +8,9 @@ $light-blue: #C3D5E8;
 $card: $light-blue;
 $card-trans: rgba($card, .7);
 
-$card-height: 175px; /*this*/
+$card-height: 20em; /*this*/
 $header-size: 2.5em; /*minus this*/
-$content-size: 120px; /*equals this*/
+$content-size: 20em; /*equals this*/
 $name-padding: 1em;
 $corner_radius: 5px;
 
@@ -65,7 +65,7 @@ $corner_radius: 5px;
 	/*width: 32%;*/
 	width: 250px;
 	height: $card-height;
-	/*height: $card-height;*/
+	height: $card-height;
 	display: none;
 /*	min-width: 250px;
 	max-width: 310px;*/
@@ -100,7 +100,7 @@ $corner_radius: 5px;
 		  color: white;
 		  cursor: pointer;
 		  height: 100%;
-		  overflow: auto;
+		  /*overflow: hidden;*/
 		  border: solid $card-trans 2px;
 		  @include rounded-corners($corner_radius);
 
