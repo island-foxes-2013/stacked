@@ -13,18 +13,18 @@ class CardsController < ApplicationController
     # http://rdoc.info/gems/twitter/Twitter/API/Timelines
     # user_timeline(user, options={count: 200, since_id: , max_id:})
     # returns (Array<Twitter::Tweet>)
-    @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
-    tweets = []
-    @api.each_with_index do |tweet,i|
-      tweets[i] = {}
-      tweets[i][:tweet_id] = tweet.id
-      tweets[i][:text]     = auto_link(tweet.text)
-      tweets[i][:created]  = tweet.created_at
-      unless tweet.urls.empty?
-        tweets[i][:url] = tweet.urls[0].url
-      end
-    end
-    ap tweets
+    # @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
+    # tweets = []
+    # @api.each_with_index do |tweet,i|
+    #   tweets[i] = {}
+    #   tweets[i][:tweet_id] = tweet.id
+    #   tweets[i][:text]     = auto_link(tweet.text)
+    #   tweets[i][:created]  = tweet.created_at
+    #   unless tweet.urls.empty?
+    #     tweets[i][:url] = tweet.urls[0].url
+    #   end
+    # end
+    # ap tweets
   end
 
   def new
@@ -94,21 +94,21 @@ class CardsController < ApplicationController
   end
 
   def get_instagrams
-    # instagram = Instagram.client(access_token: instagram_token)
+    instagram = Instagram.client(access_token: instagram_token)
     @card = Card.find(params[:id])
     @response = instagram.user_recent_media(@card.instagram_id)
     instagrams = []
     @response.each_with_index do |instagram,i|
       instagrams[i] = {}
-      instagrams[i][:instagram_id] = instagram['data'][0]
-      instagrams[i][:text] = instagram['text']
-      instagrams[i][:images][:thumbnail] = instagram['images']['thumbnail']['url']
-      instagrams[i][:images][:small] = instagram['images']['low_resolution']['url']
-      instagrams[i][:images][:standard] = instagram['images']['standard_resolution']['url']
-
+      instagrams[i][:instagram_id] = instagram['id']
+      instagrams[i][:text] = instagram['caption']['text']
+      instagrams[i][:thumbnail] = instagram['images']['thumbnail']['url']
+      instagrams[i][:small_image] = instagram['images']['low_resolution']['url']
+      instagrams[i][:standard_image] = instagram['images']['standard_resolution']['url']
       instagrams[i][:created]  = instagram['created_time']
       instagrams[i][:url] = instagram['link']
     end
+    ap instagrams
     render json: instagrams
     # ap instagram.user_recent_media(@card.instagram_id)
   end

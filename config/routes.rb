@@ -9,6 +9,7 @@ Stacked::Application.routes.draw do
   resources :cards, only: [:index, :new, :create, :show, :edit, :destroy, :update] do
     member do
       get 'get_tweets'
+      get "get_instagrams"
     end
   end
 
