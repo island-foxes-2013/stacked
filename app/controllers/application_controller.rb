@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
   end
 
   def twitter_credentials=(credentials)
+    ENV['TWITTER_OAUTH_TOKEN']
+    ENV['TWITTER_OAUTH_TOKEN_SECRET']
   end
 
   def twitter_credentials
