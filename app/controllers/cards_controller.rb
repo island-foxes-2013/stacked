@@ -78,7 +78,6 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     begin
       @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
-      ap @api
       tweets = []
       @api.each_with_index do |tweet,i|
         tweets[i] = {}
