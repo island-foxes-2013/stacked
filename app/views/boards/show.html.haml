@@ -4,9 +4,11 @@
 .board_desc
   %em= "#{@board.description}" 
 %p
-  = link_to "Edit", edit_board_path(@board)
-  = link_to "Destroy", @board, :confirm => 'Are you sure?', :method => :delete |
+  = link_to 'Edit', '#',{class: 'board-edit'}
+  = link_to "Destroy", @board, :confirm => 'Are you sure?', :method => :delete 
   = link_to "View All", boards_path
+
+.inline-edit=render 'form'
 
 .board
   .all_cards
