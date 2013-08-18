@@ -13,6 +13,7 @@ $(document).ready(function() {
   // });
 
   $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
+    console.log('suppposedly fine')
     htmlString = ''
     for (i in xhr) {
       htmlString += tweet(xhr[i])
@@ -21,7 +22,8 @@ $(document).ready(function() {
     $(this).closest('.card').addClass('flipped');
     handleExternalLinks();
   });
-  $('.update').on("ajax:error", function(event, xhr, status, error){
+  $('.update-twitter').on("ajax:error", function(event, xhr, status, error){
+    console.log('errrrrrrorr')
     $(this).closest('.card').addClass('flipped');
     handleExternalLinks();
   });
