@@ -6,6 +6,6 @@ end
 
 # Then, for each user's access token/secret pair, instantiate a Twitter::Client:
 eric  = Twitter::Client.new(
-  oauth_token: '17861518-NUVAfsalQsBujIPPoGq4kgZM3SPwdJj1OAwXDGC7i',
-  oauth_token_secret: 'Vg7bMv9bJuwhfgcFCa7LgNpC8Sj8YUI3nrfIM5kFJM'
+  oauth_token: twitter_credentials[twitter_oauth_token],
+  oauth_token_secret: twitter_credentials[twitter_oauth_token_secret]
 )
