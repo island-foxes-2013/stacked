@@ -24,12 +24,13 @@
               Board
               =link_to board.name, board_path(board)
       %p
-        Results for <b>Boards</b>
+        Results for <b>Cards</b>
         -if @cards_searchresults
           - @cards_searchresults.each do |card|
             .result
               Card
               =link_to card.name, card_path(card)
+              =render partial: 'cards/card'
       / %p  
       /   -if @cards_twitterhandle_searchresults
       /     - @cards_twitterhandle_searchresults.each do |card|
