@@ -4,9 +4,9 @@ Stacked::Application.routes.draw do
 
   resources :boards
 
-  resources :board_cards, only: [:create, :delete]
+  resources :board_cards, only: [:create, :destroy]
 
-  resources :cards, only: [:index, :new, :create, :show, :edit, :delete, :update] do
+  resources :cards, only: [:index, :new, :create, :show, :edit, :destroy, :update] do
     member do
       get 'get_tweets'
     end
