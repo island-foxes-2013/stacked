@@ -64,30 +64,29 @@ function loadCards(){
 }
 
 function tweet(tweet){
-  if (tweet.url) {
-    return tweetPicture(tweet.tweet_id, tweet.text, tweet.picUrl)
-  }
-  return tweetFormat(tweet.tweet_id, tweet.text)
+  // if (tweet.url) {
+  //   return tweetPicture(tweet.tweet_id, tweet.text, tweet.url)
+  // }
+  return tweetFormat(tweet.tweet_id, tweet.text, tweet.user_id)
 }
 
-function tweetFormat(tweet_id, content) {
+function tweetFormat(tweet_id, text, user_id) {
   return "<div class='tweet'>"+
-            "<span>"+tweet_id+"</span>" + 
-            "<div class='content'>" +
-              content +
+            "<div class='text'>" +
+              text +
             "</div>" +
+            "<a href='https://twitter.com/"+user_id+"/statuses/"+tweet_id+"'>t</a>"
           "</div>"
 }
 
-function tweetPicture(tweet_id, content, picUrl) {
-  return "<div class='tweet'>"+
-            "<img src='"+picUrl+"' alt='Shiiit'>" +
-            "<span>"+tweet_id+"</span>" + 
-            "<div class='content'>" +
-              content +
-            "</div>" +
-          "</div>"
-}
+// function tweetPicture(tweet_id, content, picUrl) {
+//   return "<div class='tweet'>"+
+//             "<img border='0' src='http://i.stack.imgur.com/skvx1.png' width='200' height='200'>" +
+//             "<div class='content'>" +
+//               content +
+//             "</div>" +
+//           "</div>"
+// }
 
 function makeCardsDraggable() {
   console.log($(".mini-pic"));
