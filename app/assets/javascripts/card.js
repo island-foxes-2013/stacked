@@ -92,6 +92,13 @@ function tweetFormat(tweet_id, text, user_id) {
           "</div>"
 }
 
+function instaFormat(instagram) {
+  var $post = $(".templates").find(".image_post");
+  $post.find(".content").text(instagram.text);
+  $post.find(".source").find("img").attr("src");
+  return $post;
+}
+
 // function tweetPicture(tweet_id, content, picUrl) {
 //   return "<div class='tweet'>"+
 //             "<img border='0' src='http://i.stack.imgur.com/skvx1.png' width='200' height='200'>" +
