@@ -12,7 +12,7 @@ $(document).ready(function() {
   //   return false;
   // });
 
-  $('.update').on("ajax:success", function(event, xhr, status, error){
+  $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
     htmlString = ''
     for (i in xhr) {
       htmlString += tweet(xhr[i])
@@ -26,7 +26,7 @@ $(document).ready(function() {
     $(this).closest('.flip').fadeOut('slow');  
   });
 
-  // $('.update').click();
+  $('.update-twitter').click();
     
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);
