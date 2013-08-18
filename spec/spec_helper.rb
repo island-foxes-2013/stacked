@@ -59,6 +59,9 @@ RSpec.configure do |config|
     'provider' => 'twitter',
     'info' => {
       'name' => 'Daniel Willems'
+    },
+    'credentials' => {
+      'token' => '0123456789'
     }
   }
 

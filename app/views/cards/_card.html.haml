@@ -14,7 +14,8 @@
           %span{class: 'delete'}
             - if board
               = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
-          = link_to 'U', get_tweets_card_path(card), {remote: true, class: 'update'} 
+          = link_to 'T', get_tweets_card_path(card), {remote: true, class: 'update-twitter'} 
+          = link_to 'I', get_instagrams_card_path(card), {remote: true, class: 'update-instagram'} 
           %span{class: 'last'}
             37m
       .news

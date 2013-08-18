@@ -2,6 +2,8 @@ class CardsController < ApplicationController
 
   include Twitter::Autolink
 
+  include CardHelper
+
   def index
     @cards = Card.all
   end
@@ -37,9 +39,20 @@ class CardsController < ApplicationController
   # end
 
   def create
-    @card = Card.new(name: params[:card][:twitter_handle], twitter_handle: params[:card][:twitter_handle])
+    @card = Card.new(
+      name: params[:card][:twitter_handle], 
+      twitter_handle: params[:card][:twitter_handle],
+      instagram_handle: params[:card][:instagram_handle])
     @card.user = current_user
+
+    if @card.instagram_handle
+      ap instagram_id(@card.instagram_handle)
+      @card.instagram_id = instagram_id(@card.instagram_handle)
+    end
+
     if @card.save
+      # instagram = Instagram.client(access_token: instagram_token)
+      # ap instagram.user_recent_media(@card.instagram_id, count: 4)
       redirect_to @card, :notice => "Successfully created card."
     else
       render action: 'new'
@@ -78,5 +91,27 @@ class CardsController < ApplicationController
     rescue
     end
   end
+
+  def get_instagrams
+    instagram = Instagram.client(access_token: instagram_token)
+    @card = Card.find(params[:id])
+    @response = instagram.user_recent_media(@card.instagram_id)
+    instagrams = []
+    @response.each_with_index do |instagram,i|
+      instagrams[i] = {}
+      instagrams[i][:instagram_id] = instagram['id']
+      instagrams[i][:text] = instagram['caption']['text']
+      instagrams[i][:thumbnail] = instagram['images']['thumbnail']['url']
+      instagrams[i][:small_image] = instagram['images']['low_resolution']['url']
+      instagrams[i][:standard_image] = instagram['images']['standard_resolution']['url']
+      instagrams[i][:created]  = instagram['created_time']
+      instagrams[i][:url] = instagram['link']
+    end
+    ap instagrams
+    render json: instagrams
+    # ap instagram.user_recent_media(@card.instagram_id)
+  end
+
+
 
 end

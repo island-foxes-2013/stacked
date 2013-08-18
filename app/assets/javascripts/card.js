@@ -12,7 +12,7 @@ $(document).ready(function() {
   //   return false;
   // });
 
-  $('.update').on("ajax:success", function(event, xhr, status, error){
+  $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
     htmlString = ''
     for (i in xhr) {
       htmlString += tweet(xhr[i])
@@ -30,8 +30,7 @@ $(document).ready(function() {
     $(this).closest('.flip').fadeOut('slow');  
   });
 
-  $('.update').click();
-
+  $('.update-twitter').click();
     
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);
@@ -136,52 +135,5 @@ function addCardToDeck(event,ui) {
     console.log(data)
   })
 }
-
-// ****************************************************
-
-// function Card(id, name) {
-//   this.id = id;
-//   this.name = name;
-// }
-
-// // Item.prototype.render = function() {
-// //   return "<tr class='item'>\
-// //             <td class='item_name'>"+this.name+"</td>\
-// //             <td class='item_price'>"+this.price+"</td>\
-// //           </tr>"
-// // }
-
-// var addCardToBoard = function(){
-//   // var private = {
-//   //     items:[],
-//   //     tableBody:(function(){
-//   //       return $('#grocery_list').find('tbody')
-//   //     })  ,
-//   //   }
-//   // private.total = function() {
-//   //   var total = 0;
-//   //   for (i in this.items) {
-//   //     total += this.items[i].price;
-//   //   }
-//   //   return total.toFixed(2);
-//   // }
-
-//   public.addToList = function(event, ui) {
-//     var dragged_item = $(ui.draggable);
-//     var item =  new Item(dragged_item.find(".item_name").text(),dragged_item.find(".item_price").text());
-//     public.addItem(item);
-//   }
-//   return public
-// }
-
-// // ****************************************************
-
-// function BoardCard() {
-//   $('.card .header').draggable('click',function() {
-//     console.log("in card click listener")
-//   })
-
-// }
-
 
 

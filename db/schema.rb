@@ -42,10 +42,12 @@ ActiveRecord::Schema.define(:version => 20130816033323) do
   create_table "cards", :force => true do |t|
     t.string   "name"
     t.string   "twitter_handle"
-    t.string   "slug",           :null => false
+    t.string   "instagram_handle"
+    t.string   "instagram_id"
+    t.string   "slug",             :null => false
     t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "cards", ["slug"], :name => "index_cards_on_slug", :unique => true

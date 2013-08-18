@@ -9,6 +9,11 @@ class SessionsController < ApplicationController
 		ap request.env['omniauth.auth']
 		ap "*" * 100
 		auth = request.env['omniauth.auth']
+
+		if auth['provider'] == 'instagram'
+			session[:instagram_token] = auth['credentials']['token']
+		end
+		
 		unless @auth = Authorization.find_from_hash(auth)
 			# Create a new user or add an auth to existing user, depending on 
 			# whether there is already a user signed in 
