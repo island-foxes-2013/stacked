@@ -1,0 +1,9 @@
+= search_form_for @search do |f|
+  .field
+    = f.label :name_cont, "Board contains"
+    = f.text_field :name_cont
+  .actions= f.submit 'Search Boards'
+
+- if @search_suggestions
+  - @search_suggestions.each do |suggestion|
+    = suggestion.name

@@ -1,15 +1,6 @@
 %h1 Boards
 
-= search_form_for @search do |f|
-  .field
-    = f.label :name_cont, "Board contains"
-    = f.text_field :name_cont
-  .actions= f.submit 'Search Boards'
-
-- if @search_suggestions
-  - @search_suggestions.each do |suggestion|
-    = suggestion.name
-
+= render partial: 'search_board'
 
 %table
   %tr
@@ -17,7 +8,7 @@
     %th Description
     %th Creator
 
-  - for board in @boards 
+  - for board in @boards
     %tr
       %td= board.name 
       %i 
