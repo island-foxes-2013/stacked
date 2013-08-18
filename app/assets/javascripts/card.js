@@ -32,7 +32,7 @@ $(document).ready(function() {
     $(this).closest('.flip').fadeOut('slow');  
   });
 
-  $('.update-instagram').click();
+  $('.update-twitter').click();
     
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);
