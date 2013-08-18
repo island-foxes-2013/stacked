@@ -40,7 +40,10 @@
                   %li= link_to "My Boards", :boards
                   %li= link_to "Log Out", session_url(current_user), method: :delete
             -else
-              %li= link_to "Log In or Sign Up!", '/auth/twitter'
+              %li.has-dropdown
+                "Log In or Sign Up!"
+                = link_to "Twitter", '/auth/twitter'
+                = link_to "Instagram", '/auth/instagram'
     .container
       .row
         .left-sidebar.small-2.large-2.columns.frosty
