@@ -10,21 +10,18 @@ class CardsController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
-    # http://rdoc.info/gems/twitter/Twitter/API/Timelines
-    # user_timeline(user, options={count: 200, since_id: , max_id:})
-    # returns (Array<Twitter::Tweet>)
-    # @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
-    # tweets = []
-    # @api.each_with_index do |tweet,i|
-    #   tweets[i] = {}
-    #   tweets[i][:tweet_id] = tweet.id
-    #   tweets[i][:text]     = auto_link(tweet.text)
-    #   tweets[i][:created]  = tweet.created_at
-    #   unless tweet.urls.empty?
-    #     tweets[i][:url] = tweet.urls[0].url
-    #   end
-    # end
-    # ap tweets
+    begin
+      @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
+      tweets = []
+      @api.each_with_index do |tweet,i|
+        tweets[i] = {}
+        tweets[i][:tweet_id] = String(tweet.id)
+        tweets[i][:text]     = auto_link(tweet.text)
+        tweets[i][:created]  = tweet.created_at
+        tweets[i][:user_id]  = tweet.user.screen_name
+      end
+    rescue
+    end
   end
 
   def new
@@ -79,18 +76,20 @@ class CardsController < ApplicationController
 
   def get_tweets
     @card = Card.find(params[:id])
-    @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
-    tweets = []
-    @api.each_with_index do |tweet,i|
-      tweets[i] = {}
-      tweets[i][:tweet_id] = tweet.id
-      tweets[i][:text]     = auto_link(tweet.text)
-      tweets[i][:created]  = tweet.created_at
-      unless tweet.urls.empty?
-        tweets[i][:url] = tweet.urls[0].url
+    begin
+      @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
+      ap @api
+      tweets = []
+      @api.each_with_index do |tweet,i|
+        tweets[i] = {}
+        tweets[i][:tweet_id] = String(tweet.id)
+        tweets[i][:text]     = auto_link(tweet.text)
+        tweets[i][:created]  = tweet.created_at
+        tweets[i][:user_id]  = tweet.user.screen_name
       end
+      render json: tweets 
+    rescue
     end
-    render json: tweets 
   end
 
   def get_instagrams
