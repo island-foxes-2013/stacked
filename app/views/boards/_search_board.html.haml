@@ -4,7 +4,7 @@
     .field
       /= f.label :name_cont, "Board contains"
       /= f.text_field :name_cont
-      = text_field_tag :q, "Search for boards or cards..."
+      = text_field_tag :q, nil, placeholder: "Search for boards and cards"
     /.actions= f.submit 'Search Boards'
 
     / .suggestions
@@ -13,9 +13,21 @@
     /       = link_to suggestion.name, board_path(suggestion)
 
     .search-suggestions
-      -if @boards_searchresults
-        - @boards_searchresults.each do |board|
-          =link_to board.name, board_path(board)
-      -if @cards_searchresults
-        - @cards_searchresults.each do |card|
-          =link_to card.name, card_path(card)
+      %p
+        -if @boards_searchresults
+          - @boards_searchresults.each do |board|
+            .result
+              Board
+              =link_to board.name, board_path(board)
+      %p  
+        -if @cards_searchresults
+          - @cards_searchresults.each do |card|
+            .result
+              Card
+              =link_to card.name, card_path(card)
+      / %p  
+      /   -if @cards_twitterhandle_searchresults
+      /     - @cards_twitterhandle_searchresults.each do |card|
+      /       .result
+      /         Twitter
+      /         =link_to card.twitter_handle, card_path(card)
