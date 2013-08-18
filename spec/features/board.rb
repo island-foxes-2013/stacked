@@ -38,5 +38,24 @@ require 'spec_helper'
   		end
 
 		end
-		
+
+		context "editing a board" do
+
+			before [:each] do
+				visit '/boards/new'
+      	fill_in 'board_name', :with => 'Cool'
+      	fill_in 'board_description', :with => 'This is a cool test board'
+    		click_button 'Create'
+			end
+
+			it "should see edit name" do
+				page.should have_content('Name')
+			end
+
+			it "should see edit description" do
+				page.should have_content('Description')
+			end
+
+		end
+
 	end
