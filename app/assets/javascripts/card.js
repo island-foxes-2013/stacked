@@ -106,8 +106,16 @@ function makeDecksDroppable() {
 }
 
 function addCardToDeck(event,ui) {
-  var draggable = ui.draggable;
-  console.log( 'The square with ID "' + draggable.attr('id') + '" was dropped onto me!' );
+  var card = ui.draggable;
+  var board = $(this);
+  console.log( 'The square with ID "' + card.attr('id') + '" was dropped onto ' + board.attr('id'));
+  $.ajax({
+    url: '/board_cards',
+    method: 'post',
+    data: {board_slug: board.attr('id'), card_slug: card.attr('id')}
+  }).done(function(data) {
+    console.log(data)
+  })
 }
 
 // ****************************************************

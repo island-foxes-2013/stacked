@@ -6,7 +6,7 @@
           -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_200,h_200,c_fill/#{card.twitter_handle}.jpg"
           = image_tag(img_url)
     .face.back  
-      .header
+      .header{ :id => "#{card.slug}" }
         .mini-pic
           -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
           = image_tag(img_url)
@@ -18,5 +18,3 @@
       .news
       .footer
         ='...'
-      
-
