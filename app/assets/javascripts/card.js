@@ -87,9 +87,10 @@ function tweetFormat(tweet_id, text, user_id) {
 }
 
 function instaFormat(instagram) {
-  var template = $(".templates").find(".image_post")
-  template.find(".content").text(instagram.text)
-  template.find(".source").find("img").attr("src")
+  var $post = $(".templates").find(".image_post");
+  $post.find(".content").text(instagram.text);
+  $post.find(".source").find("img").attr("src");
+  return $post;
 }
 
 // function tweetPicture(tweet_id, content, picUrl) {
