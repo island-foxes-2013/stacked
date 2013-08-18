@@ -4,6 +4,16 @@ require 'spec_helper'
 	#tests also require visiting the cards/* route
 	describe 'card' do 
 
+		context 'view all cards on one page' do
+			#not sure we want this.  test just visit cards index page
+			it "should contain the .all_cards class on page" do
+				visit root_path
+				visit 'cards'
+				find('.all_cards')['class']
+			end
+		end
+
+
 		context "verify content on create card page" do
 			
 			before [:all] do
@@ -27,25 +37,28 @@ require 'spec_helper'
 
 		context "creating a card" do
 
-			# before [:each] do
-			# 	visit root_path
-			# 	visit 'cards/new'
-			# end
+			before [:each] do
+				visit root_path
+				visit 'cards/new'
+			end
 
-			# it "creates a card w" do
-   #    	fill_in 'board_name', :with => 'Cool'
-   #    	fill_in 'board_description', :with => 'This is a cool test board'
-   #  		click_button 'Create'
-   #  		expect(page).to have_content 'Cool'
-  	# 	end
+			it "creates a card with both Twitter and Instagram" do
+      	fill_in 'card_twitter_handle', :with => 'dmkwillems'
+      	fill_in 'card_instagram_handle', :with => 'danielwillems'
+    		click_button 'Create Card'
+    		expect(page).to have_content 'dmkwillems'
+  		end
 
-  	# 	it "fails at creating board without name" do
-  	# 		visit '/boards/new'
-   #    	fill_in 'board_description', :with => 'This is not a cool test board'
-   #  		click_button 'Create'
-   #  		# expect(page).to have_content 'Create Board'
-   #  		find_button('Create Board').visible?
-  	# 	end
+  		it "creates a card with only Twitter" do
+      	fill_in 'card_twitter_handle', :with => 'dmkwillems'
+    		click_button 'Create Card'
+    		expect(page).to have_content 'dmkwillems'
+  		end
+
+  		it "fails at creating board without Twitter" do
+    		click_button 'Create Card'
+    		find_button('Create Card').visible?
+  		end
 
 
 		end
