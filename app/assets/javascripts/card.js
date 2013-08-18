@@ -33,6 +33,7 @@ $(document).ready(function() {
     $('.flip').fadeIn(600);
     $('.card').addClass('flipped');
     makeCardsDraggable();
+    makeDecksDroppable();
   });
 
 });
@@ -90,10 +91,23 @@ function tweetPicture(tweet_id, content, picUrl) {
 }
 
 function makeCardsDraggable() {
-  console.log($(".mini-pic"));
+  console.log("in makeCardsDraggable");
   $(".card").find(".header").draggable({
-    helper: 'clone'
+    helper: 'clone',
+    cursor: 'move'
   });
+}
+
+function makeDecksDroppable() {
+  console.log("in makeDecksDroppable");
+  $(".board-link").droppable({
+    drop: addCardToDeck
+  })
+}
+
+function addCardToDeck(event,ui) {
+  var draggable = ui.draggable;
+  console.log( 'The square with ID "' + draggable.attr('id') + '" was dropped onto me!' );
 }
 
 // ****************************************************
