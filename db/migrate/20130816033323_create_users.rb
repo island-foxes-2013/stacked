@@ -6,7 +6,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username
       t.string :slug, :null => false
 
-
       t.timestamps
     end
 

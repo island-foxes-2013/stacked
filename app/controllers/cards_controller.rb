@@ -70,12 +70,10 @@ class CardsController < ApplicationController
     tweets = []
     @api.each_with_index do |tweet,i|
       tweets[i] = {}
-      tweets[i][:tweet_id] = tweet.id
+      tweets[i][:tweet_id] = String(tweet.id)
       tweets[i][:text]     = auto_link(tweet.text)
       tweets[i][:created]  = tweet.created_at
-      unless tweet.urls.empty?
-        tweets[i][:url] = tweet.urls[0].url
-      end
+      tweets[i][:user_id]  = tweet.user.screen_name
     end
     render json: tweets 
   end
