@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   	session[:user_id] = user.id
   end
 
+  def twitter_credentials=
 
 	private
 

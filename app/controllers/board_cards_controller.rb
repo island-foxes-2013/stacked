@@ -6,4 +6,7 @@ class BoardCardsController < ApplicationController
 		Board.save
 		render text: "Success!"
 	end
+
+	def delete
+	end
 end

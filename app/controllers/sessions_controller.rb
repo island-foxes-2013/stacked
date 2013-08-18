@@ -5,7 +5,9 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		# ap request.env['omniauth.auth']
+		ap "*" * 100
+		ap request.env['omniauth.auth']
+		ap "*" * 100
 		auth = request.env['omniauth.auth']
 		unless @auth = Authorization.find_from_hash(auth)
 			# Create a new user or add an auth to existing user, depending on 

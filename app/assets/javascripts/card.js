@@ -18,7 +18,11 @@ $(document).ready(function() {
       htmlString += tweet(xhr[i])
     }
     $(this).closest('.face.back').find('.news').append(htmlString);
+    $(this).closest('.card').addClass('flipped');
+    handleExternalLinks();
   });
+
+  $('.update').click();
     
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);
@@ -31,7 +35,7 @@ $(document).ready(function() {
     console.log($('.all_cards').width());
     loadCards();
     $('.flip').fadeIn(600);
-    $('.card').addClass('flipped');
+    // $('.card').addClass('flipped');
     makeCardsDraggable();
     makeDecksDroppable();
   });
@@ -90,6 +94,17 @@ function tweetPicture(tweet_id, content, picUrl) {
           "</div>"
 }
 
+function handleExternalLinks() {
+ $("a[href^=http]").each(function(){
+    if(this.href.indexOf(location.hostname) == -1) {
+       $(this).attr({
+          target: "_blank",
+          title: "Opens in a new window"
+       });
+    }
+ });
+}
+
 function makeCardsDraggable() {
   console.log("in makeCardsDraggable");
   $(".card").find(".header").draggable({
@@ -106,7 +121,7 @@ function makeDecksDroppable() {
 }
 
 function addCardToDeck(event,ui) {
-  var card = ui.draggable;
+  var card = ui.draggable.closest('.card');
   var board = $(this);
   console.log( 'The square with ID "' + card.attr('id') + '" was dropped onto ' + board.attr('id'));
   $.ajax({
