@@ -6,5 +6,6 @@ $(document).ready(function(){
 	$('.board-edit').on('click', function(){
 		$('.inline-edit').slideToggle();
 		$('.delete').slideToggle();
+		$('.last').slideToggle();
 	});
 });

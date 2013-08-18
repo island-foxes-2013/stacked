@@ -14,7 +14,8 @@
           %span{class: 'delete'}
             = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
           = link_to 'U', get_tweets_card_path(card), {remote: true, class: 'update'} 
-          37m
+          %span{class: 'last'}
+            37m
       .news
       .footer
         ='...'
