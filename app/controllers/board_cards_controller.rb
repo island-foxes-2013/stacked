@@ -6,4 +6,8 @@ class BoardCardsController < ApplicationController
 		Board.save
 		render text: "Success!"
 	end
+
+	def destroy
+		BoardCard.where(board_id: params[:format], card_id: params[:id]).first.destroy
+	end
 end
