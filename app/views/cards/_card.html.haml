@@ -1,24 +1,23 @@
 .flip
   .card{ :id => "#{card.slug}" }
     .face.front 
-      .header
-        .mini-pic
-          -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_200,h_200,c_fill/#{card.twitter_handle}.jpg"
-          = image_tag(img_url)
+      -imega_url = "http://res.cloudinary.com/demo/image/twitter_name/w_400,h_400,c_fill/#{card.twitter_handle}.jpg"
+      .mega-pic{:style => "background-image: url(#{imega_url})"}
+        
     .face.back  
       .header
-        .mini-pic
-          -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
-          = image_tag(img_url)
+        -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
+        .mini-pic{:style => "background-image: url(#{img_url})"}
         .name
           =card.name
         .last-updated
           %span{class: 'delete'}
-            -if @board
+            - if board
               = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
           = link_to 'T', get_tweets_card_path(card), {remote: true, class: 'update'} 
           = link_to 'I', get_instagrams_card_path(card), {remote: true, class: 'update'} 
-          37m
+          %span{class: 'last'}
+            37m
       .news
       .footer
         ='...'

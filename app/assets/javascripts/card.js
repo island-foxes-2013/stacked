@@ -36,40 +36,40 @@ $(document).ready(function() {
   // });
 
   $(window).resize(function() {
-    loadCards();
-    $('.flip').fadeIn(600);
-    $('.card').addClass('flipped');
+    // loadCards();
+    // $('.card').addClass('flipped');
     makeCardsDraggable();
     makeDecksDroppable();
+    $('.flip').fadeIn(600);
   });
 
 });
 
-function loadCards(){
-  var windowSize = $(window).width();
-  // console.log(windowSize);
+// function loadCards(){
+//   var windowSize = $(window).width();
+//   // console.log(windowSize);
 
-  if (windowSize <= 500){
-    // $('.flip').removeClass().addClass('flip large-10 columns');
-    $('.flip').css('width', '100%')
-  }
-  else if (windowSize <= 767){
-    // $('.flip').removeClass().addClass('flip small-5 columns');
-    $('.flip').css('width', '47%')
-  }
-  else if (windowSize <= 1000){
-    // $('.flip').removeClass().addClass('flip large-4 columns');
-    $('.flip').css('width', '30%')
-  }
-  else if (windowSize <= 1500){
-    // $('.flip').removeClass().addClass('flip large-3 columns');
-    $('.flip').css('width', '23%')
-  }
-  else if (windowSize > 1500) {
-    // $('.flip').removeClass().addClass('flip large-2 columns');
-    $('.flip').css('width', '18%')
-  }
-}
+//   if (windowSize <= 500){
+//     // $('.flip').removeClass().addClass('flip large-10 columns');
+//     $('.flip').css('width', '100%')
+//   }
+//   else if (windowSize <= 767){
+//     // $('.flip').removeClass().addClass('flip small-5 columns');
+//     $('.flip').css('width', '47%')
+//   }
+//   else if (windowSize <= 1000){
+//     // $('.flip').removeClass().addClass('flip large-4 columns');
+//     $('.flip').css('width', '30%')
+//   }
+//   else if (windowSize <= 1500){
+//     // $('.flip').removeClass().addClass('flip large-3 columns');
+//     $('.flip').css('width', '23%')
+//   }
+//   else if (windowSize > 1500) {
+//     // $('.flip').removeClass().addClass('flip large-2 columns');
+//     $('.flip').css('width', '18%')
+//   }
+// }
 
 function tweet(tweet){
   return tweetFormat(tweet.tweet_id, tweet.text, tweet.user_id)
@@ -80,7 +80,9 @@ function tweetFormat(tweet_id, text, user_id) {
             "<div class='content'>" +
               text +
             "</div>" +
-            "<a href='https://twitter.com/"+user_id+"/statuses/"+tweet_id+"'>t</a>"+
+            "<a href='https://twitter.com/"+user_id+"/statuses/"+tweet_id+"'>"+
+              "<img alt='t' src='/assets/nottwittersbird.png'>" +
+            "</a>"+
           "</div>"
 }
 
@@ -129,52 +131,5 @@ function addCardToDeck(event,ui) {
     console.log(data)
   })
 }
-
-// ****************************************************
-
-// function Card(id, name) {
-//   this.id = id;
-//   this.name = name;
-// }
-
-// // Item.prototype.render = function() {
-// //   return "<tr class='item'>\
-// //             <td class='item_name'>"+this.name+"</td>\
-// //             <td class='item_price'>"+this.price+"</td>\
-// //           </tr>"
-// // }
-
-// var addCardToBoard = function(){
-//   // var private = {
-//   //     items:[],
-//   //     tableBody:(function(){
-//   //       return $('#grocery_list').find('tbody')
-//   //     })  ,
-//   //   }
-//   // private.total = function() {
-//   //   var total = 0;
-//   //   for (i in this.items) {
-//   //     total += this.items[i].price;
-//   //   }
-//   //   return total.toFixed(2);
-//   // }
-
-//   public.addToList = function(event, ui) {
-//     var dragged_item = $(ui.draggable);
-//     var item =  new Item(dragged_item.find(".item_name").text(),dragged_item.find(".item_price").text());
-//     public.addItem(item);
-//   }
-//   return public
-// }
-
-// // ****************************************************
-
-// function BoardCard() {
-//   $('.card .header').draggable('click',function() {
-//     console.log("in card click listener")
-//   })
-
-// }
-
 
 
