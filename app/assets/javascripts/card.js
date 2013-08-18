@@ -37,40 +37,40 @@ $(document).ready(function() {
   // });
 
   $(window).resize(function() {
-    loadCards();
-    $('.flip').fadeIn(600);
+    // loadCards();
     // $('.card').addClass('flipped');
     makeCardsDraggable();
     makeDecksDroppable();
+    $('.flip').fadeIn(600);
   });
 
 });
 
-function loadCards(){
-  var windowSize = $(window).width();
-  // console.log(windowSize);
+// function loadCards(){
+//   var windowSize = $(window).width();
+//   // console.log(windowSize);
 
-  if (windowSize <= 500){
-    // $('.flip').removeClass().addClass('flip large-10 columns');
-    $('.flip').css('width', '100%')
-  }
-  else if (windowSize <= 767){
-    // $('.flip').removeClass().addClass('flip small-5 columns');
-    $('.flip').css('width', '47%')
-  }
-  else if (windowSize <= 1000){
-    // $('.flip').removeClass().addClass('flip large-4 columns');
-    $('.flip').css('width', '30%')
-  }
-  else if (windowSize <= 1500){
-    // $('.flip').removeClass().addClass('flip large-3 columns');
-    $('.flip').css('width', '23%')
-  }
-  else if (windowSize > 1500) {
-    // $('.flip').removeClass().addClass('flip large-2 columns');
-    $('.flip').css('width', '18%')
-  }
-}
+//   if (windowSize <= 500){
+//     // $('.flip').removeClass().addClass('flip large-10 columns');
+//     $('.flip').css('width', '100%')
+//   }
+//   else if (windowSize <= 767){
+//     // $('.flip').removeClass().addClass('flip small-5 columns');
+//     $('.flip').css('width', '47%')
+//   }
+//   else if (windowSize <= 1000){
+//     // $('.flip').removeClass().addClass('flip large-4 columns');
+//     $('.flip').css('width', '30%')
+//   }
+//   else if (windowSize <= 1500){
+//     // $('.flip').removeClass().addClass('flip large-3 columns');
+//     $('.flip').css('width', '23%')
+//   }
+//   else if (windowSize > 1500) {
+//     // $('.flip').removeClass().addClass('flip large-2 columns');
+//     $('.flip').css('width', '18%')
+//   }
+// }
 
 function tweet(tweet){
   return tweetFormat(tweet.tweet_id, tweet.text, tweet.user_id)
@@ -81,7 +81,8 @@ function tweetFormat(tweet_id, text, user_id) {
             "<div class='content'>" +
               text +
             "</div>" +
-            "<a href='https://twitter.com/"+user_id+"/statuses/"+tweet_id+"'>t</a>"+
+            "<a href='https://twitter.com/"+user_id+"/statuses/"+tweet_id+"'>"+
+            "t</a>"+
           "</div>"
 }
 
