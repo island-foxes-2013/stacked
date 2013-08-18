@@ -9,17 +9,17 @@ describe 'Twitter OAuth' do
 	end
 
 	it "should log you in through Twitter" do	
-		click_link('Log In or Sign Up!')
+		click_link 'Twitter'
 		page.should have_content('Daniel Willems')
 	end
 
 	it "twitter sign in button should lead to twitter authentication page" do
-    click_link "Log In or Sign Up!"
+    click_link 'Twitter'
     Authorization.last.uid.should == '1337'
   end
 
   it "should log a user out on click of logout button" do 
-  	click_link "Log In or Sign Up!"
+  	click_link 'Twitter'
   	click_link "Log Out"
   	page.should have_content("Log In or Sign Up!")
   end
