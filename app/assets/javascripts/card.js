@@ -21,6 +21,10 @@ $(document).ready(function() {
     $(this).closest('.card').addClass('flipped');
     handleExternalLinks();
   });
+  $('.update').on("ajax:error", function(event, xhr, status, error){
+    $(this).closest('.card').addClass('flipped');
+    handleExternalLinks();
+  });
 
   $(document).on('ajax:success','.delete', function(event, xhr, status, error) {
     $(this).closest('.flip').fadeOut('slow');  
