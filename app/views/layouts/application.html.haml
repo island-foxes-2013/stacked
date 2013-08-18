@@ -44,11 +44,16 @@
     .container
       .row
         .left-sidebar.small-2.large-2.columns.frosty
-          %h2 Boards
+          %h4 New Boards
           %ul.side-nav.board-list
-            -if @boards
-              -@boards.each do |board|
-                %li.board-link
+            -Board.order('created_at DESC').limit(10).each do |board|
+              %li.board-link{ :id => "#{board.slug}" }
+                =link_to "#{board.name}", board_url(board)
+          %h4 Your Boards
+          %ul.side-nav.board-list
+            -if current_user
+              -current_user.boards.each do |board|
+                %li.board-link{ :id => "#{board.slug}" }
                   =link_to "#{board.name}", board_url(board)
         .main.small-10.large-10.columns
           = yield

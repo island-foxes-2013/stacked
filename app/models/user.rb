@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   validates_presence_of :name
 
   has_many :authorizations
+  has_many :boards
+  has_many :cards
 
   def self.create_from_hash!(hash)
   	ap hash

@@ -33,6 +33,7 @@ $(document).ready(function() {
     $('.flip').fadeIn(600);
     $('.card').addClass('flipped');
     makeCardsDraggable();
+    makeDecksDroppable();
   });
 
 });
@@ -89,10 +90,31 @@ function tweetFormat(tweet_id, text, user_id) {
 // }
 
 function makeCardsDraggable() {
-  console.log($(".mini-pic"));
+  console.log("in makeCardsDraggable");
   $(".card").find(".header").draggable({
-    helper: 'clone'
+    helper: 'clone',
+    cursor: 'move'
   });
+}
+
+function makeDecksDroppable() {
+  console.log("in makeDecksDroppable");
+  $(".board-link").droppable({
+    drop: addCardToDeck
+  })
+}
+
+function addCardToDeck(event,ui) {
+  var card = ui.draggable;
+  var board = $(this);
+  console.log( 'The square with ID "' + card.attr('id') + '" was dropped onto ' + board.attr('id'));
+  $.ajax({
+    url: '/board_cards',
+    method: 'post',
+    data: {board_slug: board.attr('id'), card_slug: card.attr('id')}
+  }).done(function(data) {
+    console.log(data)
+  })
 }
 
 // ****************************************************
