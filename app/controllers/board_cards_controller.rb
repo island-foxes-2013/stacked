@@ -9,5 +9,6 @@ class BoardCardsController < ApplicationController
 
 	def destroy
 		BoardCard.where(board_id: params[:format], card_id: params[:id]).first.destroy
+		render: json { true }
 	end
 end
