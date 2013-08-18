@@ -74,7 +74,7 @@ class CardsController < ApplicationController
       tweets[i][:text]     = auto_link(tweet.text)
       tweets[i][:created]  = tweet.created_at
       tweets[i][:user_id]  = params[:id] 
-      # ap tweet.attrs
+      ap tweet.attrs
       # unless tweet.urls.empty?
       #   tweets[i][:url] = tweet.urls[0].expanded_url
       # end
