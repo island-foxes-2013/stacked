@@ -94,6 +94,7 @@ class CardsController < ApplicationController
   end
 
   def get_instagrams
+    # Possibly move later
     instagram = Instagram.client(access_token: instagram_token)
     @card = Card.find(params[:id])
     @response = instagram.user_recent_media(@card.instagram_id)
