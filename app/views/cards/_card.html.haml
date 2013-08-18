@@ -13,7 +13,9 @@
         .name
           =card.name
         .last-updated
-          = link_to 'Update', get_tweets_card_path(card), {remote: true, class: 'update'} 
+          %span{class: 'delete'}
+            X
+          = link_to 'U', get_tweets_card_path(card), {remote: true, class: 'update'} 
           37m
       .news
       .footer
