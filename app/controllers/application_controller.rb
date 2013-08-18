@@ -17,7 +17,13 @@ class ApplicationController < ActionController::Base
   	session[:user_id] = user.id
   end
 
-  def twitter_credentials=
+  def twitter_credentials=(credentials)
+  end
+
+  def twitter_credentials
+    {twitter_oauth_token: ENV['TWITTER_OAUTH_TOKEN'],
+     twitter_oauth_token_secret: ENV['TWITTER_OAUTH_TOKEN_SECRET']}
+  end
 
 	private
 
