@@ -54,14 +54,15 @@ $corner_radius: 5px;
 	width: 100%;
 	color: rgba(darken($card, 70), .6);
 	margin: .2em .2em .5em .8em;
+	padding-left: .3em;
 	text-align: left !important;
 	display: inline-block;
 	float: left;
 	position: relative;
-	border-left: solid black 10px;
+	border-left: solid rgba(0,0,0,.5) 2px;
 
 	.content {
-		margin-right: 2em;
+		margin-right: 2.2em;
 	}
 
 	a img {
