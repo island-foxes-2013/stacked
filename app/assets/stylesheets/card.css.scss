@@ -51,13 +51,31 @@ $corner_radius: 5px;
 }
 
 .tweet {
+	width: 100%;
 	color: rgba(darken($card, 70), .6);
-	margin: .2em .5em .5em .8em;
+	margin: .2em .2em .5em .8em;
 	text-align: left !important;
+	display: inline-block;
+	float: left;
+	position: relative;
+	border-left: solid black 10px;
 
-/*	a {
+	.content {
+		margin-right: 2em;
+	}
 
-	}*/
+	a img {
+		display: inline-block;
+		float: right;
+		opacity: .3;
+		position: absolute;
+		top: 0;
+		right: 1em;
+
+		&:hover {
+			opacity: .7;
+		}
+	}
 }
 
 .flip {
@@ -100,7 +118,6 @@ $corner_radius: 5px;
 		  color: white;
 		  cursor: pointer;
 		  height: 100%;
-		  /*overflow: hidden;*/
 		  border: solid $card-trans 2px;
 		  @include rounded-corners($corner_radius);
 

@@ -82,7 +82,8 @@ function tweetFormat(tweet_id, text, user_id) {
               text +
             "</div>" +
             "<a href='https://twitter.com/"+user_id+"/statuses/"+tweet_id+"'>"+
-            "t</a>"+
+              "<img alt='t' src='/assets/nottwittersbird.png'>" +
+            "</a>"+
           "</div>"
 }
 
