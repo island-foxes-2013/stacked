@@ -4,20 +4,21 @@ $green: #4CFF3F;
 $yellow: #E8BB0B; 
 $red: #FF3501;
 $light-blue: #C3D5E8;
+$off-white: rgb(245, 245, 245);
 
-$card: $light-blue;
+$card: white;
 $card-trans: rgba($card, .7);
 
 $card-height: 20em; /*this*/
 $header-size: 2.5em; /*minus this*/
 $content-size: 20em; /*equals this*/
 $name-padding: 1em;
-$corner_radius: 5px;
+$corner_radius: 2px;
 
 @mixin shadow($x,$y, $blur){
-	-webkit-box-shadow: $x $y $blur rgba(50, 50, 50, 0.58);
-	-moz-box-shadow:    $x $y $blur rgba(50, 50, 50, 0.58);
-	box-shadow:         $x $y $blur rgba(50, 50, 50, 0.58);
+	-webkit-box-shadow: $x $y $blur rgba(200, 200, 200, 0.58);
+	-moz-box-shadow:    $x $y $blur rgba(200, 200, 200, 0.58);
+	box-shadow:         $x $y $blur rgba(200, 200, 200, 0.58);
 }
 
 @mixin rounded-corners($radius) {
@@ -88,7 +89,7 @@ $corner_radius: 5px;
 	display: none;
 /*	min-width: 250px;
 	max-width: 310px;*/
-	margin: 1em;
+	margin: 0.5em;
 	position: relative;
 	float: left;
 
@@ -140,13 +141,13 @@ $corner_radius: 5px;
 		  background-color: $card-trans;
 		  position: relative;
 		  @include rounded-corners($corner_radius);
-		  @include shadow(2px,2px,3px);
+		  @include shadow(0px,2px,2px);
 		  
 
 		  .header {
 				background-color: lighten($card, 30);
 				height: $header-size;
-				@include shadow(0px, 2px, 8px);
+				/*@include shadow(0px, 2px, 8px);*/
 				margin-bottom: 2px;
 				
 				.mini-pic {
@@ -159,11 +160,13 @@ $corner_radius: 5px;
 				}
 
 				.name {
-					font-size: 1.25em;
+					display:inline;
+					font-size: 1.4em;
 					margin-bottom: $name_padding; 
-					font-family: sans-serif;
+					/*font-family: sans-serif;*/
 					position: relative;
 					float: left;
+					margin: 0.3em;
 					color: darken($card, 60);
 				}
 
@@ -200,7 +203,7 @@ $corner_radius: 5px;
 				bottom: 0;
 				width: 100%;
 				text-align: center;
-				@include shadow(2px, 0px, 8px);
+				/*@include shadow(2px, 0px, 8px);*/
 				@include rounded-bottom-corners($corner_radius);
 			}
 		}

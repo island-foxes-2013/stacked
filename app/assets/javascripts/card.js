@@ -34,7 +34,7 @@ $(document).ready(function() {
     // $(this).closest('.flip').fadeOut('slow');  
   });
 
-  // $('.update-twitter').click();
+  $('.update-twitter').click();
     
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
   $(window).resize(function() {
     // loadCards();
-    $('.card').addClass('flipped');
+    // $('.card').addClass('flipped');
     makeCardsDraggable();
     makeDecksDroppable();
     $('.flip').fadeIn(600);
@@ -123,19 +123,39 @@ function handleExternalLinks() {
 
 function makeCardsDraggable() {
   $(".card").find(".header").draggable({
-    helper: 'clone',
-    cursor: 'move'
+    helper    : function(e){
+
+      var $card = $(e.target);
+      var $dragBuddy = $('.dragged-card').clone();
+
+      var imgUrl = $card.find('.mini-pic').attr('id').toString();
+      var cardId = $card.closest('.card').attr("id");
+
+      $dragBuddy.find('.name').text($card.find('.name').text());
+
+      $dragBuddy.find('.profile-pic').attr('src',imgUrl);
+      $dragBuddy.attr("id",cardId);
+
+      // console.log($dragBuddy);
+      return $dragBuddy[0];
+    },
+    cursor    : 'move',
+    cursorAt  : { left : 5 },
+    appendTo  : 'body',
+    zIndex    : 999
   });
 }
 
 function makeDecksDroppable() {
   $(".board-link").droppable({
-    drop: addCardToDeck
+    drop        : addCardToDeck,
+    hoverClass  : 'drop-hover'
   })
 }
 
 function addCardToDeck(event,ui) {
   var card = ui.draggable.closest('.card');
+  console.log(card);
   var board = $(this);
   console.log( 'The square with ID "' + card.attr('id') + '" was dropped onto ' + board.attr('id'));
   $.ajax({
