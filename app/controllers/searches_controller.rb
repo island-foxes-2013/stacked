@@ -16,7 +16,6 @@ class SearchesController < ApplicationController
       cards_instagram_results = Card.search(instagram_handle_cont: q).result
 
       @cards = (cards_name_results + cards_twitter_results + cards_instagram_results).uniq
-
     end
 
   end
