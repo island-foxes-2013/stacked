@@ -23,13 +23,7 @@
             %h1= link_to "Stacked", :root
         %section.top-bar-section
           %ul.right
-            %li.has-form
-              .row.collapse
-                = form_tag('/search', method: 'get') do
-                  .small-8.columns
-                    =text_field_tag :q, nil, placeholder: "Search..."
-                  .small-4.columns
-                    =submit_tag "Search", :class => "button prefix"
+            = render partial: 'layouts/search_global'
 
             %li.divider
             -if signed_in?
