@@ -3,7 +3,7 @@ class BoardCardsController < ApplicationController
 		board = Board.find_by_slug(params['board_slug'],)
 		card = Card.find_by_slug(params['card_slug'])
 		board.cards << card
-		Board.save
+		board.save
 		render text: "Success!"
 	end
 

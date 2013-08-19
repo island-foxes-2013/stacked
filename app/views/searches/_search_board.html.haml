@@ -19,8 +19,9 @@
         / #container
         -if @cards
           - @cards.each do |card|
-            .result-card
-              .result-img
-                =image_tag "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
-              .result-link
-                = link_to card.name, card_path(card)
+            .card{ :id => "#{card.slug}"}
+              .header
+                .result-img
+                  =image_tag "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
+                .result-link
+                  = link_to card.name, card_path(card)
