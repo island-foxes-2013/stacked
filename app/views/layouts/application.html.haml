@@ -63,13 +63,6 @@
                 - board = Board.find(board_user.board_id)
                 =link_to board.name, board_url(board)
               %li.divider
-          %ul.side-nav.board-list
-            -if current_user
-              %li.divider
-              -current_user.boards.each do |board|
-                %li.board-link{ :id => "#{board.slug}" }
-                  =link_to "#{board.name}", board_url(board)
-                %li.divider
         .main.small-10.large-10.columns
           = yield
         / .right-sidebar.large-2.small-3.columns
