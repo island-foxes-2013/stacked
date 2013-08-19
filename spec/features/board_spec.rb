@@ -77,8 +77,12 @@ require 'spec_helper'
 			let(:board) { FactoryGirl.create(:board) }
 
     		it "should destroy board" do
-    			pending 'need to finish UI'
     			board
+    			visit root_path
+    			click_link('Destroy')
+    			# this is not testing to see that is works.  It is just clicking the button.
+    			# page.driver.browser.switch_to.alert.accept
+    			# page.should have_no_content('Destroy')
     		end
   
 		end
