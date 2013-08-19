@@ -37,17 +37,21 @@ var AddACard = {
 var LazyLoader = {
   init: function() {
     var self = this;
+
     $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
       console.log(xhr)
       htmlString = ''
+      var updatedTime = TimeParser.recentTimeParse(xhr[0].created);
       for (i in xhr) {
         $(this).closest('.face.back').find('.news').append(TweetFormat.new(xhr[i]));
-        //htmlString += TweetFormat.new(xhr[i])
       }
-      //$(this).closest('.face.back').find('.news').append(htmlString);
+      $cardBack = $(this).closest('.face.back');
+      $cardBack.find('.updated-at-value').html(updatedTime);
+      $cardBack.find('.last').html(TimeParser.writtenTime(updatedTime));
       $(this).closest('.card').addClass('flipped');
       self.handleExternalLinks();
     });
+
     $('.update-twitter').on("ajax:error", function(event, xhr, status, error){
       console.log('errrrrrrorr')
       $(this).closest('.card').addClass('flipped');
@@ -137,6 +141,50 @@ var DragDrop = {
   }
 };
 
+var TimeParser = {
+
+  makeItLookNice: function(seconds){
+    var times = [1,60,60,24,7,52]
+    var labels = ['s','m','h','d','w','y']
+    var i = 0;
+    while (seconds/times[i] >= 1){
+      seconds = seconds/times[i]
+      i++;
+    }
+    return (String(Math.floor(seconds))+labels[i-1])
+  },
+
+  recentTimeParse: function(time){
+    var datetime = time.split("T");
+    var date = datetime[0].split('-');
+    var time = datetime[1].split('-')[0].split(':');
+    objectDate = Math.floor(new Date(date[0],date[1]-1,date[2],time[0],time[1],time[2])/1000);
+    return objectDate;
+  },
+
+  writtenTime: function(epoch){
+    var months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'];
+    var now = Math.floor(new Date()/1000);
+    var timeAgo = now - (epoch-3);
+    if (timeAgo < 0){
+      return 'the future'; //should never happen     unless....oh my god, the FLUXXXXXX
+    }
+    else if (timeAgo < 2419000) {
+      return this.makeItLookNice(timeAgo); //gives time ago ie '2d' or '4s'
+    }
+    else {
+      actualDate = new Date(epoch*1000);
+      if (timeAgo < 31557600) {
+        return (actualDate.getDay() +", "+ months[actualDate.getMonth()]);
+      } 
+      else {
+        return (months[actualDate.getMonth()] +" "+actualDate.getFullYear());
+      }
+    }
+  }
+
+}
+
 
 $(document).ready(function() {
   LazyLoader.init();
@@ -145,23 +193,4 @@ $(document).ready(function() {
 
   LazyLoader.load();
 
-  // $('.frosty').blurjs({
-  //   source: 'body',
-  //   radius: 10,
-  //   overlay: 'rgba(255,255,255,0.4)'
-  // });
-
-  // $(document).on('mouseover','.flip', function(){
-  //   $(this).find('.card').addClass('flipped').mouseleave(function(){
-  //       $(this).removeClass('flipped');
-  //   });
-  //   return false;
-  // });
-
-  // $(document).on('click','.card.flipped',function(){
-  //   console.log(this);
-  //   var handle = '@CrabCaker'
-  //   var content = 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Pellentesque in erat cras amet.'
-  //   $(this).find('.face.back').append(tweetFormat(handle,content));
-  // });
 });
