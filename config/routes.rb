@@ -5,6 +5,7 @@ Stacked::Application.routes.draw do
   resources :boards
 
   resources :board_cards, only: [:create, :destroy]
+  resources :board_users, only: [:create, :destroy]
 
   resources :cards, only: [:index, :new, :create, :show, :edit, :destroy, :update] do
     member do

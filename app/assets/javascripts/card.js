@@ -13,7 +13,7 @@ $(document).ready(function() {
   // });
 
   $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
-    console.log('suppposedly fine')
+    console.log(xhr)
     htmlString = ''
     for (i in xhr) {
       htmlString += tweet(xhr[i])
