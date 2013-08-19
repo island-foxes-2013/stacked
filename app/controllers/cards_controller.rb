@@ -44,7 +44,7 @@ class CardsController < ApplicationController
       instagram_handle: params[:card][:instagram_handle])
     @card.user = current_user
 
-    if @card.instagram_handle
+    if @card.instagram_handle[0]
       ap instagram_id(@card.instagram_handle)
       @card.instagram_id = instagram_id(@card.instagram_handle)
     end
