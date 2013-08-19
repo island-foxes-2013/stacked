@@ -1,4 +1,10 @@
-.result {
+.result-text {
+  display: static;
+  padding: 1.5em 1em;
+  background-color: rgba(0,0,0,.2);
+}
+
+.result-card {
   display: inline-block;
   padding: 1.5em 1em;
   background-color: rgba(0,0,0,.2);

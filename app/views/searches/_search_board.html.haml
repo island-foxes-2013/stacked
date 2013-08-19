@@ -17,13 +17,15 @@
               =link_to board.name, board_path(board)
       %p
         Results for <b>Cards</b>
-        -if @cards_searchresults
-          - @cards_searchresults.each do |card|
-            .result-text
-              Card
-              =link_to card.name, card_path(card)
-            .result-card
-              =render partial: 'cards/card', locals: {card: card, board: nil}
+        #container
+          -if @cards_searchresults
+            - @cards_searchresults.each do |card|
+              .result-text
+                Card
+                =link_to card.name, card_path(card)
+              .result-card
+                =render partial: 'cards/card', locals: {card: card, board: nil}
+
       / %p  
       /   -if @cards_twitterhandle_searchresults
       /     - @cards_twitterhandle_searchresults.each do |card|
