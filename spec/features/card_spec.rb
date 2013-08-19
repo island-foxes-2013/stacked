@@ -50,14 +50,12 @@ require 'spec_helper'
   		end
 
   		it "creates with only Twitter" do
-  		  pending 'Instagram is throwing an error'
       	fill_in 'card_twitter_handle', :with => 'dmkwillems'
     		click_button 'Create Card'
     		expect(page).to have_content 'dmkwillems'
   		end
 
   		it "fails without Twitter" do
-  			pending 'Instagram is throwing an error'
     		click_button 'Create Card'
     		find_button('Create Card').visible?
   		end
