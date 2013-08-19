@@ -42,25 +42,46 @@ require 'spec_helper'
 				visit 'cards/new'
 			end
 
-			it "creates a card with both Twitter and Instagram" do
+			it "creates with both Twitter and Instagram" do
       	fill_in 'card_twitter_handle', :with => 'dmkwillems'
       	fill_in 'card_instagram_handle', :with => 'danielwillems'
     		click_button 'Create Card'
     		expect(page).to have_content 'dmkwillems'
   		end
 
-  		it "creates a card with only Twitter" do
+  		it "creates with only Twitter" do
       	fill_in 'card_twitter_handle', :with => 'dmkwillems'
     		click_button 'Create Card'
     		expect(page).to have_content 'dmkwillems'
   		end
 
-  		it "fails at creating board without Twitter" do
+  		it "fails without Twitter" do
     		click_button 'Create Card'
     		find_button('Create Card').visible?
   		end
 
+		end
+
+		context "editing, deleting, updating cards" do
+
+			before [:each] do
+				visit root_path
+				visit 'cards/new'
+				fill_in 'card_twitter_handle', :with => 'dmkwillems'
+      	fill_in 'card_instagram_handle', :with => 'danielwillems'
+    		click_button 'Create Card'
+			end
+
+			it 'should have content on create page' do
+				visit '1/edit'
+				expect(page).to have_content 'Edit Card'
+			end
+
+			it 'should have content on delete page' do
+				pending 'until we have the right UI'
+			end
 
 		end
+
 
 	end

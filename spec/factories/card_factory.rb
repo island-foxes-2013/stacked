@@ -13,19 +13,12 @@
 #  updated_at       :datetime         not null
 #
 
-class Card < ActiveRecord::Base
-	extend FriendlyId	
+FactoryGirl.define do 
 
-	friendly_id :name, :use => :slugged
-
-  attr_accessible :name, :twitter_handle, :instagram_handle
-
-  # may remove twitter_handle validation once we auth more users
-  validates_presence_of :name, :twitter_handle
-
-  belongs_to :user
-  has_many :board_cards
-  has_many :boards, through: :board_cards
+	factory :card do 
+		name "Daniel Willems"
+		twitter_handle 'dmkwillems'
+		instagram_handle 'danielwillems'
+	end
 
 end
-
