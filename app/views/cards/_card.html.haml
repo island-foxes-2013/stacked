@@ -1,29 +1,28 @@
-.flip
-  .card{ :id => "#{card.slug}" }
-    .face.front 
-      -imega_url = "http://res.cloudinary.com/demo/image/twitter_name/w_400,h_400,c_fill/#{card.twitter_handle}.jpg"
-      .mega-pic{:style => "background-image: url(#{imega_url})"}
-        
-    .face.back  
-      .header
-        -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
-        .mini-pic{:style => "background-image: url(#{img_url})"}
-        .name
-          =card.name
-        .last-updated
-          %span{class: 'delete'}
-            - if board
-              = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
-          = link_to 'T', get_tweets_card_path(card), {remote: true, class: 'update-twitter'} 
-          = link_to 'I', get_instagrams_card_path(card), {remote: true, class: 'update-instagram'} 
-          %span{class: 'last'}
-            37m
-          %span{class: 'updated-at-value'}
-            
-      .news
-      .footer
-        ='...'
-
+.card-wrapper{ :class => "#{card.instagram_handle ? "instagram" : ""} #{card.twitter_handle ? "twitter" : ""}" }
+  .flip
+    .card{ :id => "#{card.slug}" }
+      .face.front 
+        -image_url = "http://res.cloudinary.com/demo/image/twitter_name/w_400,h_400,c_fill/#{card.twitter_handle}.jpg"
+        .mega-pic{:style => "background-image: url(#{image_url})"}
+          
+      .face.back  
+        .header
+          -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
+          .mini-pic{:style => "background-image: url(#{img_url})"}
+          .name
+            =card.name
+          .last-updated
+            %span{class: 'delete'}
+              - if board
+                = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
+            = link_to 'T', get_tweets_card_path(card), {remote: true, class: 'update-twitter'} 
+            = link_to 'I', get_instagrams_card_path(card), {remote: true, class: 'update-instagram'} 
+            %span{class: 'last'}
+              37m
+            %span{class: 'updated-at-value'}
+        .news
+        .footer
+          ='...'
 .templates
   .image-post
     .content

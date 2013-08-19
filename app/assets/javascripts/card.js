@@ -29,7 +29,9 @@ $(document).ready(function() {
   });
 
   $(document).on('ajax:success','.delete', function(event, xhr, status, error) {
-    $(this).closest('.flip').fadeOut('slow');  
+    console.log(event)
+    $('#container').isotope('remove', $(event.target).closest('.card-wrapper'));
+    // $(this).closest('.flip').fadeOut('slow');  
   });
 
   $('.update-twitter').click();
