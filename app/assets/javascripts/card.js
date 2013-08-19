@@ -13,11 +13,17 @@ $(document).ready(function() {
   // });
 
   $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
+    console.log('suppposedly fine')
     htmlString = ''
     for (i in xhr) {
       htmlString += tweet(xhr[i])
     }
     $(this).closest('.face.back').find('.news').append(htmlString);
+    $(this).closest('.card').addClass('flipped');
+    handleExternalLinks();
+  });
+  $('.update-twitter').on("ajax:error", function(event, xhr, status, error){
+    console.log('errrrrrrorr')
     $(this).closest('.card').addClass('flipped');
     handleExternalLinks();
   });
@@ -84,6 +90,13 @@ function tweetFormat(tweet_id, text, user_id) {
               "<img alt='t' src='/assets/nottwittersbird.png'>" +
             "</a>"+
           "</div>"
+}
+
+function instaFormat(instagram) {
+  var $post = $(".templates").find(".image_post");
+  $post.find(".content").text(instagram.text);
+  $post.find(".source").find("img").attr("src");
+  return $post;
 }
 
 // function tweetPicture(tweet_id, content, picUrl) {
