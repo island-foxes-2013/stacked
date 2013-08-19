@@ -45,7 +45,6 @@ class CardsController < ApplicationController
     @card.user = current_user
 
     if @card.instagram_handle[0]
-      ap instagram_id(@card.instagram_handle)
       @card.instagram_id = instagram_id(@card.instagram_handle)
     end
 
@@ -107,7 +106,6 @@ class CardsController < ApplicationController
       instagrams[i][:created]  = instagram['created_time']
       instagrams[i][:url] = instagram['link']
     end
-    ap instagrams
     render json: instagrams
     # ap instagram.user_recent_media(@card.instagram_id)
   end
