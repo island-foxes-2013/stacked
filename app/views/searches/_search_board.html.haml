@@ -10,7 +10,7 @@
     .search-suggestions
       %p
         Results for <b>Boards</b>
-        -if @boards_name_results
+        - if @boards_name_results
           - @boards_name_results.each do |board|
             .result
               =link_to board.name, board_path(board)        
@@ -19,51 +19,10 @@
         Results for <b>Cards</b>
         / #container
         / TODO to unless
-        -unless @cards.empty?
+        -if @cards
           - @cards.each do |card|
             .result
               .result-img
                 =image_tag "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
               .result-link
                 = link_to card.name, card_path(card)
-
-      / %p
-      /   Results for <b>Cards</b>
-      /   / #container
-      /   -if @cards_name_results
-      /     - @cards_name_results.each do |card|
-      /       .result
-      /         .result-img
-      /           =image_tag "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
-      /         .result-link
-      /           = link_to card.name, card_path(card)
-      /       / .result-card
-      /       /   =render partial: 'cards/card', locals: {card: card, board: nil}
-
-      / %p
-      /   Results for <b>Twitter Users</b>
-      /   / #container
-      /   -if @cards_twitter_results
-      /     - @cards_twitter_results.each do |card|
-      /       .result
-      /         .result-img
-      /           =image_tag "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
-      /         .result-link
-      /           = link_to card.name, card_path(card)
-      /           = card.twitter_handle
-      /       / .result-card
-      /       /   =render partial: 'cards/card', locals: {card: card, board: nil}
-
-      / %p
-      /   Results for <b>Instagram Users</b>
-      /   / #container
-      /   -if @cards_instagram_results
-      /     - @cards_instagram_results.each do |card|
-      /       .result
-      /         .result-img
-      /           =image_tag "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
-      /         .result-link
-      /           = link_to card.name, card_path(card)
-      /           = card.instagram_handle
-      /       / .result-card
-      /       /   =render partial: 'cards/card', locals: {card: card, board: nil}
