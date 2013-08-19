@@ -5,7 +5,10 @@ class BoardUsersController < ApplicationController
 	end
 
 	def destroy
-		# board_user = BoardUser.where()
+		board_user = BoardUser.where(board_id: params[:format], user_id: current_user.id).first
+		if board
+			board_user.destroy
+		end
 	end
 
 end

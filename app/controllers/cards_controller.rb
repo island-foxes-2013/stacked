@@ -10,8 +10,8 @@ class CardsController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
-    begin
-      @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
+    @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
+    if @api
       tweets = []
       @api.each_with_index do |tweet,i|
         tweets[i] = {}
@@ -20,7 +20,6 @@ class CardsController < ApplicationController
         tweets[i][:created]  = tweet.created_at
         tweets[i][:user_id]  = tweet.user.screen_name
       end
-    rescue
     end
   end
 
@@ -76,8 +75,8 @@ class CardsController < ApplicationController
 
   def get_tweets
     @card = Card.find(params[:id])
-    begin
-      @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
+    @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
+    if @api
       tweets = []
       @api.each_with_index do |tweet,i|
         tweets[i] = {}
@@ -87,7 +86,8 @@ class CardsController < ApplicationController
         tweets[i][:user_id]  = tweet.user.screen_name
       end
       render json: tweets 
-    rescue
+    else
+      [].to_json
     end
   end
 

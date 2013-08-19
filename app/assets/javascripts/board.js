@@ -10,12 +10,14 @@ $(document).ready(function(){
 	});
 
 	$('.follow').on('ajax:success', function(){
-		$(this).fadeOut();
+		console.log('follow');
+		$(this).hide();
 		$('.unfollow').fadeIn();
 	});
 
 	$('.unfollow').on('ajax:success', function(){
-		$(this).fadeOut();
+		console.log('unfollow');
+		$(this).hide();
 		$('.follow').fadeIn();
 	});
 });
