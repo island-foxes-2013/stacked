@@ -12,6 +12,7 @@
     / <meta http-equiv="X-UA-Compatible" content="IE=7" />
     / Set the viewport width to device width for mobile
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    = javascript_include_tag "http://cdn.jsdelivr.net/isotope/1.5.25/jquery.isotope.min.js"
     %title= content_for?(:title) ? yield(:title) : "Stacked"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/custom.modernizr"
