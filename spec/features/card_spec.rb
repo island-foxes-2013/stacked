@@ -109,6 +109,7 @@ require 'spec_helper'
 			context 'twitter' do
 
 				it 'should update tweets' do
+					pending 'work on stubbing twitter'
 					twitter_double = double("Twitter::API")
 					twitter_double.stub(:connectable?){raise Exception}
 					twitter_controller = MyApp::TwitterController.new(twitter_double)
