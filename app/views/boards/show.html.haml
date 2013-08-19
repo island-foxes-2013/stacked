@@ -28,3 +28,4 @@
 .board#container
   -@board.cards.each do |card|
     = render partial: 'cards/card', locals: { card: card, board: @board }
+  = render partial: 'cards/add_card', locals: { board: @board }

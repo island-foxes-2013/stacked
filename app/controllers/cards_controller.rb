@@ -45,7 +45,6 @@ class CardsController < ApplicationController
     @card.user = current_user
 
     if @card.instagram_handle[0]
-      ap instagram_id(@card.instagram_handle)
       @card.instagram_id = instagram_id(@card.instagram_handle)
     end
 
@@ -73,7 +72,26 @@ class CardsController < ApplicationController
     end
   end
 
+  # TODO-JW: Build a Factory to handle each services
+  #   - put in the lib folder
+  #   - standardize subset of JSON that is common across
+  #     all services, add "service_name" attribute as well
+  #   - on JS side, add contstructor-style factory renderers
+  #
+  # TODO-JW: example of above
+  #
+  # def get_posts
+  #   @card = Card.find(params[:id])
+  #   #[:twitter, :instagram].each do |service|
+  #   SERVICES.each do |service|
+  #     @api = CardAPI.new(params[:service_name])
+  #     posts += @api.get_posts
+  #   end
+  #   render json: posts
+  # end
+
   def get_tweets
+    # TODO-JW: look into -- respond_to :json
     @card = Card.find(params[:id])
     @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
     if @api
@@ -92,6 +110,7 @@ class CardsController < ApplicationController
   end
 
   def get_instagrams
+    # TODO-JW: look into -- respond_to :json
     # Possibly move later
     instagram = Instagram.client(access_token: instagram_token)
     @card = Card.find(params[:id])
@@ -107,7 +126,6 @@ class CardsController < ApplicationController
       instagrams[i][:created]  = instagram['created_time']
       instagrams[i][:url] = instagram['link']
     end
-    ap instagrams
     render json: instagrams
     # ap instagram.user_recent_media(@card.instagram_id)
   end
