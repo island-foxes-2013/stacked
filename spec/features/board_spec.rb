@@ -4,6 +4,8 @@ require 'spec_helper'
 	describe 'board' do 
 
 		context "creating one board" do
+
+			let(:board) { FactoryGirl.create(:board) }
 				
 			before [:each] do
 				visit root_path
@@ -33,7 +35,6 @@ require 'spec_helper'
   			visit '/boards/new'
       	fill_in 'board_description', :with => 'This is not a cool test board'
     		click_button 'Create'
-    		# expect(page).to have_content 'Create Board'
     		find_button('Create Board').visible?
   		end
 
@@ -77,10 +78,14 @@ require 'spec_helper'
 			let(:board) { FactoryGirl.create(:board) }
 
     		it "should destroy board" do
-    			pending 'need to finish UI'
     			board
+    			visit root_path
+    			click_link('Destroy')
+    			# this is not testing to see that is works.  It is just clicking the button.
+    			# page.driver.browser.switch_to.alert.accept
+    			# page.should have_no_content('Destroy')
     		end
-  
+
 		end
 
 	end
