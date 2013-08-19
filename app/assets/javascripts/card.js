@@ -155,6 +155,7 @@ var TimeParser = {
   },
 
   recentTimeParse: function(time){
+    console.log(time);
     var datetime = time.split("T");
     var date = datetime[0].split('-');
     var time = datetime[1].split('-')[0].split(':');
