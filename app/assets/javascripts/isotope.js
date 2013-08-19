@@ -1,3 +1,6 @@
+// TODO-JW: move this to vendor/assets
+
+
 /**
  * Isotope v1.5.25
  * An exquisite jQuery plugin for magical layouts
