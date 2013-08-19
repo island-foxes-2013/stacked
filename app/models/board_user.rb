@@ -11,6 +11,7 @@
 
 class BoardUser < ActiveRecord::Base
 	attr_accessible :board_id, :user_id
+	validates_uniqueness_of :board_id, scope: :user_id
 
 	belongs_to :board
 	belongs_to :user
