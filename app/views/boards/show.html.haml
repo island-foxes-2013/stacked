@@ -7,10 +7,14 @@
   = link_to 'Edit', '#',{class: 'board-edit'}
   = link_to "Destroy", @board, :confirm => 'Are you sure?', :method => :delete 
   = link_to "View All", boards_path
+%dl.sub-nav#card-filters
+  %dt Filter by:
+  %dd.active= link_to "All", "#", data: { :filter => "*" }
+  %dd= link_to "Twitter", "#", data: { :filter => ".twitter" }
+  %dd= link_to "Instagram", "#", data: { :filter => ".instagram" }
 
 .inline-edit=render 'form'
 
-.board
-  .all_cards
-    -@board.cards.each do |card|
-      = render partial: 'cards/card', locals: { card: card, board: @board }
+.board#container
+  -@board.cards.each do |card|
+    = render partial: 'cards/card', locals: { card: card, board: @board }
