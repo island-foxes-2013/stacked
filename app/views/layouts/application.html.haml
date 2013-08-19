@@ -55,7 +55,14 @@
               %li.board-link{ :id => "#{board.slug}" }
                 =link_to "#{board.name}", board_url(board)
               %li.divider
-          %h4 Your Boards
+          %h4 Followed Boards
+          - if current_user
+            %ul.side-nav.board-list
+              - BoardUser.where(user_id: current_user).each do |board_user|
+                %li.divider
+                - board = Board.find(board_user.board_id)
+                =link_to board.name, board_url(board)
+              %li.divider
           %ul.side-nav.board-list
             -if current_user
               %li.divider
