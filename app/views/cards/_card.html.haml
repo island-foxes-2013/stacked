@@ -19,7 +19,8 @@
             = link_to 'I', get_instagrams_card_path(card), {remote: true, class: 'update-instagram'} 
             %span{class: 'last'}
               37m
-            %span{class: 'updated-at-value'}
+            %span{:class => 'updated-at-value'}
+              =rand(10)
         .news
         .footer
           ='...'
