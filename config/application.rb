@@ -45,7 +45,7 @@ module Stacked
     # While precompiling assets, in Rails 3.x, you can prevent initializing 
     # your application and connecting to the database by ensuring that the 
     # following line is in your config/application.rb:
-    config.assets.initialize_on_precompile = false
+    # config.assets.initialize_on_precompile = false
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
