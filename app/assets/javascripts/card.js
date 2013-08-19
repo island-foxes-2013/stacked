@@ -17,6 +17,23 @@ var InstaFormat = {
   }
 };
 
+var AddACard = {
+  init: function() {
+    
+    $("#add-card").click(function(){
+      console.log("in flip card");
+      $card = $(this);
+      $card.addClass('flipped');
+      console.log($("#add-card.flipped"));
+    });
+    // $(".container").on('click', $("#add-card.flipped"), function(e){
+    //   console.log("in unflip card");
+    //   $card = $("#add-card.flipped");
+    //   $card.removeClass('flipped');
+    // });
+  }
+}
+
 var LazyLoader = {
   init: function() {
     var self = this;
@@ -124,6 +141,7 @@ var DragDrop = {
 $(document).ready(function() {
   LazyLoader.init();
   DragDrop.init();
+  AddACard.init();
 
   LazyLoader.load();
 

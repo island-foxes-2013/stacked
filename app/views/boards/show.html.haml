@@ -15,8 +15,8 @@
   %dl.sub-nav#filter-by
     %dt Filter by:
     %dd.active= link_to "All", "#", data: { :filter => "*" }
-    %dd= link_to "Twitter", "#", data: { :filter => ".twitter" }
-    %dd= link_to "Instagram", "#", data: { :filter => ".instagram" }
+    %dd= link_to "Twitter", "#", data: { :filter => ".twitter, .always-show" }
+    %dd= link_to "Instagram", "#", data: { :filter => ".instagram, .always-show" }
 
   %dl.sub-nav#sort-by
     %dt Sort by:
@@ -28,4 +28,4 @@
 .board#container
   -@board.cards.each do |card|
     = render partial: 'cards/card', locals: { card: card, board: @board }
-  = render partial: 'cards/add_card', locals: { board: @board }
+  = render partial: 'cards/add_card', locals: { board: @board, card: @card }
