@@ -82,13 +82,10 @@ $corner_radius: 2px;
 
 .flip {
 	-webkit-perspective: 800;
-	/*width: 32%;*/
 	width: 250px;
 	height: $card-height;
 	height: $card-height;
 	display: none;
-/*	min-width: 250px;
-	max-width: 310px;*/
 	margin: 0.5em;
 	position: relative;
 	float: left;
@@ -180,12 +177,23 @@ $corner_radius: 2px;
 					text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
 				}
 
-				.last-updated {
+				.right-header {
 					float: right;
 					position: relative;
 					margin-top: 20px;
-					color: $card;
+
+					.last{
+						margin-right: .5em;
+						font-size: .7em;
+						color: darken($card,30);
+					}
+
+					.updated-at-value {
+						display: none;
+						/*color: darken($card,50);*/
+					}
 				}
+
 				@include rounded-top-corners($corner_radius);
 			}
 

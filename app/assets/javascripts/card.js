@@ -113,6 +113,48 @@ function addCardToDeck(event,ui) {
   })
 }
 
+function writtenTime(epoch){
+  var months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'];
+  var now = Math.floor(new Date()/1000);
+  var timeAgo = now - (epoch-3);
+  if (timeAgo < 0){
+    return 'the future';
+  }
+  if (timeAgo < 2419000) {
+    return makeItLookNice(timeAgo); //
+  }
+  else {
+    actualDate = new Date(epoch*1000);
+    if (timeAgo < 31557600) {
+      return (actualDate.getDay() +", "+ months[actualDate.getMonth()]);
+    } 
+    else {
+      return (months[actualDate.getMonth()] +" "+actualDate.getFullYear());
+    }
+  }
+}
+
+function makeItLookNice(seconds){
+  var times = [1,60,60,24,7,52]
+  var labels = ['s','m','h','d','w','y']
+  var i = 0;
+  while (seconds/times[i] >= 1){
+    seconds = seconds/times[i]
+    i++;
+  }
+  return (String(Math.floor(seconds))+labels[i-1])
+}
+
+function recentTimeParse(time){
+  //2013-07-31T15:26:49-07:00 
+  var datetime = time.split("T");
+  var date = datetime[0].split('-');
+  var time = datetime[1].split('-')[0].split(':');
+  console.log(new Date(date[0],date[1],date[2],time[0],time[1],time[2]));
+  objectDate = Math.floor(new Date(date[0],date[1]-1,date[2],time[0],time[1],time[2])/1000);
+  return objectDate;
+}
+
 // DOCUMENT READY!
 $(document).ready(function() {
   // $('.frosty').blurjs({
@@ -129,15 +171,23 @@ $(document).ready(function() {
   // });
 
   $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
-    console.log(xhr)
-    htmlString = ''
+    var htmlString = ''
+    var updatedTime;
     for (i in xhr) {
+      if (i == 0){
+        updatedTime = recentTimeParse(xhr[i].created);
+      }
       htmlString += tweet(xhr[i])
     }
-    $(this).closest('.face.back').find('.news').append(htmlString);
+    $cardBack = $(this).closest('.face.back');
+    $cardBack.find('.updated-at-value').html(updatedTime);
+    $cardBack.find('.last').html(writtenTime(updatedTime));
+    console.log(writtenTime(updatedTime));
+    $cardBack.find('.news').append(htmlString);
     $(this).closest('.card').addClass('flipped');
     handleExternalLinks();
   });
+
   $('.update-twitter').on("ajax:error", function(event, xhr, status, error){
     console.log('errrrrrrorr')
     $(this).closest('.card').addClass('flipped');
@@ -151,13 +201,6 @@ $(document).ready(function() {
   });
 
   $('.update-twitter').click();
-    
-  // $(document).on('click','.card.flipped',function(){
-  //   console.log(this);
-  //   var handle = '@CrabCaker'
-  //   var content = 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Pellentesque in erat cras amet.'
-  //   $(this).find('.face.back').append(tweetFormat(handle,content));
-  // });
 
   $(window).resize(function() {
     // loadCards();
