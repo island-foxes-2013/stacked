@@ -5,9 +5,6 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		ap "*" * 100
-		ap request.env['omniauth.auth']
-		ap "*" * 100
 		auth = request.env['omniauth.auth']
 
 		if auth['provider'] == 'instagram'

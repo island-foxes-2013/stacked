@@ -25,7 +25,6 @@ class User < ActiveRecord::Base
   has_many :cards
 
   def self.create_from_hash!(hash)
-  	ap hash
   	create(name: hash['info']['name'], username: hash['info']['nickname'])
   end
 

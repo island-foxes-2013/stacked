@@ -34,6 +34,6 @@ class ApplicationController < ActionController::Base
 	private
 
   def print_params
-  	ap params
+  	p params
   end
 end

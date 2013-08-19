@@ -1,120 +1,132 @@
+var TweetFormat = {
+  new: function(tweet) {
+    var $post = $(".templates").find(".text-post");
+    $post.find(".content").html(tweet.text);
+    $post.find("a").attr("href", "https://twitter.com/"+tweet.user_id+"/statuses/"+tweet.tweet_id);
+    // TODO-JW: We shouldn't have to return .html() here.
+    return $post.html();
+  }
+};
 
-// function loadCards(){
-//   var windowSize = $(window).width();
-//   // console.log(windowSize);
+var InstaFormat = {
+  new: function(instagram) {
+    var $post = $(".templates").find(".image-post");
+    $post.find(".content").text(instagram.text);
+    $post.find(".source").find("img").attr("src");
+    return $post;
+  }
+};
 
-//   if (windowSize <= 500){
-//     // $('.flip').removeClass().addClass('flip large-10 columns');
-//     $('.flip').css('width', '100%')
-//   }
-//   else if (windowSize <= 767){
-//     // $('.flip').removeClass().addClass('flip small-5 columns');
-//     $('.flip').css('width', '47%')
-//   }
-//   else if (windowSize <= 1000){
-//     // $('.flip').removeClass().addClass('flip large-4 columns');
-//     $('.flip').css('width', '30%')
-//   }
-//   else if (windowSize <= 1500){
-//     // $('.flip').removeClass().addClass('flip large-3 columns');
-//     $('.flip').css('width', '23%')
-//   }
-//   else if (windowSize > 1500) {
-//     // $('.flip').removeClass().addClass('flip large-2 columns');
-//     $('.flip').css('width', '18%')
-//   }
-// }
+var LazyLoader = {
+  init: function() {
+    var self = this;
+    $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
+      console.log(xhr)
+      htmlString = ''
+      for (i in xhr) {
+        $(this).closest('.face.back').find('.news').append(TweetFormat.new(xhr[i]));
+        //htmlString += TweetFormat.new(xhr[i])
+      }
+      //$(this).closest('.face.back').find('.news').append(htmlString);
+      $(this).closest('.card').addClass('flipped');
+      self.handleExternalLinks();
+    });
+    $('.update-twitter').on("ajax:error", function(event, xhr, status, error){
+      console.log('errrrrrrorr')
+      $(this).closest('.card').addClass('flipped');
+      self.handleExternalLinks();
+    });
 
-function tweet(tweet){
-  return tweetFormat(tweet.tweet_id, tweet.text, tweet.user_id)
-}
+    $(document).on('ajax:success','.delete', function(event, xhr, status, error) {
+      console.log(event)
+      $('#container').isotope('remove', $(event.target).closest('.card-wrapper'));
+      // $(this).closest('.flip').fadeOut('slow');  
+    }); 
+  },
 
-function tweetFormat(tweet_id, text, user_id) {
-  return "<div class='tweet'>"+
-            "<div class='content'>" +
-              text +
-            "</div>" +
-            "<a href='https://twitter.com/"+user_id+"/statuses/"+tweet_id+"'>"+
-              "<img alt='t' src='/assets/nottwittersbird.png'>" +
-            "</a>"+
-          "</div>"
-}
+  handleExternalLinks: function() {
+    $("a[href^=http]").each(function(){
+      if(this.href.indexOf(location.hostname) == -1) {
+         $(this).attr({
+            target: "_blank",
+            title: "Opens in a new window"
+         });
+      }
+    });
+  },
 
-function instaFormat(instagram) {
-  var $post = $(".templates").find(".image_post");
-  $post.find(".content").text(instagram.text);
-  $post.find(".source").find("img").attr("src");
-  return $post;
-}
+  load: function() {
+    $('.update-twitter').click();
+  }
+};
 
-// function tweetPicture(tweet_id, content, picUrl) {
-//   return "<div class='tweet'>"+
-//             "<img border='0' src='http://i.stack.imgur.com/skvx1.png' width='200' height='200'>" +
-//             "<div class='content'>" +
-//               content +
-//             "</div>" +
-//           "</div>"
-// }
+var DragDrop = {
+  init: function() {
+    var self = this;
+    $(window).resize(function() {
+      // loadCards();
+      // $('.card').addClass('flipped');
+      self.makeCardsDraggable();
+      self.makeDecksDroppable();
+      $('.flip').fadeIn(600);
+    });    
+  },
 
-function handleExternalLinks() {
- $("a[href^=http]").each(function(){
-    if(this.href.indexOf(location.hostname) == -1) {
-       $(this).attr({
-          target: "_blank",
-          title: "Opens in a new window"
-       });
-    }
- });
-}
+  makeCardsDraggable: function() {
+    $(".card").find(".header").draggable({
+      helper    : function(e){
 
-function makeCardsDraggable() {
-  $(".card").find(".header").draggable({
-    helper    : function(e){
+        var $card = $(e.target);
+        var $dragBuddy = $('.dragged-card').clone();
 
-      var $card = $(e.target);
-      var $dragBuddy = $('.dragged-card').clone();
+        var imgUrl = $card.find('.mini-pic').attr('id').toString();
+        var cardId = $card.closest('.card').attr("id");
 
-      var imgUrl = $card.find('.mini-pic').attr('id').toString();
-      var cardId = $card.closest('.card').attr("id");
+        $dragBuddy.find('.name').text($card.find('.name').text());
 
-      $dragBuddy.find('.name').text($card.find('.name').text());
+        $dragBuddy.find('.profile-pic').attr('src',imgUrl);
+        $dragBuddy.attr("id",cardId);
 
-      $dragBuddy.find('.profile-pic').attr('src',imgUrl);
-      $dragBuddy.attr("id",cardId);
+        // console.log($dragBuddy);
+        return $dragBuddy[0];
+      },
+      // TODO-JW: figure out positioning
+      cursor    : 'move',
+      cursorAt  : { left : 5 },
+      appendTo  : 'body',
+      zIndex    : 999
+    });
+  },
 
-      // console.log($dragBuddy);
-      return $dragBuddy[0];
-    },
-    cursor    : 'move',
-    cursorAt  : { left : 5 },
-    appendTo  : 'body',
-    zIndex    : 999
-  });
-}
+  makeDecksDroppable: function() {
+    $(".board-link").droppable({
+      drop        : this.addCardToDeck,
+      hoverClass  : 'drop-hover'
+    });
+  },
 
-function makeDecksDroppable() {
-  $(".board-link").droppable({
-    drop        : addCardToDeck,
-    hoverClass  : 'drop-hover'
-  })
-}
+  addCardToDeck: function(event, ui) {
+    var card = ui.draggable.closest('.card');
+    console.log(card);
+    var board = $(this);
+    console.log( 'The square with ID "' + card.attr('id') + '" was dropped onto ' + board.attr('id'));
+    $.ajax({
+      url: '/board_cards',
+      method: 'post',
+      data: {board_slug: board.attr('id'), card_slug: card.attr('id')}
+    }).done(function(data) {
+      console.log(data)
+    });
+  }
+};
 
-function addCardToDeck(event,ui) {
-  var card = ui.draggable.closest('.card');
-  console.log(card);
-  var board = $(this);
-  console.log( 'The square with ID "' + card.attr('id') + '" was dropped onto ' + board.attr('id'));
-  $.ajax({
-    url: '/board_cards',
-    method: 'post',
-    data: {board_slug: board.attr('id'), card_slug: card.attr('id')}
-  }).done(function(data) {
-    console.log(data)
-  })
-}
 
-// DOCUMENT READY!
 $(document).ready(function() {
+  LazyLoader.init();
+  DragDrop.init();
+
+  LazyLoader.load();
+
   // $('.frosty').blurjs({
   //   source: 'body',
   //   radius: 10,
@@ -128,45 +140,10 @@ $(document).ready(function() {
   //   return false;
   // });
 
-  $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
-    console.log(xhr)
-    htmlString = ''
-    for (i in xhr) {
-      htmlString += tweet(xhr[i])
-    }
-    $(this).closest('.face.back').find('.news').append(htmlString);
-    $(this).closest('.card').addClass('flipped');
-    handleExternalLinks();
-  });
-  $('.update-twitter').on("ajax:error", function(event, xhr, status, error){
-    console.log('errrrrrrorr')
-    $(this).closest('.card').addClass('flipped');
-    handleExternalLinks();
-  });
-
-  $(document).on('ajax:success','.delete', function(event, xhr, status, error) {
-    console.log(event)
-    $('#container').isotope('remove', $(event.target).closest('.card-wrapper'));
-    // $(this).closest('.flip').fadeOut('slow');  
-  });
-
-  $('.update-twitter').click();
-    
   // $(document).on('click','.card.flipped',function(){
   //   console.log(this);
   //   var handle = '@CrabCaker'
   //   var content = 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Pellentesque in erat cras amet.'
   //   $(this).find('.face.back').append(tweetFormat(handle,content));
   // });
-
-  $(window).resize(function() {
-    // loadCards();
-    // $('.card').addClass('flipped');
-    makeCardsDraggable();
-    makeDecksDroppable();
-    $('.flip').fadeIn(600);
-  });
-
 });
-
-
