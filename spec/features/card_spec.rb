@@ -75,14 +75,19 @@ require 'spec_helper'
 			end
 
 			it 'should have content on create path' do
-				
 				expect(page).to have_content 'Edit Card'
 			end
 
 			it 'should be able to update attributes on card with valid data' do
-				pending
-				# visit 'cards/daniel-willems'
+      	fill_in 'card_name', :with => 'Eric Chen'
+      	click_button 'Update Card'
+      	expect(page).to have_content 'Eric Chen'
+			end
 
+			it 'should return to edit card page with invalid data' do
+				fill_in 'card_name', :with => ''
+				click_button 'Update Card'
+      	expect(page).to have_content 'Edit Card'
 			end
 
 			it 'should have content on delete path' do
