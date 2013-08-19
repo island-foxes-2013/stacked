@@ -6,16 +6,24 @@ require 'spec_helper'
 		let(:card) { FactoryGirl.create(:card) }
 
 		before [:each] do
+			FactoryGirl.create(:board) 
 			visit root_path
+			visit '/search'
 		end
 
-		context "can find board" do
-			board
+		it "can find board", :js => true do
+			first(:css, "input[id$='q']").set("Cool")
+			click_button('Search')
+			page.should have_content('Cool')
 		end
 
-		context 'can find card' do
+		it 'can find card' do
 			card
+			first(:css, "input[id$='q']").set("Daniel")
+			click_button('Search')
+			page.should have_content('Daniel')
 		end
+	
 	end 
 
-end
+
