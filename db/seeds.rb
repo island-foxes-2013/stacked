@@ -1,12 +1,12 @@
 # Ravens Board
 ravens = Board.create(name: 'Super Bowl Champion Ravens', description: 'Ravens rock Atlanta Falcons')
 
-ravens = []
+ravens_array = []
 ravens_array << Card.create(name: 'Ravens', twitter_handle: 'ravens', instagram_handle: 'ravens')
 ravens_array << Card.create(name: 'Joe Flacco', twitter_handle: 'teamflacco', instagram_handle: 'joeflacco_official')
 ravens_array << Card.create(name: 'Ray Rice', twitter_handle: 'RayRice27', instagram_handle: 'rayrice27')
 
-ravens.each do |card|
+ravens_array.each do |card|
   ravens.cards << card
 end
 
