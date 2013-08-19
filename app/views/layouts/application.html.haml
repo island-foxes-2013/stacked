@@ -12,10 +12,8 @@
     / <meta http-equiv="X-UA-Compatible" content="IE=7" />
     / Set the viewport width to device width for mobile
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    = javascript_include_tag "http://cdn.jsdelivr.net/isotope/1.5.25/jquery.isotope.min.js"
     %title= content_for?(:title) ? yield(:title) : "Stacked"
     = stylesheet_link_tag    "application"
-    = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
   %body
     .contain-to-grid.fixed.frosty
@@ -52,15 +50,19 @@
         .left-sidebar.small-2.large-2.columns.frosty
           %h4 New Boards
           %ul.side-nav.board-list
+            %li.divider
             -Board.order('created_at DESC').limit(10).each do |board|
               %li.board-link{ :id => "#{board.slug}" }
                 =link_to "#{board.name}", board_url(board)
+              %li.divider
           %h4 Your Boards
           %ul.side-nav.board-list
             -if current_user
+              %li.divider
               -current_user.boards.each do |board|
                 %li.board-link{ :id => "#{board.slug}" }
                   =link_to "#{board.name}", board_url(board)
+                %li.divider
         .main.small-10.large-10.columns
           = yield
         / .right-sidebar.large-2.small-3.columns
@@ -74,3 +76,15 @@
 
 
     = javascript_include_tag "application"
+
+    .templates
+      .dragged-card
+        .block
+          = image_tag "nottwittersbird.png", size: "50x50", :class => "profile-pic"
+        .block
+          %h3.name HIII
+
+
+
+
+

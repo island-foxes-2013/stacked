@@ -8,9 +8,8 @@
       .face.back  
         .header
           -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
-          .mini-pic{:style => "background-image: url(#{img_url})"}
-          .name
-            =card.name
+          .mini-pic{:style => "background-image: url(#{img_url})",:id => "#{img_url}"}
+          .name= card.name
           .last-updated
             %span{class: 'delete'}
               - if board

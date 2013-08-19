@@ -159,11 +159,12 @@ $corner_radius: 5px;
 				}
 
 				.name {
-					font-size: 1.25em;
+					font-size: 1.8em;
 					margin-bottom: $name_padding; 
-					font-family: sans-serif;
+					/*font-family: sans-serif;*/
 					position: relative;
 					float: left;
+					margin: 0.2em;
 					color: darken($card, 60);
 				}
 
