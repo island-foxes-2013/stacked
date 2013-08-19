@@ -1,18 +1,10 @@
 %h1 Search
 
 .searchbox-board
-  /= search_form_for @search do |f|
   = form_tag search_path, method: :get do
     .field
-      /= f.label :name_cont, "Board contains"
-      /= f.text_field :name_cont
       = text_field_tag :q, nil, placeholder: "Search for boards and cards"
-    /.actions= f.submit 'Search Boards'
 
-    / .suggestions
-    /   - if @search_suggestions
-    /     - @search_suggestions.each do |suggestion|
-    /       = link_to suggestion.name, board_path(suggestion)
 
     %h2 Search Results
     .search-suggestions
@@ -27,10 +19,11 @@
         Results for <b>Cards</b>
         -if @cards_searchresults
           - @cards_searchresults.each do |card|
-            .result
+            .result-text
               Card
               =link_to card.name, card_path(card)
-              =render partial: 'cards/card'
+            .result-card
+              =render partial: 'cards/card', locals: {card: card, board: nil}
       / %p  
       /   -if @cards_twitterhandle_searchresults
       /     - @cards_twitterhandle_searchresults.each do |card|
