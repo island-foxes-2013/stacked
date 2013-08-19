@@ -161,7 +161,7 @@ $column-gutter: emCalc(30);
 // Control header font styles
 
  //$header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
- $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+ $header-font-family: "Raleway", "Helvetica", Helvetica, Arial, sans-serif;
  $header-font-weight: 100;
  //$header-font-style: normal;
  //$header-font-color: #222;
@@ -1251,8 +1251,8 @@ $topbar-dropdown-bg:#A0A0A0;
 
 // Controlling the styles for the title in the top bar
 
-// $topbar-title-weight: bold;
-// $topbar-title-font-size: emCalc(17);
+ $topbar-title-weight: 50;
+ $topbar-title-font-size: emCalc(35);
 
 // Style the top bar dropdown elements
 
@@ -1305,3 +1305,4 @@ $topbar-dropdown-bg:#A0A0A0;
 // $topbar-sticky-class: ".sticky";
 
 @import 'foundation';
+@import 'foundation-icons';

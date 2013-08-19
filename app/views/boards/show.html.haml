@@ -1,8 +1,8 @@
 .board-name
-  %strong= @board.name
+  %h2= @board.name
 
 .board_desc
-  %em= "#{@board.description}" 
+  %h4.subheader= "#{@board.description}" 
 %p
   = link_to 'Edit', '#' ,class: 'board-edit', remote: true
   = link_to "Destroy", @board, :confirm => 'Are you sure?', method: :delete 
