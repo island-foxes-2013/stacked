@@ -8,4 +8,16 @@ $(document).ready(function(){
 		$('.delete').slideToggle();
 		$('.last').slideToggle();
 	});
+
+	$('.follow').on('ajax:success', function(){
+		console.log('follow');
+		$(this).hide();
+		$('.unfollow').fadeIn();
+	});
+
+	$('.unfollow').on('ajax:success', function(){
+		console.log('unfollow');
+		$(this).hide();
+		$('.follow').fadeIn();
+	});
 });
