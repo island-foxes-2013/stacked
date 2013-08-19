@@ -1,3 +1,5 @@
+%h1 Search
+
 .searchbox-board
   /= search_form_for @search do |f|
   = form_tag search_path, method: :get do
@@ -12,14 +14,17 @@
     /     - @search_suggestions.each do |suggestion|
     /       = link_to suggestion.name, board_path(suggestion)
 
+    %h2 Search Results
     .search-suggestions
       %p
+        Results for <b>Boards</b>
         -if @boards_searchresults
           - @boards_searchresults.each do |board|
             .result
               Board
               =link_to board.name, board_path(board)
-      %p  
+      %p
+        Results for <b>Boards</b>
         -if @cards_searchresults
           - @cards_searchresults.each do |card|
             .result
