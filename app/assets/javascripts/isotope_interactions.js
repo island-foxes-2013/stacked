@@ -19,5 +19,14 @@ function isotopeInteractions() {
 	  return false;
 	});
 
+	var sortData = {
+		updated_at : function ( $elem ) {
+	    return parseInt( $elem.find('.number').text(), 10 );
+	  },
+	  weight : function ( $elem ) {
+	    return parseFloat( $elem.find('.weight').text() );
+  	}
+	}
+
 
 }

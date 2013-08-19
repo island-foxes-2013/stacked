@@ -1,4 +1,4 @@
-.card-wrapper{ :class => "#{card.instagram_handle ? "instagram" : ""} #{card.twitter_handle ? "twitter" : ""}" }
+.card-wrapper{ :class => classify(card) }
   .flip
     .card{ :id => "#{card.slug}" }
       .face.front 
