@@ -7,8 +7,9 @@ module CardHelper
 		classes = []
 
 		# Filter classes
-		classes << "twitter" if card.twitter_handle[0]
-		classes << "instagram" if card.instagram_handle[0]
+		
+		classes << "twitter" unless card.twitter_handle.to_s == ""
+		classes << "instagram" unless card.instagram_handle.to_s == ""
 		classes.join(" ")
 		# Sort classes
 	end
