@@ -1,57 +1,3 @@
-$(document).ready(function() {
-  // $('.frosty').blurjs({
-  //   source: 'body',
-  //   radius: 10,
-  //   overlay: 'rgba(255,255,255,0.4)'
-  // });
-
-  // $(document).on('mouseover','.flip', function(){
-  //   $(this).find('.card').addClass('flipped').mouseleave(function(){
-  //       $(this).removeClass('flipped');
-  //   });
-  //   return false;
-  // });
-
-  $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
-    console.log(xhr)
-    htmlString = ''
-    for (i in xhr) {
-      htmlString += tweet(xhr[i])
-    }
-    $(this).closest('.face.back').find('.news').append(htmlString);
-    $(this).closest('.card').addClass('flipped');
-    handleExternalLinks();
-  });
-  $('.update-twitter').on("ajax:error", function(event, xhr, status, error){
-    console.log('errrrrrrorr')
-    $(this).closest('.card').addClass('flipped');
-    handleExternalLinks();
-  });
-
-  $(document).on('ajax:success','.delete', function(event, xhr, status, error) {
-    console.log(event)
-    $('#container').isotope('remove', $(event.target).closest('.card-wrapper'));
-    // $(this).closest('.flip').fadeOut('slow');  
-  });
-
-  $('.update-twitter').click();
-    
-  // $(document).on('click','.card.flipped',function(){
-  //   console.log(this);
-  //   var handle = '@CrabCaker'
-  //   var content = 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Pellentesque in erat cras amet.'
-  //   $(this).find('.face.back').append(tweetFormat(handle,content));
-  // });
-
-  $(window).resize(function() {
-    // loadCards();
-    // $('.card').addClass('flipped');
-    makeCardsDraggable();
-    makeDecksDroppable();
-    $('.flip').fadeIn(600);
-  });
-
-});
 
 // function loadCards(){
 //   var windowSize = $(window).width();
@@ -166,5 +112,61 @@ function addCardToDeck(event,ui) {
     console.log(data)
   })
 }
+
+// DOCUMENT READY!
+$(document).ready(function() {
+  // $('.frosty').blurjs({
+  //   source: 'body',
+  //   radius: 10,
+  //   overlay: 'rgba(255,255,255,0.4)'
+  // });
+
+  // $(document).on('mouseover','.flip', function(){
+  //   $(this).find('.card').addClass('flipped').mouseleave(function(){
+  //       $(this).removeClass('flipped');
+  //   });
+  //   return false;
+  // });
+
+  $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
+    console.log(xhr)
+    htmlString = ''
+    for (i in xhr) {
+      htmlString += tweet(xhr[i])
+    }
+    $(this).closest('.face.back').find('.news').append(htmlString);
+    $(this).closest('.card').addClass('flipped');
+    handleExternalLinks();
+  });
+  $('.update-twitter').on("ajax:error", function(event, xhr, status, error){
+    console.log('errrrrrrorr')
+    $(this).closest('.card').addClass('flipped');
+    handleExternalLinks();
+  });
+
+  $(document).on('ajax:success','.delete', function(event, xhr, status, error) {
+    console.log(event)
+    $('#container').isotope('remove', $(event.target).closest('.card-wrapper'));
+    // $(this).closest('.flip').fadeOut('slow');  
+  });
+
+  $('.update-twitter').click();
+    
+  // $(document).on('click','.card.flipped',function(){
+  //   console.log(this);
+  //   var handle = '@CrabCaker'
+  //   var content = 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Pellentesque in erat cras amet.'
+  //   $(this).find('.face.back').append(tweetFormat(handle,content));
+  // });
+
+  $(window).resize(function() {
+    // loadCards();
+    // $('.card').addClass('flipped');
+    makeCardsDraggable();
+    makeDecksDroppable();
+    $('.flip').fadeIn(600);
+  });
+
+});
 
 
