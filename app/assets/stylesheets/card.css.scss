@@ -80,16 +80,37 @@ $corner_radius: 2px;
 	}
 }
 
+.large {
+	width: 31em !important;
+	height: 41em !important;
+	margin: 0em 1em 1em 0em !important;
+	/*background-color: blue !important;*/
+
+	.flip{
+		width: 31em  !important;
+		height: 41em !important;
+		/*background-color: blue !important;*/
+	}
+
+	.news {
+		height: 40em !important;
+		/*background-color: blue !important;*/
+	}
+}
+
 .flip {
 	-webkit-perspective: 800;
-	width: 250px;
+	width: 15em;
 	height: $card-height;
 	height: $card-height;
 	display: none;
 	margin: 0.5em;
 	position: relative;
 	float: left;
-
+/*	transition: width 7s;
+	transition: height 7s;
+	transition: margin 7s;*/
+  
 
   .card.flipped {
   	-webkit-transform: rotatey(-180deg);
@@ -144,7 +165,6 @@ $corner_radius: 2px;
 		  .header {
 				background-color: lighten($card, 30);
 				height: $header-size;
-				/*@include shadow(0px, 2px, 8px);*/
 				margin-bottom: 2px;
 				
 				.mini-pic {
@@ -160,7 +180,6 @@ $corner_radius: 2px;
 					display:inline;
 					font-size: 1.4em;
 					margin-bottom: $name_padding; 
-					/*font-family: sans-serif;*/
 					position: relative;
 					float: left;
 					margin: 0.3em;
@@ -190,7 +209,6 @@ $corner_radius: 2px;
 
 					.updated-at-value {
 						display: none;
-						/*color: darken($card,50);*/
 					}
 				}
 
@@ -211,7 +229,6 @@ $corner_radius: 2px;
 				bottom: 0;
 				width: 100%;
 				text-align: center;
-				/*@include shadow(2px, 0px, 8px);*/
 				@include rounded-bottom-corners($corner_radius);
 			}
 		}

@@ -168,10 +168,20 @@ var TimeParser = {
 
 }
 
+// function cardGrow(){
+//   $('.face.back .footer').on('click', function(){
+//     console.log('grroooow');
+//     $this = $(this);
+//     $this.closest('.card-wrapper').addClass('large');
+//     $('#container').isotope('updateSortData', $this);
+//   });
+// }
+
 
 $(document).ready(function() {
   LazyLoader.init();
   DragDrop.init();
+  // cardGrow();
 
   LazyLoader.load();
 
