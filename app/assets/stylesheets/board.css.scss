@@ -6,8 +6,13 @@
 
 .board {
 	padding: 0.5em;
+	overflow: auto !important;
 }
 
 .inline-edit{
+	display: none;
+}
+
+.unfollow {
 	display: none;
 }
