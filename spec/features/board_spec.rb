@@ -74,15 +74,11 @@ require 'spec_helper'
 
 		context "destory board" do
 
-			before do
-				visit '/boards/new'
-      	fill_in 'board_name', :with => 'Cool'
-      	fill_in 'board_description', :with => 'This is a cool test board'
-    		click_button 'Create'
-			end
+			let(:board) { FactoryGirl.create(:board) }
 
     		it "should destroy board" do
-    			pending
+    			pending 'need to finish UI'
+    			board
     		end
   
 		end
