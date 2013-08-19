@@ -11,11 +11,19 @@
   = link_to 'Follow', board_users_path(@board.id), method: :post, remote: true, class: 'follow'
 .inline-edit=render 'form'
 
-%dl.sub-nav#card-filters
-  %dt Filter by:
-  %dd.active= link_to "All", "#", data: { :filter => "*" }
-  %dd= link_to "Twitter", "#", data: { :filter => ".twitter" }
-  %dd= link_to "Instagram", "#", data: { :filter => ".instagram" }
+.filters
+  %dl.sub-nav#filter-by
+    %dt Filter by:
+    %dd.active= link_to "All", "#", data: { :filter => "*" }
+    %dd= link_to "Twitter", "#", data: { :filter => ".twitter" }
+    %dd= link_to "Instagram", "#", data: { :filter => ".instagram" }
+
+  %dl.sub-nav#sort-by
+    %dt Sort by:
+    %dd.active= link_to "Date Added", "#original-order"
+    %dd= link_to "Updated", "#updated_at"
+    %dd= link_to "Name", "#name"
+    %dd= link_to "???", "#random"
 
 .board#container
   -@board.cards.each do |card|

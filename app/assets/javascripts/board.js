@@ -20,4 +20,20 @@ $(document).ready(function(){
 		$(this).hide();
 		$('.follow').fadeIn();
 	});
+
+	$('dd a').click(function() {
+		$link = $(this);
+		$link.closest('dl').find('dd').removeClass('active');
+		$link.closest('dd').addClass('active');
+	})
+
+	// $('dd').mouseover(function() {
+	// 	$button = $(this);
+	// 	$button.addClass('active');
+	// })
+
+	// $('dd').mouseout(function() {
+	// 	$button = $(this);
+	// 	$button.removeClass('active');
+	// })
 });
