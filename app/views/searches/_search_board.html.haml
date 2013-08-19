@@ -10,16 +10,16 @@
     .search-suggestions
       %p
         Results for <b>Boards</b>
-        -if @boards_searchresults
-          - @boards_searchresults.each do |board|
+        -if @boards_name_results
+          - @boards_name_results.each do |board|
             .result
               Board
               =link_to board.name, board_path(board)
       %p
         Results for <b>Cards</b>
         #container
-          -if @cards_searchresults
-            - @cards_searchresults.each do |card|
+          -if @cards_name_results
+            - @cards_name_results.each do |card|
               .result-text
                 Card
                 =link_to card.name, card_path(card)
@@ -29,17 +29,21 @@
       %p
         Results for <b>Twitter Users</b>
         #container
-          -if @cards_twitterhandle_searchresults
-            - @cards_twitterhandle_searchresults.each do |card|
+          -if @cards_twitter_results
+            - @cards_twitter_results.each do |card|
               .result-text
-                =card.twitter_handle
+                = card.twitter_handle
                 =link_to card.name, card_path(card)
               .result-card
                 =render partial: 'cards/card', locals: {card: card, board: nil}
 
-      / %p  
-      /   -if @cards_twitterhandle_searchresults
-      /     - @cards_twitterhandle_searchresults.each do |card|
-      /       .result
-      /         Twitter
-      /         =link_to card.twitter_handle, card_path(card)
+      %p
+        Results for <b>Instagram Users</b>
+        #container
+          -if @cards_instagram_results
+            - @cards_instagram_results.each do |card|
+              .result-text
+                = card.instagram_handle
+                =link_to card.name, card_path(card)
+              .result-card
+                =render partial: 'cards/card', locals: {card: card, board: nil}
