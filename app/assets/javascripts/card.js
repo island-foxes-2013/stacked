@@ -2,8 +2,9 @@ var TweetFormat = {
   new: function(tweet) {
     var $post = $(".templates").find(".text-post");
     $post.find(".content").html(tweet.text);
-    $post.find("a").attr("href", "https://twitter.com/"+tweet.user_id+"/statuses/"+tweet.id);
-    // TODO-JW: We shouldn't have to return .html() here.
+    $icon = $post.find(".link-icon").find('a');
+    $icon.attr("href", "https://twitter.com/"+tweet.user_id+"/statuses/"+tweet.id);
+    $icon.html(getIcon(tweet.provider));
     return $post.html();
   }
 };
@@ -18,6 +19,25 @@ var InstaFormat = {
     return $post.html();
   }
 };
+
+var TumblrFormat = {
+  new: function(tumblr) {
+    var $post = $('.templates').find('.text-post');
+    $post.find('.content').html(tumblr.content);
+    return $post;
+  }
+}
+
+function getIcon(provider) {
+  switch(provider) {
+    case 'twitter':
+      return "<span class='glyph general'>l</span>";
+    case 'instagram':
+      return "<span class='glyph general'>a</span>";
+    case 'tumblr':
+      return "<span class='glyph general'>b</span>";
+  }
+}
 
 var AddACard = { 
   init: function() {
@@ -55,7 +75,10 @@ var LazyLoader = {
         else if (provider == 'instagram'){
           post = InstaFormat.new(xhr[i]);
         }
-        console.log(post);
+        // else if (provider == 'tumblr'){
+        //   post = TumblrFormat.new(xhr[i]);
+        // }
+        // console.log(post);
         $(this).closest('.face.back').find('.news').append(post);
       }
 
