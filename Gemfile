@@ -55,6 +55,7 @@ group :development, :test do
 #   gem 'faker'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
+  gem 'jasmine-rails'
 #   gem 'launchy'
   gem 'simplecov', require: false
   gem 'dotenv-rails' # Dot env, saves keys in the environment

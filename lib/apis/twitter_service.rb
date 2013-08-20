@@ -13,6 +13,7 @@ class TwitterService
         tweets[i][:text]     	= auto_link(tweet.text)
         tweets[i][:created]  	= tweet.created_at.to_time.to_i
         tweets[i][:user_id]  	= tweet.user.screen_name
+        tweets[i][:url]       = "https://twitter.com/#{tweet.user.screen_name}/statuses/#{tweet.id}"
       end
       tweets 
     else

@@ -44,7 +44,8 @@ class CardsController < ApplicationController
     @card = Card.new(
       name:             params[:card][:twitter_handle], 
       twitter_handle:   params[:card][:twitter_handle],
-      instagram_handle: params[:card][:instagram_handle])
+      instagram_handle: params[:card][:instagram_handle],
+      tumblr_handle:    params[:card][:tumblr_handle])
     if board_slug
       board = Board.find_by_slug(board_slug)
       @card.boards << board
