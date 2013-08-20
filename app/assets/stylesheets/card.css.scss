@@ -11,7 +11,7 @@ $card-trans: rgba($card, .7);
 
 $card-height: 20em; /*this*/
 $header-size: 2.5em; /*minus this*/
-$content-size: 20em; /*equals this*/
+$content-size: 17.2em; /*equals this*/
 $name-padding: 1em;
 $corner_radius: 2px;
 
@@ -63,6 +63,7 @@ $corner_radius: 2px;
 	border-left: solid rgba(0,0,0,.5) 2px;
 
 	.content {
+		display: inline-block;
 		margin-right: 2.2em;
 	}
 
@@ -93,11 +94,11 @@ $corner_radius: 2px;
 	}
 
 	.news {
-		height: 42em !important;
+		height: 38.3em !important;
 		-moz-column-count: 2 !important;
     -webkit-column-count: 2 !important;
 		column-count: 2 !important;
-		overflow-x: scroll !important;
+		overflow: scroll !important;
 	}
 }
 
@@ -147,7 +148,6 @@ $corner_radius: 2px;
 		  .mega-pic {
 		  	width: 100%;
 		  	height: 100%;
-
 		  	border: solid $card-trans 2px;
 		  	@include rounded-corners($corner_radius);
 		  }
@@ -225,7 +225,7 @@ $corner_radius: 2px;
     		-webkit-column-gap: 1em;
     		column-count: 1;
     		column-gap: 1em; 
-				font-size: .85em;
+				/*font-size: .85em;*/
 				height: $content-size;
 				overflow: hidden;
 			}

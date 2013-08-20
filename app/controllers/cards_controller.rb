@@ -93,7 +93,7 @@ class CardsController < ApplicationController
   def get_tweets
     # TODO-JW: look into -- respond_to :json
     @card = Card.find(params[:id])
-    @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
+    @api = Twitter.user_timeline(@card.twitter_handle, options={count: 20})
     if @api
       tweets = []
       @api.each_with_index do |tweet,i|
