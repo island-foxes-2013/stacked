@@ -76,35 +76,32 @@ $corner_radius: 2px;
 
 
 .texti {
-	width: 100%;
+	width: 90%;
 	color: rgba(darken($card, 70), .6);
-	margin: .2em .2em .5em .8em;
-	padding-left: .3em;
+	margin: .2em 0em 0em 0em;
+	padding: .2em .3em;
 	text-align: left;
 	display: inline-block;
-	border-left: solid rgba(0,0,0,.5) 2px;
+	background-color: rgba(255,255,255,1);
 	overflow: scroll;
 
 	.content {
-		/*display: inline-block;*/
 		margin-right: 2.2em;
 	}
 
-	/*a {
+	.link-icon {
+		display: inline-block;
+		float: right;
+		opacity: .3;
+		position: relative;
+		top: 0;
+		right: 1em;
 
-		img {
-			display: inline-block;
-			float: right;
-			opacity: .3;
-			position: relative;
-			top: 0;
-			right: 1em;
-
-			&:hover {
-				opacity: .7;
-			}
+		&:hover {
+			opacity: .7;
 		}
-	}*/
+		
+	}
 }
 
 .large {
@@ -112,18 +109,18 @@ $corner_radius: 2px;
 	height: 41em !important;
 	margin: 0em 1em 1em 0em !important;
 
-	.texti {
-		/*width: 45% !important;*/
+	/*.texti {
+		width: 45% !important;
 		display: inline-block !important;
 		float: left !important;
-	}
+	}*/
 
-	.pici {
-		/*width: 45% !important;*/
+	/*.pici {
+		width: 45% !important;
 		display: inline-block !important;
 		float: left !important;
 		margin-left: 2%;
-	}
+	}*/
 
 	.flip{
 		/*width: 33em  !important;*/
@@ -139,7 +136,6 @@ $corner_radius: 2px;
 .flip {
 	-webkit-perspective: 800;
 	width: 16em;
-	height: $card-height;
 	height: $card-height;
 	display: none;
 	margin: 0.5em;
@@ -184,6 +180,7 @@ $corner_radius: 2px;
 		  	color: $blue;
 		  	margin:0;
 		  	padding:0;
+		  	cursor: pointer;
 		  }
 
 		  .mega-pic {
@@ -199,7 +196,7 @@ $corner_radius: 2px;
 		  -webkit-transform: rotatey(-180deg);
 		  background: blue;
 		  background: white;
-		  background-color: $card-trans;
+		  background-color: #8f1723;
 		  position: relative;
 		  @include rounded-corners($corner_radius);
 		  @include shadow(0px,2px,2px);
@@ -273,11 +270,13 @@ $corner_radius: 2px;
 				text-align: center;
 				@include rounded-bottom-corners($corner_radius);
 				transition: height 1s;
+				opacity: .9;
 
 				&:hover{
 					height: 1.5em;
 					background-color: $light-blue;
 					color: white;
+					opacity: .5;
 				}
 			}
 		}
