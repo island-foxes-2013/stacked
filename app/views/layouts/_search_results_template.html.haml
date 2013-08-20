@@ -1,5 +1,6 @@
 %p#searchresults
   =link_to search_path(q: 'eric') do
+    Search for... 
     %span.searchresult.text 
   - unless cards_results.nil? || cards_results.empty? 
     - cards_results.each do |card|
@@ -14,4 +15,3 @@
       =link_to board_path(board) do
         %span.searchresult
           %span.searchheading= board[:name]
-          %span= board[:description]
