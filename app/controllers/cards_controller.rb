@@ -10,18 +10,18 @@ class CardsController < ApplicationController
 
   def show
     #TODO: fix this route
-    # @card = Card.find(params[:id])
-    # @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
-    # if @api
-    #   tweets = []
-    #   @api.each_with_index do |tweet,i|
-    #     tweets[i] = {}
-    #     tweets[i][:tweet_id] = String(tweet.id)
-    #     tweets[i][:text]     = auto_link(tweet.text)
-    #     tweets[i][:created]  = tweet.created_at
-    #     tweets[i][:user_id]  = tweet.user.screen_name
-    #   end
-    # end
+    @card = Card.find(params[:id])
+    @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
+    if @api
+      tweets = []
+      @api.each_with_index do |tweet,i|
+        tweets[i] = {}
+        tweets[i][:tweet_id] = String(tweet.id)
+        tweets[i][:text]     = auto_link(tweet.text)
+        tweets[i][:created]  = tweet.created_at
+        tweets[i][:user_id]  = tweet.user.screen_name
+      end
+    end
   end
 
   def new
