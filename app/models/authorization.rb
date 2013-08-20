@@ -27,9 +27,7 @@ class Authorization < ActiveRecord::Base
   def self.create_from_hash(hash, user = nil)
   	user ||= User.create_from_hash!(hash)
   	auth = Authorization.create(user: user, uid: hash['uid'], provider: hash['provider'])
-    ap "AUTH PROVIDER: #{auth.provider}"
     if auth.provider == 'twitter'
-      ap "IN TWITTER PROVIDER SET"
       auth.nickname = hash['info']['nickname'] 
       auth.save
     else
@@ -37,8 +35,8 @@ class Authorization < ActiveRecord::Base
       auth.nickname = hash['nickname']
       auth.save
     end
-
     user.create_primary_card
+    auth
   end
 
 end

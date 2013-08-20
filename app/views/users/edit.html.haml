@@ -1,3 +1,5 @@
-= render partial: 'cards/card', locals: { card: @user.primary_card, board: nil }
-
-=render partial: 'form'
+.user-profile
+  .card-display.large-6.columns
+    = render partial: 'cards/card', locals: { card: @user.primary_card, board: nil }
+  .user-form.large-6.columns
+    =render partial: 'form'
