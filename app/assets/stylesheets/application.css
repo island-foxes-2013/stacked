@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  *= require foundation_and_overrides
+ *= require foundation-icons
  */
 
  /* SEARCH FORM - MAY BE OVERWRITTEN BY FOUNDATION CLASSES... */

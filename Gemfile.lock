@@ -71,6 +71,9 @@ GEM
       faraday (>= 0.7.4, < 0.9)
     ffi (1.9.0)
     formatador (0.2.4)
+    foundation-icons-rails (0.0.1.2)
+      rails (~> 3.0)
+      sass
     friendly_id (4.0.10)
     fssm (0.2.10)
     guard (1.8.2)
@@ -277,6 +280,7 @@ DEPENDENCIES
   database_cleaner
   dotenv-rails
   factory_girl_rails
+  foundation-icons-rails
   friendly_id (~> 4.0.0.beta8)
   guard-rspec
   haml-rails
