@@ -68,7 +68,7 @@ var LazyLoader = {
         provider = xhr[i].provider;
         console.log(provider);
         var $post = '';
-        if (content = 'text') {
+        if (xhr[i].content == 'text') {
           $post = TextFormat.new(xhr[i]);
         }
         else {
