@@ -1,10 +1,12 @@
 $purple: #890CFF;
 $blue: #0BAFE8;
+$plus-color: #5f8694;
+$light-blue: #C3D5E8;
+
 $green: #4CFF3F;
 $yellow: #E8BB0B; 
 $red: #FF3501;
-$light-blue: #C3D5E8;
-$off-white: rgb(245, 245, 245);
+$off-white: rgb(245, 245, 245); 
 
 $card: white;
 $card-trans: rgba($card, .7);
@@ -177,7 +179,8 @@ $corner_radius: 2px;
 		  .plus-sign {
 		  	font-size: 12.5em;
 		  	font-weight: 500;
-		  	color: $blue;
+		  	color: $plus-color;
+		  	opacity:0.3;
 		  	margin:0;
 		  	padding:0;
 		  	cursor: pointer;
