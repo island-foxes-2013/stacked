@@ -64,9 +64,10 @@ ActiveRecord::Schema.define(:version => 20130818223406) do
     t.string   "name"
     t.string   "email"
     t.string   "username"
-    t.string   "slug",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "slug",         :null => false
+    t.integer  "primary_card"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
