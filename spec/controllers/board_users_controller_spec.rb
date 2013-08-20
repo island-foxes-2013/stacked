@@ -38,17 +38,19 @@ describe BoardUsersController do
 		before {
 			user
 			board
+			board.user_id = user.id
 			request.env["rack.session"] = { user_id: user.id }
-			# post :create, board_id: board.id
 			BoardUser.create(user_id: user.id, board_id: board.id)
-		  ap BoardUser.all
-		  ap Board.all
 		}
 	
-	it "deletes the board user" do 
+	it "deletes the board user" do
 		pending 'waiting on Zee'
+		ap BoardUser.count 
+		ap BoardUser.last.board.id
+		ap Board.last
+		# ap BoardUser.all
 		expect {
-				delete :destory, board_id: board.id
+				delete :destroy, board_id: BoardUser.last.board.id
 			}.to change(BoardUser,:count).by(-1) 
 	end
 
