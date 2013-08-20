@@ -14,6 +14,7 @@ class InstagramService
       @response.each_with_index do |instagram,i|
         instagrams[i] = {}
         instagrams[i][:provider]        = 'instagram'
+        instagrams[i][:content]         = 'image'
         instagrams[i][:id]              = instagram['id']
         instagrams[i][:text]            = instagram['caption']['text'] if instagram['caption']
         instagrams[i][:thumbnail]       = instagram['images']['thumbnail']['url'] if instagram['images']
