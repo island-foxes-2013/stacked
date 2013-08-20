@@ -36,3 +36,9 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+/* SEARCH FORM - MAY BE OVERWRITTEN BY FOUNDATION CLASSES... */
+#searchform { margin:50px 200px; font-size:18px; }
+#searchform div { color:#eeeeee; }
+#searchform div input { font-size:18px; padding:5px; width:320px; }
+#suggestions{ position: relative; left:235px; width:320px; display:none; }

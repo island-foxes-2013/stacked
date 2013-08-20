@@ -1,0 +1,15 @@
+%p#searchresults
+  %span.category Cards
+  -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/ericchen0121.jpg"
+  -unless cards_results.empty?
+
+    %span.searchheading= cards_results.first[:name]
+    = cards_results.first[:twitter_handle]
+    = cards_results.first[:instagram_handle]
+
+  %span.category Boards
+  -unless boards_results.empty?
+    %span.searchheading= boards_results.first[:name]
+    = boards_results.first[:twitter_handle]
+    = boards_results.first[:instagram_handle]
+
