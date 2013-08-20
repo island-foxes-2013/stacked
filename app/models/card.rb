@@ -31,7 +31,7 @@ class Card < ActiveRecord::Base
   before_save :set_instagram_id
 
   def set_instagram_id
-  	return "" unless instagram_handle
+  	return "" unless instagram_handle[0]
   	self.instagram_id = get_instagram_id(instagram_handle)
   end
 

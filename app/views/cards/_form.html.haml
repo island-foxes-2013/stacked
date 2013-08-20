@@ -1,6 +1,7 @@
 = form_for card do |f| 
 
-  = f.hidden_field :board, value: board.slug
+  -if board
+    = f.hidden_field :board, value: board.slug
 
   = f.label :name 
   = f.text_field :name 
