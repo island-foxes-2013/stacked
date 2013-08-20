@@ -23,12 +23,13 @@
             %h1= link_to "Stacked", :root
         %section.top-bar-section
           %ul.right
-            = render partial: 'layouts/search_global'
+            / global search bar
+            = render partial: 'layouts/search_global', locals: {cards_results: @cards_results, boards_results: @boards_results}
 
             %li.divider
             -if signed_in?
               %li.has-dropdown
-                -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{current_user.username}.jpg"
+                - img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{current_user.username}.jpg"
                 = image_tag(img_url)
                 %ul.dropdown
                   %li= link_to "My Boards", :boards
