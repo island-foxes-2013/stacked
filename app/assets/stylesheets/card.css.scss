@@ -51,34 +51,42 @@ $corner_radius: 2px;
 	border-top-right-radius: $radius;
 }
 
+.image-post {
+	color: red !important;
+}
+
 .tweet {
 	width: 100%;
 	color: rgba(darken($card, 70), .6);
 	margin: .2em .2em .5em .8em;
 	padding-left: .3em;
-	text-align: left !important;
+	text-align: left;
 	display: inline-block;
-	float: left;
+	/*float: left;
 	position: relative;
-	border-left: solid rgba(0,0,0,.5) 2px;
-
+	border-left: solid rgba(0,0,0,.5) 2px;*/
+	/*overflow: scroll;*/
+/*
 	.content {
 		display: inline-block;
 		margin-right: 2.2em;
 	}
 
-	a img {
-		display: inline-block;
-		float: right;
-		opacity: .3;
-		position: absolute;
-		top: 0;
-		right: 1em;
+	a {
 
-		&:hover {
-			opacity: .7;
+		img {
+			display: inline-block;
+			float: right;
+			opacity: .3;
+			position: relative;
+			top: 0;
+			right: 1em;
+
+			&:hover {
+				opacity: .7;
+			}
 		}
-	}
+	}*/
 }
 
 .large {

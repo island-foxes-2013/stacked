@@ -44,7 +44,17 @@ var LazyLoader = {
       
       var updatedTime = xhr[0].created;
       for (i in xhr) {
-        $(this).closest('.face.back').find('.news').append(TweetFormat.new(xhr[i]));
+        provider = xhr[i].provider;
+        console.log(provider);
+        var post = '';
+        if (provider == 'twitter') {
+          post = TweetFormat.new(xhr[i]);
+        }
+        else if (provider == 'instagram'){
+          post = InstaFormat.new(xhr[i]);
+        }
+
+        $(this).closest('.face.back').find('.news').append(post);
       }
 
       $cardBack = $(this).closest('.face.back');
