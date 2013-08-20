@@ -51,7 +51,7 @@ $(document).ready(function(){
   $(document).foundation(); 
 
   $('#searchtext').on('keyup', function(){
-    console.log(this);
+    // console.log($(this));
     lookup( $(this).val() );
   });
 
