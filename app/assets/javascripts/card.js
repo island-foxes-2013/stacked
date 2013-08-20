@@ -12,7 +12,9 @@ var InstaFormat = {
   new: function(instagram) {
     var $post = $(".templates").find(".image-post");
     $post.find(".content").text(instagram.text);
-    $post.find(".source").find("img").attr("src",'www.lol.com');
+    var $picture = $post.find(".small")
+    $picture.attr("src",instagram.small_image);
+    $post.find('a').attr('href',instagram.standard_image);
     return $post.html();
   }
 };

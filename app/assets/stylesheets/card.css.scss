@@ -51,9 +51,29 @@ $corner_radius: 2px;
 	border-top-right-radius: $radius;
 }
 
-.image-post {
-	color: red !important;
+.insta {
+	/*border-left: solid rgba(0,0,0,.5) 2px;*/
+	padding: .05em;
+	width: 90%;
+	margin-left: 5%;
+	margin-bottom: 1em;
+
+
+	.content {
+		background-color: rgba(0,0,0,.5);
+		color: white;
+		/*width: 90%;
+		margin-left: 5%;*/
+		padding: .2em .2em .2em 0em;
+		@include rounded-bottom-corners($corner-radius);
+	}
+
+	.pic {
+		/*width: 90%;
+		margin-left: 5%;*/
+	}
 }
+
 
 .tweet {
 	width: 100%;
