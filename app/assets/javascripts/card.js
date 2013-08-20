@@ -17,7 +17,7 @@ var InstaFormat = {
   }
 };
 
-var AddACard = {
+var AddACard = { 
   init: function() {
     
     $("#add-card").click(function(){

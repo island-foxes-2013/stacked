@@ -5,6 +5,7 @@ class CreateCards < ActiveRecord::Migration
     	t.string :twitter_handle
       t.string :instagram_handle
       t.string :instagram_id
+      t.string :tumblr_handle
     	t.string :slug, :null => false
     	t.belongs_to :user
 

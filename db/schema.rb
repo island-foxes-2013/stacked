@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20130818223406) do
     t.string   "twitter_handle"
     t.string   "instagram_handle"
     t.string   "instagram_id"
+    t.string   "tumblr_handle"
     t.string   "slug",             :null => false
     t.integer  "user_id"
     t.datetime "created_at",       :null => false
