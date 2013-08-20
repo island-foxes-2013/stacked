@@ -1,6 +1,8 @@
 module CardHelper
-	def instagram_id(username)
-		Instagram.user_search(username,count:1)[0]['id']
+	def get_instagram_id(instagram_handle)
+		search_results = Instagram.user_search(instagram_handle,count:1)
+		return search_results[0]['id'] if search_results[0]
+		nil
 	end
 
 	def classify(card)
@@ -13,4 +15,4 @@ module CardHelper
 		classes.join(" ")
 		# Sort classes
 	end
-end
+end 
