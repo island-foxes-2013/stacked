@@ -7,6 +7,7 @@ $(document).ready(function(){
 		$('.inline-edit').slideToggle();
 		$('.delete').slideToggle();
 		$('.last').slideToggle();
+		$('.updates').toggle();
 	});
 
 	$('.follow').on('ajax:success', function(){

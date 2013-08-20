@@ -4,19 +4,21 @@
 .board_desc
   %h4.subheader= "#{@board.description}" 
 %p
-  = link_to 'Edit', '#' ,class: 'board-edit', remote: true
-  = link_to "Destroy", @board, :confirm => 'Are you sure?', method: :delete 
-  = link_to "View All", boards_path
-  = link_to 'Unfollow', board_user_path(@board.id), method: :delete, remote: true, class: 'unfollow'
-  = link_to 'Follow', board_users_path(@board.id), method: :post, remote: true, class: 'follow'
+  - if current_user
+    - hideFollow = !BoardUser.where(user_id: current_user.id, board_id: @board.id).empty?
+    = link_to 'Edit', '#' ,class: 'board-edit', remote: true
+    = link_to "Destroy", @board, :confirm => 'Are you sure?', method: :delete 
+    = link_to "View All", boards_path
+    = link_to 'Unfollow', board_user_path(@board.id), method: :delete, remote: true, class: 'unfollow '+ (hideFollow ? "" : "hidden")
+    = link_to 'Follow', board_users_path(@board.id), method: :post, remote: true, class: 'follow ' + (hideFollow ? "hidden" : "")
 .inline-edit=render 'form'
 
 .filters
   %dl.sub-nav#filter-by
     %dt Filter by:
     %dd.active= link_to "All", "#", data: { :filter => "*" }
-    %dd= link_to "Twitter", "#", data: { :filter => ".twitter" }
-    %dd= link_to "Instagram", "#", data: { :filter => ".instagram" }
+    %dd= link_to "Twitter", "#", data: { :filter => ".twitter, .always-show" }
+    %dd= link_to "Instagram", "#", data: { :filter => ".instagram, .always-show" }
 
   %dl.sub-nav#sort-by
     %dt Sort by:
@@ -28,4 +30,4 @@
 .board#container
   -@board.cards.each do |card|
     = render partial: 'cards/card', locals: { card: card, board: @board }
-  = render partial: 'cards/add_card', locals: { board: @board }
+  = render partial: 'cards/add_card', locals: { board: @board, card: @card }

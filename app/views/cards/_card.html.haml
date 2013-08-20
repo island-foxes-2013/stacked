@@ -11,16 +11,15 @@
           .mini-pic{:style => "background-image: url(#{img_url})",:id => "#{img_url}"}
           .name-container
             .name= card.name.downcase
-          .last-updated
+          .right-header
             %span{class: 'delete'}
               - if board
                 = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
-            = link_to 'T', get_tweets_card_path(card), {remote: true, class: 'update-twitter'} 
-            = link_to 'I', get_instagrams_card_path(card), {remote: true, class: 'update-instagram'} 
-            %span{class: 'last'}
-              37m
-            %span{:class => 'updated-at-value'}
-              =rand(10)
+            .updates
+              = link_to 'U', get_posts_card_path(card), {remote: true, class: 'get-posts'} 
+              %span{class: 'last'}
+              %span{:class => 'updated-at-value'}
+                0
         .news
         .footer
           ='...'
