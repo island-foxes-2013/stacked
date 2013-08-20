@@ -18,6 +18,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @card = Card.new
   end
 
   def new

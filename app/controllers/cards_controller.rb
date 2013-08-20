@@ -38,20 +38,30 @@ class CardsController < ApplicationController
   # end
 
   def create
+    board_slug = params[:card][:board]
+    p board_slug
     @card = Card.new(
-      name: params[:card][:twitter_handle], 
-      twitter_handle: params[:card][:twitter_handle],
+      name:             params[:card][:twitter_handle], 
+      twitter_handle:   params[:card][:twitter_handle],
       instagram_handle: params[:card][:instagram_handle])
+    if board_slug
+      board = Board.find_by_slug(board_slug)
+      @card.boards << board
+    end
     @card.user = current_user
 
     if @card.instagram_handle[0]
       @card.instagram_id = instagram_id(@card.instagram_handle)
     end
-
     if @card.save
+      if board_slug
+        p "going to board_path"
+        redirect_to board_path(board)
+      else
       # instagram = Instagram.client(access_token: instagram_token)
       # ap instagram.user_recent_media(@card.instagram_id, count: 4)
-      redirect_to @card, :notice => "Successfully created card."
+        redirect_to @card, :notice => "Successfully created card."
+      end
     else
       render action: 'new'
     end

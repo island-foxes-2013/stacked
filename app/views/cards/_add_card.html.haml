@@ -1,10 +1,10 @@
-.card-wrapper
+.card-wrapper.always-show
   .flip
-    .card
-      .face.front 
-        FRONT
+    .card#add-card
+      .face.front
+        %h1.plus-sign +
       .face.back  
         .header
           .name Add a Card
         .news
-          Insert Form Here
+          =render partial: 'cards/form', locals: { card: card, board: board }
