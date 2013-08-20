@@ -15,9 +15,9 @@
 
  /* SEARCH FORM - MAY BE OVERWRITTEN BY FOUNDATION CLASSES... */
 #searchform input {width:250px; border-radius: 15px;}
-#suggestions{ position: relative;  } /*display:none;*/
+#suggestions{ position: relative; } /*display:none; */
 
-#searchresults { border-width:1px; border-color:#919191; width:250px; background-color:#a0a0a0; font-size:1em; line-height:14px; margin-top: 17.5px}
+#searchresults { border-width:1px; border-color:#919191; width:250px; background-color:#a0a0a0; font-size:1em; line-height:14px; margin-top: 17px}
 .searchresult { border-radius: 20px;}
 
 #searchresults a { display:block; background-color:#e4e4e4; clear:left; height:56px; text-decoration:none; }
