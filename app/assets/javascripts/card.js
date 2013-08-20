@@ -2,7 +2,7 @@ var TweetFormat = {
   new: function(tweet) {
     var $post = $(".templates").find(".text-post");
     $post.find(".content").html(tweet.text);
-    $post.find("a").attr("href", "https://twitter.com/"+tweet.user_id+"/statuses/"+tweet.tweet_id);
+    $post.find("a").attr("href", "https://twitter.com/"+tweet.user_id+"/statuses/"+tweet.id);
     // TODO-JW: We shouldn't have to return .html() here.
     return $post.html();
   }
