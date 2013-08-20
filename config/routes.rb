@@ -2,10 +2,14 @@ Stacked::Application.routes.draw do
 
   root to: 'boards#index'
 
-  resources :boards
+  resources :boards do
+    resources :board_users, only: [:create]
+  end
 
+  resources :board_users, only: [:destroy]
   resources :board_cards, only: [:create, :destroy]
-  resources :board_users, only: [:create, :destroy]
+
+  
 
   resources :cards, only: [:index, :new, :create, :show, :edit, :destroy, :update] do
     member do

@@ -58,10 +58,9 @@
           %h4 Followed Boards
           - if current_user
             %ul.side-nav.board-list
-              - BoardUser.where(user_id: current_user).each do |board_user|
+              - current_user.boards_following.each do |board|
                 %li.divider
-                - board = Board.find(board_user.board_id)
-                =link_to board.name, board_url(board)
+                =link_to board.name, board_path(board)
               %li.divider
         .main.small-10.large-10.columns
           = yield

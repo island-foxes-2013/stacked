@@ -3,14 +3,14 @@
 
 .board_desc
   %h4.subheader= "#{@board.description}" 
-%p
+%p.board_actions
   - if current_user
     - hideFollow = !BoardUser.where(user_id: current_user.id, board_id: @board.id).empty?
     = link_to 'Edit', '#' ,class: 'board-edit', remote: true
     = link_to "Destroy", @board, :confirm => 'Are you sure?', method: :delete 
     = link_to "View All", boards_path
-    = link_to 'Unfollow', board_user_path(@board.id), method: :delete, remote: true, class: 'unfollow '+ (hideFollow ? "" : "hidden")
-    = link_to 'Follow', board_users_path(@board.id), method: :post, remote: true, class: 'follow ' + (hideFollow ? "hidden" : "")
+    = render partial: "follow_or_unfollow_board_link", locals: { board: @board }
+    
 .inline-edit=render 'form'
 
 .filters

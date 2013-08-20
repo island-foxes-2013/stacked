@@ -22,7 +22,6 @@ describe BoardUsersController do
 		end
 
 		it "ties the boarduser to the right board" do
-			pending 'could be a bug on the board_users controller (Clint doesnt think so)'
 			post :create, board_id: board.id
 			BoardUser.last.board.should eq board
 		end
@@ -44,30 +43,10 @@ describe BoardUsersController do
 		}
 	
 	it "deletes the board user" do
-		pending 'waiting on Zee'
-		ap BoardUser.count 
-		ap BoardUser.last.board.id
-		ap Board.last
-		# ap BoardUser.all
 		expect {
-				delete :destroy, board_id: BoardUser.last.board.id
+				delete :destroy, id: BoardUser.last.id
 			}.to change(BoardUser,:count).by(-1) 
 	end
 
 	end
 end
-
-
-
-
-# class BoardUsersController < ApplicationController
-# 1  def create
-#     BoardUser.create(user_id: current_user.id, board_id: params[:format])
-#   end
-# 1  def destroy
-#     board_user = BoardUser.where(board_id: params[:id], user_id: current_user.id).first
-#     if board_user
-#       board_user.destroy
-#     end
-#   end
-#  end

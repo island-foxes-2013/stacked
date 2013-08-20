@@ -24,8 +24,18 @@ class User < ActiveRecord::Base
   has_many :boards
   has_many :cards
 
+  has_many :board_users
+  has_many :boards_following, :through => :board_users, :source => :board
+
   def self.create_from_hash!(hash)
   	create(name: hash['info']['name'], username: hash['info']['nickname'])
   end
 
+  def follows_board?(board)
+    board_users.where(board_id: board).any?
+  end
+
+  def board_user_for(board)
+    board_users.find_by_board_id(board.id)
+  end
 end
