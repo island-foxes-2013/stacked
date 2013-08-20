@@ -1,13 +1,15 @@
 %p#searchresults
-  %span.category Cards
   -unless cards_results.empty?
-    - img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{cards_results.first.twitter_handle}.jpg"
-    = image_tag(img_url)
-    %span.searchheading= cards_results.first[:name]
-    %span= cards_results.first[:twitter_handle]
-    %span= cards_results.first[:instagram_handle]
+    %span.category
+      Cards
+      - img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{cards_results.first.twitter_handle}.jpg"
+      = image_tag(img_url)
+      %span.searchheading= cards_results.first[:name]
+      %span= cards_results.first[:twitter_handle]
+      %span= cards_results.first[:instagram_handle]
 
   -unless boards_results.empty?
-    %span.category Boards
-    %span.searchheading= boards_results.first[:name]
-    %span= boards_results.first[:description]
+    %span.category
+      Boards
+      %span.searchheading= boards_results.first[:name]
+      %span= boards_results.first[:description]
