@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130818223406) do
+ActiveRecord::Schema.define(:version => 20130820210906) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -65,9 +65,9 @@ ActiveRecord::Schema.define(:version => 20130818223406) do
     t.string   "email"
     t.string   "username"
     t.string   "slug",         :null => false
-    t.integer  "primary_card"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "primary_card"
   end
 
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true

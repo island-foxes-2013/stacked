@@ -24,9 +24,17 @@ class User < ActiveRecord::Base
   has_many :authorizations
   has_many :boards
   has_many :cards
+  has_one :primary_card, class_name: "Card"
+
+  before_save :create_primary_card
 
   def self.create_from_hash!(hash)
   	create(name: hash['info']['name'], username: hash['info']['nickname'])
   end
 
+  def create_primary_card
+    prim_card = Card.new(name: name)
+    prim_card.save
+    self.primary_card = prim_card
+  end
 end
