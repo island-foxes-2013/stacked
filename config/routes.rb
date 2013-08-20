@@ -11,6 +11,7 @@ Stacked::Application.routes.draw do
     member do
       get 'get_tweets'
       get "get_instagrams"
+      get 'get_posts'
     end
   end
 
