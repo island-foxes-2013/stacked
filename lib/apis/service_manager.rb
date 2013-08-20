@@ -25,7 +25,7 @@ class ServiceManager
 end
 
 ServiceManager.configure do |config|
-  config.services = [:twitter, :instagram]
+  config.services = [:twitter, :instagram, :tumblr]
 end
 
 

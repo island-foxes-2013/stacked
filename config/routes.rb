@@ -19,6 +19,8 @@ Stacked::Application.routes.draw do
 
   match '/auth/:provider/callback', to: 'sessions#create'
 
+  mount Foundation::Icons::Rails::Engine => '/fi'
+
   # TODO SEARCH: 
   # match '/search', to: 'boards#index'
   match '/search', to: 'searches#index'
