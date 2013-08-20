@@ -81,26 +81,29 @@ $corner_radius: 2px;
 }
 
 .large {
-	width: 31em !important;
+	width: 33em !important;
 	height: 41em !important;
 	margin: 0em 1em 1em 0em !important;
 	/*background-color: blue !important;*/
 
 	.flip{
-		width: 31em  !important;
+		width: 33em  !important;
 		height: 41em !important;
 		/*background-color: blue !important;*/
 	}
 
 	.news {
-		height: 40em !important;
-		/*background-color: blue !important;*/
+		height: 42em !important;
+		-moz-column-count: 2 !important;
+    -webkit-column-count: 2 !important;
+		column-count: 2 !important;
+		overflow-x: scroll !important;
 	}
 }
 
 .flip {
 	-webkit-perspective: 800;
-	width: 15em;
+	width: 16em;
 	height: $card-height;
 	height: $card-height;
 	display: none;
@@ -216,10 +219,15 @@ $corner_radius: 2px;
 			}
 
 			.news {
+				-moz-column-count: 1;
+		    -moz-column-gap: 1em;
+		    -webkit-column-count: 1;
+    		-webkit-column-gap: 1em;
+    		column-count: 1;
+    		column-gap: 1em; 
 				font-size: .85em;
-				color: black !important;
 				height: $content-size;
-			  overflow: hidden;
+				overflow: hidden;
 			}
 
 			.footer {
