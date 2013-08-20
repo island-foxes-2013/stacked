@@ -50,9 +50,6 @@ class CardsController < ApplicationController
     end
     @card.user = current_user
 
-    if @card.instagram_handle[0]
-      @card.instagram_id = instagram_id(@card.instagram_handle)
-    end
     if @card.save
       if board_slug
         p "going to board_path"
