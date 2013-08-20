@@ -1,6 +1,6 @@
 %p#searchresults
-  =link_to search_path(q: 'eric') do
-    Search for... 
+  =link_to search_path(q: query) do
+    ="Search for... #{query}"
     %span.searchresult.text 
   - unless cards_results.nil? || cards_results.empty? 
     - cards_results.each do |card|
