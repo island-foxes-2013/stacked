@@ -20,7 +20,6 @@ Stacked::Application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create'
 
   mount JasmineRails::Engine => "/jasmine" if defined?(JasmineRails)
-  mount Foundation::Icons::Rails::Engine => '/fi'
 
   # TODO SEARCH: 
   # match '/search', to: 'boards#index'

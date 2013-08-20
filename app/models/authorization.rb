@@ -8,11 +8,12 @@
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  nickname   :string(255)
 #
 
 class Authorization < ActiveRecord::Base
 
-	attr_accessible :user, :uid, :provider
+	attr_accessible :user, :uid, :provider, :nickname
 
   belongs_to :user
 
@@ -25,8 +26,19 @@ class Authorization < ActiveRecord::Base
 
   def self.create_from_hash(hash, user = nil)
   	user ||= User.create_from_hash!(hash)
-  	Authorization.create(user: user, uid: hash['uid'], provider: hash['provider'])
+  	auth = Authorization.create(user: user, uid: hash['uid'], provider: hash['provider'])
+    ap "AUTH PROVIDER: #{auth.provider}"
+    if auth.provider == 'twitter'
+      ap "IN TWITTER PROVIDER SET"
+      auth.nickname = hash['info']['nickname'] 
+      auth.save
+    else
+      ap "IN OTHER PROVIDER SET"
+      auth.nickname = hash['nickname']
+      auth.save
+    end
+
+    user.create_primary_card
   end
 
 end
-

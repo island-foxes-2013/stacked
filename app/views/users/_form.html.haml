@@ -1,18 +1,12 @@
 = form_for @user do |f| 
 
-  %p
     = f.label :name 
-    %br
     = f.text_field :name 
   
-  %p
     = f.label :username
-    %br
     = f.text_field :username 
 
-  %p
-    = f.label :email address
-    %br
+    = f.label :email
     = f.email_field :email
-  
-  %p= f.submit 
+    
+    = f.submit 

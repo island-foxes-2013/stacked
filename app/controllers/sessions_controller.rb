@@ -6,6 +6,8 @@ class SessionsController < ApplicationController
 
 	def create
 		auth = request.env['omniauth.auth']
+		ap "*" * 100
+		ap auth
 
 		if auth['provider'] == 'instagram'
 			session[:instagram_token] = auth['credentials']['token']
