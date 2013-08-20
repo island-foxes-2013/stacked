@@ -23,6 +23,7 @@ class InstagramService
         instagrams[i][:created]         = instagram['created_time'].to_i
         instagrams[i][:url]             = instagram['link']
       end
+      ap instagrams
       instagrams
     else
       []

@@ -12,7 +12,7 @@ var InstaFormat = {
   new: function(instagram) {
     var $post = $(".templates").find(".image-post");
     $post.find(".content").text(instagram.text);
-    $post.find(".source").find("img").attr("src");
+    $post.find(".source").find("img").attr("src",'www.lol.com');
     return $post;
   }
 };
@@ -156,15 +156,6 @@ var TimeParser = {
     }
     return (String(Math.floor(seconds))+labels[i-1])
   },
-
-  // recentTimeParse: function(time){
-  //   console.log(time);
-  //   var datetime = time.split("T");
-  //   var date = datetime[0].split('-');
-  //   var time = datetime[1].split('-')[0].split(':');
-  //   objectDate = Math.floor(new Date(date[0],date[1]-1,date[2],time[0],time[1],time[2])/1000);
-  //   return objectDate;
-  // },
 
   writtenTime: function(epoch){
     var months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'];
