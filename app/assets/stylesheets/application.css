@@ -27,7 +27,3 @@
 #searchresults a:hover span.searchheading { color:#ffffff; }
 #searchresults a span { color:#555555; }
 #searchresults a:hover span { color:#f1f1f1; }
-#searchresults span.category { font-size:11px; margin:5px; display:block; color:#ffffff; }
-#searchresults span.seperator { float:right; padding-right:15px; margin-right:5px;
-      background-image:url(../images/shortcuts_arrow.gif); background-repeat:no-repeat; background-position:right; }
-/*#searchresults span.separator a { background-color:transparent; display:block; margin:5px; height:auto; color:#ffffff; }*/
