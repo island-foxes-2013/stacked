@@ -18,7 +18,6 @@ class ServiceManager
       raise "#{service_name.to_s} API service must implement #posts" unless service.respond_to? :get_posts
       posts += service.get_posts(card)
     end
-    ap posts.sort_by { |post| -post[:created] }.map{ |post| post[:created] }
     posts.sort_by { |post| -post[:created] }
 	end
 
