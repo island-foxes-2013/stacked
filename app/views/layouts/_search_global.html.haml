@@ -1,0 +1,7 @@
+%li.has-form
+  .row.collapse
+    = form_tag('/search', method: 'get', id: 'searchform') do
+      .small-12.columns
+        =text_field_tag :q, nil, placeholder: "Search...", id: 'searchtext'
+        #suggestions
+          =render partial: 'layouts/search_results_template', locals: {cards_results: cards_results, boards_results: boards_results}

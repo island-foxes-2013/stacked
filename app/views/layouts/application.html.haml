@@ -23,18 +23,13 @@
             %h1= link_to "Stacked", :root
         %section.top-bar-section
           %ul.right
-            %li.has-form
-              .row.collapse
-                = form_tag('/search', method: 'get') do
-                  .small-8.columns
-                    =text_field_tag :q, nil, placeholder: "Search..."
-                  .small-4.columns
-                    =submit_tag "Search", :class => "button prefix"
+            / global search bar
+            = render partial: 'layouts/search_global', locals: {cards_results: @cards_results, boards_results: @boards_results}
 
             %li.divider
             -if signed_in?
               %li.has-dropdown
-                -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{current_user.username}.jpg"
+                - img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{current_user.username}.jpg"
                 = image_tag(img_url)
                 %ul.dropdown
                   %li= link_to "My Boards", :boards
@@ -69,10 +64,8 @@
         /   %h2 Search
       .row
         .footer
-          %p 
-            You ain't seen nothin' yet.
-            %br 
-            Coded up by Eric Chen, Daniel Willems, Clint Mullins, and Mitch Seaman
+          .footer-tagline You ain't seen nothin' yet.
+          .footer-team Coded up by Eric Chen, Daniel Willems, Clint Mullins, and Mitch Seaman
 
 
     = javascript_include_tag "application"

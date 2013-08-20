@@ -2,18 +2,6 @@ class BoardsController < ApplicationController
 
 	def index
 		@boards = Board.order('created_at DESC').limit(10)
-
-    # Ransack gem search objects
-    # @search = Board.search(params[:q])
-    # # will retsurn a list of objects
-    # @search_suggestions = @search.result
-
-    q = params[:q]
-    @boards_searchresults = Board.search(name_cont: q).result
-    @cards_searchresults = Card.search(name_cont: q).result
-    @users_searchresults = User.search(name_cont: q).result
-    # TODO NOT WORKING YET - look into Ransack cont helper
-    # @cards_twitterhandle_searchresults = Card.search(twiter_handle_cont: q).result
 	end
 
   def show
