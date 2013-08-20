@@ -2,7 +2,7 @@ var TweetFormat = {
   new: function(tweet) {
     var $post = $(".templates").find(".text-post");
     $post.find(".content").html(tweet.text);
-    $post.find("a").attr("href", "https://twitter.com/"+tweet.user_id+"/statuses/"+tweet.tweet_id);
+    $post.find("a").attr("href", "https://twitter.com/"+tweet.user_id+"/statuses/"+tweet.id);
     // TODO-JW: We shouldn't have to return .html() here.
     return $post.html();
   }
@@ -156,15 +156,6 @@ var TimeParser = {
     }
     return (String(Math.floor(seconds))+labels[i-1])
   },
-
-  // recentTimeParse: function(time){
-  //   console.log(time);
-  //   var datetime = time.split("T");
-  //   var date = datetime[0].split('-');
-  //   var time = datetime[1].split('-')[0].split(':');
-  //   objectDate = Math.floor(new Date(date[0],date[1]-1,date[2],time[0],time[1],time[2])/1000);
-  //   return objectDate;
-  // },
 
   writtenTime: function(epoch){
     var months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'];

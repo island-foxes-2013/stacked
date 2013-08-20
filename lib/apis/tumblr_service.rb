@@ -2,12 +2,11 @@ class TumblrService
 	
   def get_posts(card)
   	return [] unless card.tumblr_handle
-    @api = Twitter.user_timeline(card.twitter_handle, options={count: 10})
     if @api
       tweets = []
       @api.each_with_index do |tweet,i|
         tweets[i] = {}
-        tweets[i][:provider] 	= 'twitter'
+        tweets[i][:provider] 	= 'tumblr'
         tweets[i][:content] 	= 'text'
         tweets[i][:id] 				= String(tweet.id)
         tweets[i][:text]     	= auto_link(tweet.text)
