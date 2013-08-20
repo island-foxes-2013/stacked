@@ -72,7 +72,6 @@ var LazyLoader = {
           $post = TextFormat.new(xhr[i]);
         }
         else {
-          console.log('BANNNNNAAAANNNNAAASSSSS');
           $post = PictureFormat.new(xhr[i]);
         }
         $(this).closest('.face.back').find('.news').append($post.html());

@@ -82,10 +82,8 @@ $corner_radius: 2px;
 	padding-left: .3em;
 	text-align: left;
 	display: inline-block;
-	/*float: left;
-	position: relative;*/
 	border-left: solid rgba(0,0,0,.5) 2px;
-	/*overflow: scroll;*/
+	overflow: scroll;
 
 	.content {
 		/*display: inline-block;*/
@@ -110,22 +108,30 @@ $corner_radius: 2px;
 }
 
 .large {
-	width: 33em !important;
+	/*width: 33em !important;*/
 	height: 41em !important;
 	margin: 0em 1em 1em 0em !important;
-	/*background-color: blue !important;*/
+
+	.texti {
+		/*width: 45% !important;*/
+		display: inline-block !important;
+		float: left !important;
+	}
+
+	.pici {
+		/*width: 45% !important;*/
+		display: inline-block !important;
+		float: left !important;
+		margin-left: 2%;
+	}
 
 	.flip{
-		width: 33em  !important;
+		/*width: 33em  !important;*/
 		height: 41em !important;
-		/*background-color: blue !important;*/
 	}
 
 	.news {
 		height: 38.3em !important;
-		-moz-column-count: 2 !important;
-    -webkit-column-count: 2 !important;
-		column-count: 2 !important;
 		overflow: scroll !important;
 	}
 }
@@ -167,7 +173,6 @@ $corner_radius: 2px;
 		  z-index: 1;
 		  background-color: darken($card, 8);
 		  color: white;
-		  cursor: pointer;
 		  height: 100%;
 		  border: solid $card-trans 2px;
 		  @include rounded-corners($corner_radius);
@@ -194,7 +199,6 @@ $corner_radius: 2px;
 		  -webkit-transform: rotatey(-180deg);
 		  background: blue;
 		  background: white;
-		  cursor: pointer;
 		  background-color: $card-trans;
 		  position: relative;
 		  @include rounded-corners($corner_radius);
@@ -255,18 +259,12 @@ $corner_radius: 2px;
 			}
 
 			.news {
-				-moz-column-count: 1;
-			    -moz-column-gap: 1em;
-			    -webkit-column-count: 1;
-	    		-webkit-column-gap: 1em;
-	    		column-count: 1;
-	    		column-gap: 1em; 
-				/*font-size: .85em;*/
 				height: $content-size;
 				overflow: hidden;
 			}
 
 			.footer {
+				cursor: pointer;
 				background-color: white;
 				height: .9em;
 				position: absolute;
