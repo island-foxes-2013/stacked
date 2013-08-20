@@ -22,6 +22,7 @@ Stacked::Application.routes.draw do
   # TODO SEARCH: 
   # match '/search', to: 'boards#index'
   match '/search', to: 'searches#index'
+  match '/search/global', to: 'searches#global'
 
   # match '/boards/:board_id/cards/:card_id/remove', to: 'boards#remove_card'
 
