@@ -35,4 +35,13 @@
 
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){ 
+  $(document).foundation(); 
+
+  $('#searchtext').keyup(function() {
+    alert('Handler for .keyup() called.');
+  });
+
+
+
+});
