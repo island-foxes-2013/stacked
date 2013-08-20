@@ -35,13 +35,23 @@
 
 //= require_tree .
 
+function lookup(searchtext) {
+   if(searchtext.length == 0) {
+      $('#suggestions').fadeOut(); // Hide the suggestions box
+   } else {
+      $.post("search/global", {q: ""+searchtext+""}, function(data) { // Do an AJAX call
+         $('#suggestions').fadeIn(); // Show the suggestions box
+         $('#suggestions').html(data); // Fill the suggestions box
+      });
+   }
+}
+
 $(function(){ 
   $(document).foundation(); 
 
   $('#searchtext').keyup(function() {
-    alert('Handler for .keyup() called.');
+    console.log(this.value);
+    lookup(this.value);
   });
-
-
 
 });
