@@ -29,6 +29,11 @@
             %li.divider
             -if signed_in?
               %li.has-dropdown
+                %span#settings-link.glyph.general a
+                %ul.dropdown
+                  %li= link_to "My Boards", :boards
+                  %li= link_to "Log Out", session_url(current_user), method: :delete
+              %li.has-dropdown
                 - img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{current_user.username}.jpg"
                 = image_tag(img_url)
                 %ul.dropdown

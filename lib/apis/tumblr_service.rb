@@ -9,7 +9,6 @@ class TumblrService
     if @response
       tumbls = []
       @response['response']['posts'].each_with_index do |tumbl,i|
-        ap tumbl
         tumbls[i] = {}
         tumbls[i][:provider] 	  = 'tumblr'
         tumbls[i][:url]         = tumbl['post_url']
@@ -37,7 +36,6 @@ class TumblrService
         else
         end
       end
-      ap tumbls
       tumbls
     else
       []
