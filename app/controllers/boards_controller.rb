@@ -2,26 +2,6 @@ class BoardsController < ApplicationController
 
 	def index
 		@boards = Board.order('created_at DESC').limit(10)
-
-    # Default Search Results
-    @boards_results = []
-    @cards_name_results = []
-    @cards_twitter_results = []
-    @cards_instagram_results = []
-
-    # Ransack gem query
-    q = params[:q]
-
-    if q
-      cards_name_results = Card.search(name_cont: q).result
-      cards_twitter_results = Card.search(twitter_handle_cont: q).result
-      cards_instagram_results = Card.search(instagram_handle_cont: q).result
-
-      @cards_results = (cards_name_results + cards_twitter_results + cards_instagram_results).uniq
-      @boards_results = Board.search(name_cont: q).result 
-    end
-    
-    
 	end
 
   def show

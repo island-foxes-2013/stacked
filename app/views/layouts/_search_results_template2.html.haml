@@ -2,7 +2,7 @@
   - unless cards_results.nil? || cards_results.empty? 
     - cards_results.each do |card|
       %span.searchresult
-        - img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
+        - img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card[:twitter_handle]}.jpg"
         = image_tag(img_url)
         %span.searchheading= card[:name]
         %span= card[:twitter_handle]
