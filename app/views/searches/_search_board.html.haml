@@ -9,16 +9,16 @@
     .search-suggestions
       %p
         Results for <b>Boards</b>
-        - if @boards_name_results
-          - @boards_name_results.each do |board|
+        - if @boards_results
+          - @boards_results.each do |board|
             .result
               =link_to board.name, board_path(board)        
 
       %p
         Results for <b>Cards</b>
         / #container
-        -if @cards
-          - @cards.each do |card|
+        -if @cards_results
+          - @cards_results.each do |card|
             .card{ :id => "#{card.slug}"}
               .header
                 .result-img

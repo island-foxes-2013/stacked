@@ -19,8 +19,6 @@ class BoardsController < ApplicationController
 
       @cards_results = (cards_name_results + cards_twitter_results + cards_instagram_results).uniq
       @boards_results = Board.search(name_cont: q).result 
-      p @cards_results
-      p @boards_results
     end
     
     
