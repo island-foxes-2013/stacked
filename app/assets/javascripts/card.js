@@ -13,7 +13,7 @@ var InstaFormat = {
     var $post = $(".templates").find(".image-post");
     $post.find(".content").text(instagram.text);
     $post.find(".source").find("img").attr("src",'www.lol.com');
-    return $post;
+    return $post.html();
   }
 };
 
@@ -53,7 +53,7 @@ var LazyLoader = {
         else if (provider == 'instagram'){
           post = InstaFormat.new(xhr[i]);
         }
-
+        console.log(post);
         $(this).closest('.face.back').find('.news').append(post);
       }
 
