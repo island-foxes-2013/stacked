@@ -11,3 +11,5 @@ describe CardsController do
 	it "deletes the card" do 
 		expect{ delete :destroy, id: card }.to change(Card,:count).by(-1) 
 	end
+
+end
