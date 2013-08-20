@@ -256,11 +256,11 @@ $corner_radius: 2px;
 
 			.news {
 				-moz-column-count: 1;
-		    -moz-column-gap: 1em;
-		    -webkit-column-count: 1;
-    		-webkit-column-gap: 1em;
-    		column-count: 1;
-    		column-gap: 1em; 
+			    -moz-column-gap: 1em;
+			    -webkit-column-count: 1;
+	    		-webkit-column-gap: 1em;
+	    		column-count: 1;
+	    		column-gap: 1em; 
 				/*font-size: .85em;*/
 				height: $content-size;
 				overflow: hidden;
@@ -274,6 +274,13 @@ $corner_radius: 2px;
 				width: 100%;
 				text-align: center;
 				@include rounded-bottom-corners($corner_radius);
+				transition: height 1s;
+
+				&:hover{
+					height: 1.5em;
+					background-color: $light-blue;
+					color: white;
+				}
 			}
 		}
 	}
