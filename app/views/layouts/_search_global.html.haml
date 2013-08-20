@@ -1,9 +1,9 @@
 %li.has-form
   .row.collapse
     = form_tag('/search', method: 'get', id: 'searchform') do
-      .small-8.columns
+      .small-12.columns
         =text_field_tag :q, nil, placeholder: "Search..."
         #suggestions
           =render partial: 'layouts/search_results_template2', locals: {cards_results: cards_results, boards_results: boards_results}
-      .small-4.columns
-        =submit_tag "Search", :class => "button prefix"
+      / .small-4.columns
+      /   =submit_tag "Search", :class => "button prefix"
