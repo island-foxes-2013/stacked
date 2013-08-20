@@ -1,14 +1,17 @@
 %p#searchresults
   - unless cards_results.nil? || cards_results.empty? 
     - cards_results.each do |card|
-      %span.searchresult
-        - img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card[:twitter_handle]}.jpg"
-        = image_tag(img_url)
-        %span.searchheading= card[:name]
-        %span= card[:twitter_handle]
-        %span= card[:instagram_handle]
+      =link_to card_path(card) do
+        %span.searchresult
+          - img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card[:twitter_handle]}.jpg"
+          = image_tag(img_url)
+          %span.searchheading= card[:name]
+          %span= card[:twitter_handle]
+          %span= card[:instagram_handle]
   
   - unless boards_results.nil? || boards_results.empty?
     - boards_results.each do |board|
-      %span.searchheading= board[:name]
-      %span= board[:description]
+      =link_to board_path(board) do
+        %span.searchresult
+          %span.searchheading= board[:name]
+          %span= board[:description]

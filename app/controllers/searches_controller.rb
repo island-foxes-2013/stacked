@@ -9,7 +9,6 @@ class SearchesController < ApplicationController
     @cards_results = []
     @boards_results = []
 
-
     # if a user searches ... q is Ransack gem query specific
     q = params[:q]
     if q
