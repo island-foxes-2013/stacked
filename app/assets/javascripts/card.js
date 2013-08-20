@@ -126,6 +126,33 @@ var DragDrop = {
     });    
   },
 
+  // makeCardsDraggable: function() {
+  //   $(".card").find(".header").draggable({
+  //     helper    : function(e){
+
+  //       var $card = $(e.target);
+  //       var $draggedCard = $('.dragged-card').clone();
+
+  //       var imgUrl = $card.find('.mini-pic').attr('id').toString();
+  //       // console.log(minipicStyle)
+  //       var cardId = $card.closest('.card').attr("id");
+  //       var cardName = $card.find('.name').text();
+
+  //       $draggedCard.find('.name').text(cardName);
+  //       $draggedCard.find('.profile-pic').attr('src', imgUrl);
+  //       $draggedCard.attr("id", cardId);
+
+  //       console.log($draggedCard);
+  //       return $draggedCard[0];
+  //     },
+  //     // TODO-JW: figure out positioning
+  //     cursor    : 'move',
+  //     cursorAt  : { left : 5 },
+  //     appendTo  : 'body',
+  //     zIndex    : 999
+  //   });
+  // },
+
   makeCardsDraggable: function() {
     $(".card").find(".header").draggable({
       helper    : function(e){
@@ -133,7 +160,9 @@ var DragDrop = {
         var $card = $(e.target);
         var $dragBuddy = $('.dragged-card').clone();
 
-        var imgUrl = $card.find('.mini-pic').attr('id').toString();
+        // var imgUrl = $card.find('.mini-pic').attr('id').toString();
+        var twitter_handle = $card.find('.mini-pic').attr('id').toString();
+        var imgUrl = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/"+ twitter_handle + ".jpg";
         var cardId = $card.closest('.card').attr("id");
 
         $dragBuddy.find('.name').text($card.find('.name').text());
