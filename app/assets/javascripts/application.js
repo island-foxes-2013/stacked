@@ -40,7 +40,7 @@ function lookup(searchtext) {
       $('#suggestions').hide(); // Hide the suggestions box
    } 
    else {
-      $.post("search/global", {q: ''+searchtext+''}, function(data) { // Do an AJAX call
+      $.post("/search/global", {q: '' + searchtext + ''}, function(data) { // Do an AJAX call
          $('#suggestions').show(); // Show the suggestions box
          $('#suggestions').html(data); // Fill the suggestions box
       });
