@@ -39,4 +39,16 @@ function isotopeInteractions() {
 	  return false;
 	});
 
+	$('.face.back .footer').on('click', function(){
+		var $this = $(this);
+    $this.closest('.card-wrapper').toggleClass('large');
+    $container.isotope(
+    	{
+	      itemSelector  : '.card-wrapper',
+	      layoutMode    : 'masonry',
+	    	getSortData		:  sortData
+    	}
+    );
+  });
+
 }

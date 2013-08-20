@@ -53,10 +53,6 @@ class CardsController < ApplicationController
     if @card.instagram_handle[0]
       @card.instagram_id = instagram_id(@card.instagram_handle)
     end
-    p "*" * 100
-    p @card.save
-    p board_slug
-    p "*" * 100
     if @card.save
       if board_slug
         p "going to board_path"
@@ -103,6 +99,7 @@ class CardsController < ApplicationController
   #   end
   #   render json: posts
   # end
+
 
   def get_posts
     card = Card.find_by_slug(params[:id])

@@ -11,7 +11,7 @@ $card-trans: rgba($card, .7);
 
 $card-height: 20em; /*this*/
 $header-size: 2.5em; /*minus this*/
-$content-size: 20em; /*equals this*/
+$content-size: 17.2em; /*equals this*/
 $name-padding: 1em;
 $corner_radius: 2px;
 
@@ -63,6 +63,7 @@ $corner_radius: 2px;
 	border-left: solid rgba(0,0,0,.5) 2px;
 
 	.content {
+		display: inline-block;
 		margin-right: 2.2em;
 	}
 
@@ -80,17 +81,40 @@ $corner_radius: 2px;
 	}
 }
 
+.large {
+	width: 33em !important;
+	height: 41em !important;
+	margin: 0em 1em 1em 0em !important;
+	/*background-color: blue !important;*/
+
+	.flip{
+		width: 33em  !important;
+		height: 41em !important;
+		/*background-color: blue !important;*/
+	}
+
+	.news {
+		height: 38.3em !important;
+		-moz-column-count: 2 !important;
+    -webkit-column-count: 2 !important;
+		column-count: 2 !important;
+		overflow: scroll !important;
+	}
+}
+
 .flip {
 	-webkit-perspective: 800;
-	/*width: 32%;*/
-	width: 15em;
+	width: 16em;
 	height: $card-height;
 	height: $card-height;
 	display: none;
 	margin: 0.5em;
 	position: relative;
 	float: left;
-
+/*	transition: width 7s;
+	transition: height 7s;
+	transition: margin 7s;*/
+  
 
   .card.flipped {
   	-webkit-transform: rotatey(-180deg);
@@ -132,7 +156,6 @@ $corner_radius: 2px;
 		  .mega-pic {
 		  	width: 100%;
 		  	height: 100%;
-
 		  	border: solid $card-trans 2px;
 		  	@include rounded-corners($corner_radius);
 		  }
@@ -153,7 +176,6 @@ $corner_radius: 2px;
 		  .header {
 				background-color: lighten($card, 30);
 				height: $header-size;
-				/*@include shadow(0px, 2px, 8px);*/
 				margin-bottom: 2px;
 				
 				.mini-pic {
@@ -169,7 +191,6 @@ $corner_radius: 2px;
 					display:inline;
 					font-size: 1.4em;
 					margin-bottom: $name_padding; 
-					/*font-family: sans-serif;*/
 					position: relative;
 					float: left;
 					margin: 0.3em;
@@ -199,7 +220,6 @@ $corner_radius: 2px;
 
 					.updated-at-value {
 						display: none;
-						/*color: darken($card,50);*/
 					}
 				}
 
@@ -207,10 +227,15 @@ $corner_radius: 2px;
 			}
 
 			.news {
-				font-size: .85em;
-				color: black !important;
+				-moz-column-count: 1;
+		    -moz-column-gap: 1em;
+		    -webkit-column-count: 1;
+    		-webkit-column-gap: 1em;
+    		column-count: 1;
+    		column-gap: 1em; 
+				/*font-size: .85em;*/
 				height: $content-size;
-			  overflow: hidden;
+				overflow: hidden;
 			}
 
 			.footer {
@@ -220,7 +245,6 @@ $corner_radius: 2px;
 				bottom: 0;
 				width: 100%;
 				text-align: center;
-				/*@include shadow(2px, 0px, 8px);*/
 				@include rounded-bottom-corners($corner_radius);
 			}
 		}

@@ -155,6 +155,7 @@ var TimeParser = {
   },
 
   recentTimeParse: function(time){
+    console.log(time);
     var datetime = time.split("T");
     var date = datetime[0].split('-');
     var time = datetime[1].split('-')[0].split(':');
@@ -184,6 +185,15 @@ var TimeParser = {
   }
 
 }
+
+// function cardGrow(){
+//   $('.face.back .footer').on('click', function(){
+//     console.log('grroooow');
+//     $this = $(this);
+//     $this.closest('.card-wrapper').addClass('large');
+//     $('#container').isotope('updateSortData', $this);
+//   });
+// }
 
 
 $(document).ready(function() {
