@@ -37,21 +37,22 @@
 
 function lookup(searchtext) {
    if(searchtext.length == 0) {
-      $('#suggestions').fadeOut(); // Hide the suggestions box
-   } else {
-      $.post("search/global", {q: ""+searchtext+""}, function(data) { // Do an AJAX call
-         $('#suggestions').fadeIn(); // Show the suggestions box
+      $('#suggestions').hide(); // Hide the suggestions box
+   } 
+   else {
+      $.post("search/global", {q: ''+searchtext+''}, function(data) { // Do an AJAX call
+         $('#suggestions').show(); // Show the suggestions box
          $('#suggestions').html(data); // Fill the suggestions box
       });
-   }
+  }
 }
 
-$(function(){ 
+$(document).ready(function(){ 
   $(document).foundation(); 
 
-  $('#searchtext').keyup(function() {
-    console.log(this.value);
-    lookup(this.value);
+  $('#searchtext').on('keyup', function(){
+    console.log(this);
+    lookup( $(this).val() );
   });
 
 });
