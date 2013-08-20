@@ -38,21 +38,24 @@ var LazyLoader = {
   init: function() {
     var self = this;
 
-    $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
+    $('.get-posts').on("ajax:success", function(event, xhr, status, error){
       console.log(xhr)
       htmlString = ''
-      var updatedTime = TimeParser.recentTimeParse(xhr[0].created);
+      
+      var updatedTime = xhr[0].created;
       for (i in xhr) {
         $(this).closest('.face.back').find('.news').append(TweetFormat.new(xhr[i]));
       }
+
       $cardBack = $(this).closest('.face.back');
       $cardBack.find('.updated-at-value').html(updatedTime);
       $cardBack.find('.last').html(TimeParser.writtenTime(updatedTime));
+
       $(this).closest('.card').addClass('flipped');
       self.handleExternalLinks();
     });
 
-    $('.update-twitter').on("ajax:error", function(event, xhr, status, error){
+    $('.get-posts').on("ajax:error", function(event, xhr, status, error){
       console.log('errrrrrrorr')
       $(this).closest('.card').addClass('flipped');
       self.handleExternalLinks();
@@ -77,7 +80,7 @@ var LazyLoader = {
   },
 
   load: function() {
-    $('.update-twitter').click();
+    $('.get-posts').click();
   }
 };
 
@@ -154,14 +157,14 @@ var TimeParser = {
     return (String(Math.floor(seconds))+labels[i-1])
   },
 
-  recentTimeParse: function(time){
-    console.log(time);
-    var datetime = time.split("T");
-    var date = datetime[0].split('-');
-    var time = datetime[1].split('-')[0].split(':');
-    objectDate = Math.floor(new Date(date[0],date[1]-1,date[2],time[0],time[1],time[2])/1000);
-    return objectDate;
-  },
+  // recentTimeParse: function(time){
+  //   console.log(time);
+  //   var datetime = time.split("T");
+  //   var date = datetime[0].split('-');
+  //   var time = datetime[1].split('-')[0].split(':');
+  //   objectDate = Math.floor(new Date(date[0],date[1]-1,date[2],time[0],time[1],time[2])/1000);
+  //   return objectDate;
+  // },
 
   writtenTime: function(epoch){
     var months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'];
