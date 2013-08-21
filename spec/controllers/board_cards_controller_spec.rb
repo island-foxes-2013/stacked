@@ -21,14 +21,16 @@ describe BoardCardsController do
 	end
 
 	before do
+		card
 		board.cards << card
-		ap board.cards
+		# ap board.cards
 	end
 		
 	describe "#destroy" do
 		it "board card relationship should be destroy" do
+			# ap params
 			expect {
-				delete :destroy, card_id: card.id, board_id: board.id 
+				delete :destroy, card: card, board: board 
 			}.to change(BoardCard,:count).by(-1) 
 		end
 	end

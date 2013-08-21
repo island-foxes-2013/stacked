@@ -14,7 +14,7 @@
           .right-header
             %span{class: 'delete'}
               - if board
-                = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
+                = link_to 'X', board_card_path(card, board), {remote: true, method: 'delete', class: 'delete'}
             .updates
               = link_to 'U', get_posts_card_path(card), {remote: true, class: 'get-posts'} 
               %span{class: 'last'}
