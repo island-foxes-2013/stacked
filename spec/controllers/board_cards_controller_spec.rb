@@ -28,10 +28,10 @@ describe BoardCardsController do
 		
 	describe "#destroy" do
 		it "board card relationship should be destroy" do
-			# ap params
+			pending "this is so wrong.  passing test but doesn't hit route."
 			expect {
-				delete :destroy, card: card, board: board 
-			}.to change(BoardCard,:count).by(-1) 
+				delete :destroy, card_id: card.id, board_id: board.id
+			}.to raise_error
 		end
 	end
 
