@@ -28,7 +28,7 @@ var TextFormat = {
 var PictureFormat = {
   new: function(postData) {
     var $post = $(".templates").find(".image-post");
-    $post.find(".content").text(postData.text);
+    $post.find(".content").html(postData.text);
 
     var $picture = $post.find(".small")
     $picture.find('img').attr("src", postData.small_image);
