@@ -28,10 +28,10 @@ var TextFormat = {
 var PictureFormat = {
   new: function(postData) {
     var $post = $(".templates").find(".image-post");
-    $post.find(".content").text(postData.text);
+    $post.find(".content").html(postData.text);
 
     var $picture = $post.find(".small")
-    $picture.attr("src", postData.small_image);
+    $picture.find('img').attr("src", postData.small_image);
     $post.find('a').attr('href', postData.standard_image);
 
     return formatIcon($post, postData);
@@ -237,11 +237,11 @@ $(document).ready(function() {
   DragDrop.init();
   AddACard.init();
 
-  setInterval(function(){yea()},59000);
+  // setInterval(function(){yea()},59000);
 
-  function yea(){
-    LazyLoader.load();
-  }
+  // function yea(){
+  //   LazyLoader.load();
+  // }
 
   LazyLoader.load();
 
