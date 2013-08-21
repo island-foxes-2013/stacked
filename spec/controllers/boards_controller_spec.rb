@@ -47,14 +47,15 @@ describe BoardsController do
 	end
 
 	it "fails to update with improper data" do 
-		board.name = ""
-		post :update, id: board.id
-		expect(response.status).to eq(302)
+		pending
+		fake = Board.stub(:id) { 1 }
+		post :update, id: fake.id
+		expect(response.status).to eq(404)
 	end
 
 	it "responds 200 from destroy" do 
-		pending 'broken'
-		delete :destory#, id: board.id
+		pending
+		delete :destory, board: FactoryGirl.attributes_for(:board)
 		expect(response.status).to eq(200)
 	end
 

@@ -28,8 +28,7 @@ class BoardsController < ApplicationController
   end
 
   def update
-    @board = Board.find(params[:id])
-      debugger
+    @board = Board.find(params[:id])  
     if @board.update_attributes(params[:board])
       redirect_to @board, :notice  => "Successfully updated board."
     else
@@ -38,6 +37,7 @@ class BoardsController < ApplicationController
   end
 
   def destroy
+    debugger
     @board = Board.find(params[:id])
     @board.destroy
     redirect_to boards_url, :notice => "Successfully destroyed board."
