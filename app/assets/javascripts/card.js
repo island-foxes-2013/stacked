@@ -60,12 +60,12 @@ var LazyLoader = {
     var self = this;
 
     $('.get-posts').on("ajax:success", function(event, xhr, status, error){
-      console.log('get-posts success');
+      // console.log('get-posts success');
+      $news = $(this).closest('.face.back').find('.news')
       if (xhr) {
         htmlString = ''
         xhr = $.parseJSON(xhr.post_json);
         var updatedTime = xhr[0].created;
-        $news = $(this).closest('.face.back').find('.news')
         $news.empty();
         for (i in xhr) {
           provider = xhr[i].provider;
@@ -88,6 +88,10 @@ var LazyLoader = {
         $(this).closest('.card').addClass('flipped')
         self.handleExternalLinks();
       }
+      // else {
+      //   $news.append('No Posts');
+      //   $(this).closest('.card').addClass('flipped')
+      // }
     });
 
     $('.get-posts').on("ajax:error", function(event, xhr, status, error){
@@ -114,7 +118,7 @@ var LazyLoader = {
     });
   },
 
-  load: function() {
+  load: function(giveUp) {
     $('.get-posts').click();
   }
 };
@@ -218,7 +222,6 @@ var TimeParser = {
       }
     }
   }
-
 }
 
 // function cardGrow(){
@@ -230,7 +233,7 @@ var TimeParser = {
 //   });
 // }
 function refresh(){
-  console.log('refresh');
+  // console.log('refresh');
   LazyLoader.load();
 }
 
@@ -238,9 +241,7 @@ $(document).ready(function() {
   LazyLoader.init();
   DragDrop.init();
   AddACard.init();
-  LazyLoader.load();
-  setTimeout(refresh, 5000);
-
-  setInterval(refresh,30000);
+  refresh();
+  setInterval(refresh,3000);
 
 });

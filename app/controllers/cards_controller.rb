@@ -102,7 +102,10 @@ class CardsController < ApplicationController
 
   def get_posts
     card = Card.find_by_slug(params[:id])
-    ServiceManagerWorker.perform_async(card.id)
+    posts = Post.find_by_card_id(card.id)
+    if !posts || posts.updated_epoch < (Time.now - 1.minute).to_i
+      ServiceManagerWorker.perform_async(card.id)
+    end
 
     # ServiceManagerWorker.perform_async(card.id)
     ap "*" * 100
