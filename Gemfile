@@ -25,6 +25,9 @@ gem 'twitter'
 gem 'twitter-text'
 gem 'instagram'
 
+# For printing
+gem 'awesome_print'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -42,7 +45,6 @@ end
 
 group :development, :test do
   gem 'annotate'
-  gem 'awesome_print'
   gem 'meta_request'
   gem 'rspec-rails'
   gem 'capybara'
