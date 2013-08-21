@@ -26,7 +26,18 @@ class User < ActiveRecord::Base
   has_one :primary_card, class_name: "Card"
 
   def self.create_from_hash!(hash)
-  	create(name: hash['info']['name'], username: hash['info']['nickname'])
+  	create(name: hash['info']['name'])
+  end
+
+  def avatar_url
+    
+    auth = authorizations.find_by_provider('twitter')
+    if auth
+      "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{auth.nickname}.jpg"
+    else
+      # TODO: use asset(s)_path instead. Maybe take asset_path as an argument if you don't have access to it?
+      'default_user.png'
+    end
   end
 
   def create_primary_card

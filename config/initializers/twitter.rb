@@ -5,12 +5,14 @@ Twitter.configure do |config|
   # config.consumer_secret = ENV['TWITTER_SECRET']
 
   # HARD CODING THESE FOR NOW WORKS
-  config.consumer_key = 'SzMmwvT5DN8PRCRUirOMgA'
-  config.consumer_secret = 'O5aJFY2CYMQFVZIH3W2Pe1Qwj3zQsOzNCxFskBKaNTs'
+  # config.consumer_key = 'SzMmwvT5DN8PRCRUirOMgA'
+  # config.consumer_secret = 'O5aJFY2CYMQFVZIH3W2Pe1Qwj3zQsOzNCxFskBKaNTs'
+  config.consumer_key = ENV['TWITTER_KEY']
+  config.consumer_secret = ENV['TWITTER_SECRET']
 end
 
 # Then, for each user's access token/secret pair, instantiate a Twitter::Client:
 eric  = Twitter::Client.new(
-  oauth_token: '17861518-NUVAfsalQsBujIPPoGq4kgZM3SPwdJj1OAwXDGC7i',
-  oauth_token_secret: 'Vg7bMv9bJuwhfgcFCa7LgNpC8Sj8YUI3nrfIM5kFJM'
+  oauth_token: ENV['TWITTER_OAUTH_TOKEN'],
+  oauth_token_secret: ENV['TWITTER_OAUTH_TOKEN_SECRET']
 )
