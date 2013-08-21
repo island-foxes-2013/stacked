@@ -34,7 +34,7 @@
               /     %li= link_to "My Boards", :boards
               /     %li= link_to "Log Out", session_url(current_user), method: :delete
               %li.has-dropdown
-                = image_tag(current_user.avatar_url)
+                = image_tag(current_user.avatar_url, size: "45x45")
                 %ul.dropdown
                   %li= link_to "My Account", edit_user_path(current_user)
                   %li= link_to "Log Out", session_url(current_user), method: :delete
