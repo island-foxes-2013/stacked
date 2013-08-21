@@ -31,12 +31,9 @@ describe BoardsController do
 		expect(response.status).to eq(200)
 	end
 
-	it "redirects to @board on successful create and responds 200 from create" do 
-		new_board = Board.new(name: "Test")
-		ap new_board
-		ap current_user
-		post :create, id: new_board.id
-		expect(response.status).to eq(200)
+	it "responds 302 (redirect to @board) on valid from create" do 
+		post :create, board: FactoryGirl.attributes_for(:board)
+		expect(response.status).to eq(302)
 	end
 
 	it "responds 200 from edit" do 
@@ -50,7 +47,7 @@ describe BoardsController do
 	end
 
 	it "fails to update with improper data" do 
-		board.stub(:name) { ""}
+		board.name = ""
 		post :update, id: board.id
 		expect(response.status).to eq(302)
 	end

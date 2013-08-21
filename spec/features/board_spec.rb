@@ -5,7 +5,7 @@ require 'spec_helper'
 
  			let(:board) { FactoryGirl.create(:board) }
 			let(:user) { FactoryGirl.create(:user) }
-			let(:auth_hash) { { 'provider'=> "Twitter", 'uid'=> '1234567890', 'info'=>{ 'name'=>"Eric Chen" } } }
+			# let(:auth_hash) { { 'provider'=> "Twitter", 'uid'=> '1234567890', 'info'=>{ 'name'=>"Eric Chen" } } }
 
 			before :each do 
 				board
@@ -14,10 +14,10 @@ require 'spec_helper'
  
 		describe "creating one board" do
 
-			before {
-				ApplicationController.stub(:current_user).and_return(user)
-		#	request.env["rack.session"] = { user_id: user.id } 	
-			}
+		# 	before {
+		# 		ApplicationController.stub(:current_user).and_return(user)
+		# #	request.env["rack.session"] = { user_id: user.id } 	
+		# 	}
 				
 			before [:each] do
 				visit root_path
@@ -40,6 +40,7 @@ require 'spec_helper'
 			end
 
 			it "creates a board", :js => true do 	
+				pending 'still working on this'
 				# ApplicationController.stub(:current_user).and_return(user)
 				# ApplicationController.stub(:sign_in?).and_return(true)
 				# Authorization.stub(:sign_in?).and_return(true)

@@ -29,6 +29,7 @@ class BoardsController < ApplicationController
 
   def update
     @board = Board.find(params[:id])
+      debugger
     if @board.update_attributes(params[:board])
       redirect_to @board, :notice  => "Successfully updated board."
     else
