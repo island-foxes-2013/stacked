@@ -25,6 +25,9 @@ class User < ActiveRecord::Base
   has_many :cards
   has_one :primary_card, class_name: "Card"
 
+  has_many :board_users
+  has_many :boards_following, :through => :board_users, :source => :board
+
   def self.create_from_hash!(hash)
   	create(name: hash['info']['name'])
   end
@@ -57,6 +60,13 @@ class User < ActiveRecord::Base
 
     prim_card.save
     self.primary_card = prim_card
+
+  def follows_board?(board)
+    board_users.where(board_id: board).any?
+  end
+
+  def board_user_for(board)
+    board_users.find_by_board_id(board.id)
 
   end
 end

@@ -51,7 +51,7 @@ $corner_radius: 2px;
 	border-top-right-radius: $radius;
 }
 
-.insta {
+.pici {
 	/*border-left: solid rgba(0,0,0,.5) 2px;*/
 	padding: .05em;
 	width: 90%;
@@ -75,57 +75,60 @@ $corner_radius: 2px;
 }
 
 
-.tweet {
-	width: 100%;
+.texti {
+	width: 90%;
 	color: rgba(darken($card, 70), .6);
-	margin: .2em .2em .5em .8em;
-	padding-left: .3em;
+	margin: .2em 0em 0em 0em;
+	padding: .2em .3em;
 	text-align: left;
 	display: inline-block;
-	/*float: left;
-	position: relative;*/
-	border-left: solid rgba(0,0,0,.5) 2px;
-	/*overflow: scroll;*/
+	background-color: rgba(255,255,255,1);
+	overflow: scroll;
 
 	.content {
-		/*display: inline-block;*/
 		margin-right: 2.2em;
 	}
 
-	/*a {
+	.link-icon {
+		display: inline-block;
+		float: right;
+		opacity: .3;
+		position: relative;
+		top: 0;
+		right: 1em;
 
-		img {
-			display: inline-block;
-			float: right;
-			opacity: .3;
-			position: relative;
-			top: 0;
-			right: 1em;
-
-			&:hover {
-				opacity: .7;
-			}
+		&:hover {
+			opacity: .7;
 		}
-	}*/
+		
+	}
 }
 
 .large {
-	width: 33em !important;
-	height: 41em !important;
+	/*width: 33em !important;*/
+	height: 30.5em !important;
 	margin: 0em 1em 1em 0em !important;
-	/*background-color: blue !important;*/
+
+	/*.texti {
+		width: 45% !important;
+		display: inline-block !important;
+		float: left !important;
+	}*/
+
+	/*.pici {
+		width: 45% !important;
+		display: inline-block !important;
+		float: left !important;
+		margin-left: 2%;
+	}*/
 
 	.flip{
-		width: 33em  !important;
-		height: 41em !important;
-		/*background-color: blue !important;*/
+		/*width: 33em  !important;*/
+		height: 30.5em !important;
 	}
 
 	.news {
-		height: 38.3em !important;
-		-moz-column-count: 2 !important;
-    -webkit-column-count: 2 !important;
-		column-count: 2 !important;
+		height: 27.6em !important;
 		overflow: scroll !important;
 	}
 }
@@ -133,7 +136,6 @@ $corner_radius: 2px;
 .flip {
 	-webkit-perspective: 800;
 	width: 16em;
-	height: $card-height;
 	height: $card-height;
 	display: none;
 	margin: 0.5em;
@@ -167,7 +169,6 @@ $corner_radius: 2px;
 		  z-index: 1;
 		  background-color: darken($card, 8);
 		  color: white;
-		  cursor: pointer;
 		  height: 100%;
 		  border: solid $card-trans 2px;
 		  @include rounded-corners($corner_radius);
@@ -179,6 +180,7 @@ $corner_radius: 2px;
 		  	color: $blue;
 		  	margin:0;
 		  	padding:0;
+		  	cursor: pointer;
 		  }
 
 		  .mega-pic {
@@ -194,8 +196,7 @@ $corner_radius: 2px;
 		  -webkit-transform: rotatey(-180deg);
 		  background: blue;
 		  background: white;
-		  cursor: pointer;
-		  background-color: $card-trans;
+		  background-color: #8f1723;
 		  position: relative;
 		  @include rounded-corners($corner_radius);
 		  @include shadow(0px,2px,2px);
@@ -255,18 +256,12 @@ $corner_radius: 2px;
 			}
 
 			.news {
-				-moz-column-count: 1;
-		    -moz-column-gap: 1em;
-		    -webkit-column-count: 1;
-    		-webkit-column-gap: 1em;
-    		column-count: 1;
-    		column-gap: 1em; 
-				/*font-size: .85em;*/
 				height: $content-size;
 				overflow: hidden;
 			}
 
 			.footer {
+				cursor: pointer;
 				background-color: white;
 				height: .9em;
 				position: absolute;
@@ -274,6 +269,15 @@ $corner_radius: 2px;
 				width: 100%;
 				text-align: center;
 				@include rounded-bottom-corners($corner_radius);
+				transition: height 1s;
+				opacity: .9;
+
+				&:hover{
+					height: 1.5em;
+					background-color: $light-blue;
+					color: white;
+					opacity: .5;
+				}
 			}
 		}
 	}

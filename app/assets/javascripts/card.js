@@ -68,11 +68,10 @@ var LazyLoader = {
         provider = xhr[i].provider;
         console.log(provider);
         var $post = '';
-        if (content = 'text') {
+        if (xhr[i].content == 'text') {
           $post = TextFormat.new(xhr[i]);
         }
         else {
-          console.log('BANNNNNAAAANNNNAAASSSSS');
           $post = PictureFormat.new(xhr[i]);
         }
         $(this).closest('.face.back').find('.news').append($post.html());

@@ -12,7 +12,10 @@ Twitter.configure do |config|
 end
 
 # Then, for each user's access token/secret pair, instantiate a Twitter::Client:
+<<<<<<< HEAD
 eric  = Twitter::Client.new(
   oauth_token: ENV['TWITTER_OAUTH_TOKEN'],
   oauth_token_secret: ENV['TWITTER_OAUTH_TOKEN_SECRET']
 )
+=======
+>>>>>>> master
