@@ -15,10 +15,10 @@
 #
 
 class Card < ActiveRecord::Base
-	extend FriendlyId	
+  extend FriendlyId 
   include CardHelper
 
-	friendly_id :name, :use => :slugged
+  friendly_id :name, :use => :slugged
 
   attr_accessible :name, :twitter_handle, :instagram_handle, :tumblr_handle
 
@@ -28,13 +28,16 @@ class Card < ActiveRecord::Base
   belongs_to :user
   has_many :board_cards
   has_many :boards, through: :board_cards
+  has_many :posts
 
   before_save :set_instagram_id
 
   def set_instagram_id
-  	return "" if instagram_handle.to_s == ""
-  	self.instagram_id = get_instagram_id(instagram_handle)
+    return "" if instagram_handle.to_s == ""
+    self.instagram_id = get_instagram_id(instagram_handle)
   end
+
+  # def 
 
 end
 
