@@ -22,14 +22,4 @@ class Board < ActiveRecord::Base
   has_many :board_cards
   has_many :cards, through: :board_cards
 
-  # def search
-  #   # @search = Board.search(params[:q])
-  #   # @search_suggestions = @search.result(distinct:true)
-  #   q = params[:q]
-  #   @boards_searchresults = Board.search(name_cont: q).result
-  #   @cards_searchresults = Card.search(name_cont: q).result
-  #   # @cards = Card.search(twitter_handle_cont: q).result
-  #   @users_searchresults = User.search(name_cont: q).result
-  # end
-
 end

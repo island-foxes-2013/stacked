@@ -1,6 +1,6 @@
 %h1 Edit Board
 
-=render 'form'
+=render partial: 'board_form', locals: { board: @board }
 
 %p
   =link_to "Show", @board

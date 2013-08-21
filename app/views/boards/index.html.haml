@@ -1,5 +1,5 @@
 %h1 Boards
-%table
+%table.boards-all
   %tr
     %th Name
     %th Description
@@ -7,12 +7,10 @@
 
   - for board in @boards
     %tr
-      %td= board.name 
+      %td= link_to board.name, board
       %i 
         %td= board.description 
       %td= board.user.name if board.user
-      %td= link_to "Show", board 
-      %td= link_to "Edit", edit_board_path(board) 
       %td= link_to "Destroy", board, confirm: 'Are you sure?', method: :delete
       
 %p= link_to "New Board", new_board_path
