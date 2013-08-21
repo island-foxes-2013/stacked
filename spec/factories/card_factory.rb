@@ -12,7 +12,6 @@
 #  user_id          :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  is_primary       :boolean
 #
 
 FactoryGirl.define do 

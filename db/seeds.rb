@@ -1,5 +1,5 @@
 # Ravens Board
-ravens = Board.create(name: 'Super Bowl Champion Ravens', description: 'Ravens')
+ravens = Board.create(name: 'Super Bowl Ravens', description: 'Ravens')
 
 ravens_array = []
 ravens_array << Card.create(name: 'Ravens', twitter_handle: 'ravens', instagram_handle: 'ravens')
