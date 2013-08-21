@@ -60,6 +60,7 @@ var LazyLoader = {
     var self = this;
 
     $('.get-posts').on("ajax:success", function(event, xhr, status, error){
+      xhr = $.parseJSON(xhr.posts);
       console.log(xhr)
       htmlString = ''
       
