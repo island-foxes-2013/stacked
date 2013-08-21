@@ -154,7 +154,7 @@ var DragDrop = {
   },
 
   makeDecksDroppable: function() {
-    $(".board-link").droppable({
+    $(".board-dropzone").droppable({
       drop        : this.addCardToDeck,
       hoverClass  : 'drop-hover'
     });
@@ -163,7 +163,7 @@ var DragDrop = {
   addCardToDeck: function(event, ui) {
     var card = ui.draggable.closest('.card');
     console.log(card);
-    var board = $(this);
+    var board = $(this).find('.board-link');
     console.log( 'The square with ID "' + card.attr('id') + '" was dropped onto ' + board.attr('id'));
     $.ajax({
       url: '/board_cards',

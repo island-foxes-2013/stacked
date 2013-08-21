@@ -51,8 +51,9 @@
           %ul.side-nav.board-list
             %li.divider
             -Board.order('created_at DESC').limit(10).each do |board|
-              %li.board-link{ :id => "#{board.slug}" }
-                =link_to "#{board.name}", board_url(board)
+              .board-dropzone
+                %li.board-link{ :id => "#{board.slug}" }
+                  =link_to "#{board.name}", board_url(board)
               %li.divider
           %h4 Followed Boards
           - if current_user
