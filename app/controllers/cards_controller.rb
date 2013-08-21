@@ -103,6 +103,11 @@ class CardsController < ApplicationController
   def get_posts
     card = Card.find_by_slug(params[:id])
     ServiceManagerWorker.perform_async(card.id)
+
+    # ServiceManagerWorker.perform_async(card.id)
+    ap "*" * 100
+    ap card.posts.first
+    render json: card.posts.first
     
     # render json: ServiceManager.get_posts(card)
   end
