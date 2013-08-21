@@ -32,7 +32,10 @@ describe BoardsController do
 	end
 
 	it "redirects to @board on successful create and responds 200 from create" do 
-		post :create, id: board.id
+		new_board = Board.new(name: "Test")
+		ap new_board
+		ap current_user
+		post :create, id: new_board.id
 		expect(response.status).to eq(200)
 	end
 
