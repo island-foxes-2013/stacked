@@ -54,7 +54,7 @@ describe BoardsController do
 	end
 
 	it "responds 200 from destroy" do 
-		pending
+		pending 'this is weird'
 		delete :destory, board: FactoryGirl.attributes_for(:board)
 		expect(response.status).to eq(200)
 	end

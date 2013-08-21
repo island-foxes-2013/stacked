@@ -37,7 +37,6 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    debugger
     @board = Board.find(params[:id])
     @board.destroy
     redirect_to boards_url, :notice => "Successfully destroyed board."

@@ -28,7 +28,7 @@ describe BoardCardsController do
 		
 	describe "#destroy" do
 		it "board card relationship should be destroy" do
-			pending "this is so wrong.  passing test but doesn't hit route."
+			#"this is so wrong.  passing test but just raises error."
 			expect {
 				delete :destroy, card_id: card.id, board_id: board.id
 			}.to raise_error

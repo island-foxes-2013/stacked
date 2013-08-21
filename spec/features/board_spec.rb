@@ -39,7 +39,7 @@ require 'spec_helper'
 				page.should have_content('Description')
 			end
 
-			it "creates a board", :js => true do 	
+			it "creates a board" do 	
 				pending 'still working on this'
 				# ApplicationController.stub(:current_user).and_return(user)
 				# ApplicationController.stub(:sign_in?).and_return(true)
