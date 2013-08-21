@@ -60,30 +60,30 @@ var LazyLoader = {
     var self = this;
 
     $('.get-posts').on("ajax:success", function(event, xhr, status, error){
-      xhr = $.parseJSON(xhr.posts);
+      // xhr = $.parseJSON(xhr.posts);
       console.log(xhr)
-      htmlString = ''
+      // htmlString = ''
       
-      var updatedTime = xhr[0].created;
-      for (i in xhr) {
-        provider = xhr[i].provider;
-        console.log(provider);
-        var $post = '';
-        if (xhr[i].content == 'text') {
-          $post = TextFormat.new(xhr[i]);
-        }
-        else {
-          $post = PictureFormat.new(xhr[i]);
-        }
-        $(this).closest('.face.back').find('.news').append($post.html());
-      }
+      // var updatedTime = xhr[0].created;
+      // for (i in xhr) {
+      //   provider = xhr[i].provider;
+      //   console.log(provider);
+      //   var $post = '';
+      //   if (xhr[i].content == 'text') {
+      //     $post = TextFormat.new(xhr[i]);
+      //   }
+      //   else {
+      //     $post = PictureFormat.new(xhr[i]);
+      //   }
+      //   $(this).closest('.face.back').find('.news').append($post.html());
+      // }
 
-      $cardBack = $(this).closest('.face.back');
-      $cardBack.find('.updated-at-value').html(updatedTime);
-      $cardBack.find('.last').html(TimeParser.writtenTime(updatedTime));
+      // $cardBack = $(this).closest('.face.back');
+      // $cardBack.find('.updated-at-value').html(updatedTime);
+      // $cardBack.find('.last').html(TimeParser.writtenTime(updatedTime));
 
-      $(this).closest('.card').addClass('flipped');
-      self.handleExternalLinks();
+      // $(this).closest('.card').addClass('flipped');
+      // self.handleExternalLinks();
     });
 
     $('.get-posts').on("ajax:error", function(event, xhr, status, error){

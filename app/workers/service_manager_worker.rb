@@ -9,11 +9,11 @@ class ServiceManagerWorker
 			posts.destroy if posts
 			# card = Card.find(card_id)
 			posts = ServiceManager.get_posts(card)
-			ap "HELLO"
+			# ap "HELLO"
 			ap posts
-			Post.create({updated_epoch: posts[0][:created],
-								   post_json:     posts,
-								   card: 				  card})
+			# Post.create({updated_epoch: posts[0][:created],
+			# 					   post_json:     posts,
+			# 					   card: 				  card})
 		end
 	end
 end

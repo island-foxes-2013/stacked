@@ -6,7 +6,6 @@ class InstagramService
     @response = instagram.user_recent_media(card.instagram_id)
     instagrams = []
     if @response
-      ap @response
       @response.each_with_index do |instagram,i|
         instagrams[i] = {}
         instagrams[i][:provider]        = 'instagram'
@@ -20,7 +19,6 @@ class InstagramService
         instagrams[i][:url]             = instagram['link']
         instagrams[i][:user_id]         = ""       
       end
-      ap instagrams
       instagrams
     else
       []
