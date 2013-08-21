@@ -51,8 +51,8 @@ class CardsController < ApplicationController
       @card.boards << board
     end
     @card.user = current_user
-
     if @card.save
+      ServiceManagerWorker.perform_async(@card.id)
       if board_slug
         p "going to board_path"
         redirect_to board_path(board)
@@ -102,7 +102,10 @@ class CardsController < ApplicationController
 
   def get_posts
     card = Card.find_by_slug(params[:id])
-    ServiceManagerWorker.perform_async(card.id)
+    posts = Post.find_by_card_id(card.id)
+    if !posts || posts.updated_epoch < (Time.now - 1.minute).to_i
+      ServiceManagerWorker.perform_async(card.id)
+    end
 
     # ServiceManagerWorker.perform_async(card.id)
     ap "*" * 100
