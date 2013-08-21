@@ -71,7 +71,7 @@ end
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
-# gem 'debugger'
+gem 'debugger'
 
 gem 'ransack'
 

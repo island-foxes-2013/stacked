@@ -12,8 +12,9 @@ class ServiceManagerWorker
 			# ap "HELLO"
 			# ap posts
 			Post.create({updated_epoch: posts[:updated_epoch],
-								   post_json:     posts,
+								   post_json:     posts[:posts],
 								   card: 				  card})
 		end
+		[].to_json
 	end
 end

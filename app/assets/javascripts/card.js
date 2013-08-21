@@ -60,30 +60,32 @@ var LazyLoader = {
     var self = this;
 
     $('.get-posts').on("ajax:success", function(event, xhr, status, error){
-      // xhr = $.parseJSON(xhr.posts);
-      console.log($.parseJSON(xhr.post_json));
-      // htmlString = ''
-      
-      // var updatedTime = xhr[0].created;
-      // for (i in xhr) {
-      //   provider = xhr[i].provider;
-      //   console.log(provider);
-      //   var $post = '';
-      //   if (xhr[i].content == 'text') {
-      //     $post = TextFormat.new(xhr[i]);
-      //   }
-      //   else {
-      //     $post = PictureFormat.new(xhr[i]);
-      //   }
-      //   $(this).closest('.face.back').find('.news').append($post.html());
-      // }
+      if (xhr) {
 
-      // $cardBack = $(this).closest('.face.back');
-      // $cardBack.find('.updated-at-value').html(updatedTime);
-      // $cardBack.find('.last').html(TimeParser.writtenTime(updatedTime));
+        // console.log(xhr.post_json);
+        htmlString = ''
+        xhr = $.parseJSON(xhr.post_json);
+        var updatedTime = xhr[0].created;
+        for (i in xhr) {
+          provider = xhr[i].provider;
+          console.log(provider);
+          var $post = '';
+          if (xhr[i].content == 'text') {
+            $post = TextFormat.new(xhr[i]);
+          }
+          else {
+            $post = PictureFormat.new(xhr[i]);
+          }
+          $(this).closest('.face.back').find('.news').append($post.html());
+        }
 
-      // $(this).closest('.card').addClass('flipped');
-      // self.handleExternalLinks();
+        $cardBack = $(this).closest('.face.back');
+        $cardBack.find('.updated-at-value').html(updatedTime);
+        $cardBack.find('.last').html(TimeParser.writtenTime(updatedTime));
+
+        $(this).closest('.card').addClass('flipped');
+        self.handleExternalLinks();
+      }
     });
 
     $('.get-posts').on("ajax:error", function(event, xhr, status, error){
@@ -211,20 +213,17 @@ var TimeParser = {
 
 }
 
-// function cardGrow(){
-//   $('.face.back .footer').on('click', function(){
-//     console.log('grroooow');
-//     $this = $(this);
-//     $this.closest('.card-wrapper').addClass('large');
-//     $('#container').isotope('updateSortData', $this);
-//   });
-// }
+// var timer = $.timer(function() {
+//   console.log("hello!")
+// });
 
 
 $(document).ready(function() {
   LazyLoader.init();
   DragDrop.init();
   AddACard.init();
+
+  
 
   LazyLoader.load();
 
