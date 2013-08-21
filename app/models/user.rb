@@ -47,9 +47,6 @@ class User < ActiveRecord::Base
 
     prim_card = Card.new(name: name)
 
-    ap "*" * 100
-    ap self.authorizations
-
     twitter_auth = self.authorizations.find_by_provider('twitter')
     instagram_auth = self.authorizations.find_by_provider('instagram')
     tumblr_auth = self.authorizations.find_by_provider('tumblr')
@@ -60,6 +57,7 @@ class User < ActiveRecord::Base
 
     prim_card.save
     self.primary_card = prim_card
+  end
 
   def follows_board?(board)
     board_users.where(board_id: board).any?
@@ -67,6 +65,6 @@ class User < ActiveRecord::Base
 
   def board_user_for(board)
     board_users.find_by_board_id(board.id)
-
   end
+
 end

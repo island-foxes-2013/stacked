@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery
-  before_filter :print_params
+  # before_filter :print_params
 
   # def search_results
   #   @search_results = {type: 'Board'}

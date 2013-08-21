@@ -31,7 +31,6 @@ class Authorization < ActiveRecord::Base
       auth.nickname = hash['info']['nickname'] 
       auth.save
     else
-      ap "IN OTHER PROVIDER SET"
       auth.nickname = hash['nickname']
       auth.save
     end
