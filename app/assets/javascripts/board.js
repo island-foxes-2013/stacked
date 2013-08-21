@@ -10,17 +10,16 @@ $(document).ready(function(){
 		$('.updates').toggle();
 	});
 
-	$('.follow').on('ajax:success', function(){
-		console.log('follow');
-		$(this).hide();
-		$('.unfollow').fadeIn();
-	});
 
-	$('.unfollow').on('ajax:success', function(){
-		console.log('unfollow');
-		$(this).hide();
-		$('.follow').fadeIn();
-	});
+	var swapFollowLink = function(e, link) {
+		$(this).remove();
+		link = $(link).hide();
+		$('.board_actions').append(link);
+		link.fadeIn();
+	}
+
+	$('.board_actions').on('ajax:success', '.follow', swapFollowLink);
+	$('.board_actions').on('ajax:success', '.unfollow', swapFollowLink);
 
 	$('dd a').click(function() {
 		$link = $(this);

@@ -2,10 +2,14 @@ Stacked::Application.routes.draw do
 
   root to: 'boards#index'
 
-  resources :boards
+  resources :boards do
+    resources :board_users, only: [:create]
+  end
 
+  resources :board_users, only: [:destroy]
   resources :board_cards, only: [:create, :destroy]
-  resources :board_users, only: [:create, :destroy]
+
+  
 
   resources :cards, only: [:index, :new, :create, :show, :edit, :destroy, :update] do
     member do
@@ -15,11 +19,11 @@ Stacked::Application.routes.draw do
 
   resources :sessions, only: [:new, :destroy]
 
-  resources :users, only: [:update]
+  resources :users, only: [:edit, :update]
 
   match '/auth/:provider/callback', to: 'sessions#create'
 
-  mount Foundation::Icons::Rails::Engine => '/fi'
+  # mount JasmineRails::Engine => "/jasmine" if defined?(JasmineRails)
 
   # TODO SEARCH: 
   # match '/search', to: 'boards#index'

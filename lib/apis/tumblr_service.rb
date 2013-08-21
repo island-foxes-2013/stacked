@@ -5,7 +5,6 @@ class TumblrService
   def get_posts(card)
     return [] unless card.tumblr_handle
     @response =  HTTParty.get("http://api.tumblr.com/v2/blog/#{card.tumblr_handle}.tumblr.com/posts?api_key=e1eKLVbWlHhCyqKgswQUvfnorgQMXmBBcfDCIG9ofleUkvKoZI")
-    
     if @response
       tumbls = []
       @response['response']['posts'].each_with_index do |tumbl,i|
@@ -30,9 +29,9 @@ class TumblrService
         when "photo"
           tumbls[i][:content]   = 'image'
           tumbls[i][:text]      = tumbl['caption']
-          tumbls[i][:thumbnail] = tumbl['photos']['alt_sizes'][5]['url']
-          tumbls[i][:small_image] = tumbl['photos']['alt_sizes'][3]['url']
-          tumbls[i][:standard_image] = tumbl['photos']['alt_sizes'][1]['url']
+          tumbls[i][:thumbnail] = tumbl['photos'][0]['alt_sizes'][5]['url']
+          tumbls[i][:small_image] = tumbl['photos'][0]['alt_sizes'][3]['url']
+          tumbls[i][:standard_image] = tumbl['photos'][0]['alt_sizes'][1]['url']
         else
         end
       end

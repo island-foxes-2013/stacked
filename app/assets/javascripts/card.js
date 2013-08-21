@@ -1,19 +1,40 @@
-var TweetFormat = {
-  new: function(tweet) {
+function getIcon(provider) {
+  switch(provider) {
+    case 'twitter':
+      return "<span class='glyph social'>e</span>";
+    case 'instagram':
+      return "<span class='glyph social'>t</span>";
+    case 'tumblr':
+      return "<span class='glyph social'>y</span>";
+  }
+}
+
+function formatIcon($post, postData) {
+  $icon = $post.find(".link-icon").find('a');
+  $icon.attr("href", postData.url);
+  $icon.html(getIcon(postData.provider));
+  return $post;
+}
+
+var TextFormat = {
+  new: function(postData) {
     var $post = $(".templates").find(".text-post");
-    $post.find(".content").html(tweet.text);
-    $post.find("a").attr("href", "https://twitter.com/"+tweet.user_id+"/statuses/"+tweet.id);
-    // TODO-JW: We shouldn't have to return .html() here.
-    return $post.html();
+    $post.find(".content").html(postData.text);
+
+    return formatIcon($post, postData);
   }
 };
 
-var InstaFormat = {
-  new: function(instagram) {
+var PictureFormat = {
+  new: function(postData) {
     var $post = $(".templates").find(".image-post");
-    $post.find(".content").text(instagram.text);
-    $post.find(".source").find("img").attr("src");
-    return $post;
+    $post.find(".content").text(postData.text);
+
+    var $picture = $post.find(".small")
+    $picture.attr("src", postData.small_image);
+    $post.find('a').attr('href', postData.standard_image);
+
+    return formatIcon($post, postData);
   }
 };
 
@@ -44,7 +65,16 @@ var LazyLoader = {
       
       var updatedTime = xhr[0].created;
       for (i in xhr) {
-        $(this).closest('.face.back').find('.news').append(TweetFormat.new(xhr[i]));
+        provider = xhr[i].provider;
+        console.log(provider);
+        var $post = '';
+        if (xhr[i].content == 'text') {
+          $post = TextFormat.new(xhr[i]);
+        }
+        else {
+          $post = PictureFormat.new(xhr[i]);
+        }
+        $(this).closest('.face.back').find('.news').append($post.html());
       }
 
       $cardBack = $(this).closest('.face.back');
