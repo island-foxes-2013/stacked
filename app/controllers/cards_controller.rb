@@ -51,8 +51,8 @@ class CardsController < ApplicationController
       @card.boards << board
     end
     @card.user = current_user
-
     if @card.save
+      ServiceManagerWorker.perform_async(@card.id)
       if board_slug
         p "going to board_path"
         redirect_to board_path(board)

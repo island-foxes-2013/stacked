@@ -60,9 +60,8 @@ var LazyLoader = {
     var self = this;
 
     $('.get-posts').on("ajax:success", function(event, xhr, status, error){
+      console.log('get-posts success');
       if (xhr) {
-
-        // console.log(xhr.post_json);
         htmlString = ''
         xhr = $.parseJSON(xhr.post_json);
         var updatedTime = xhr[0].created;
@@ -86,7 +85,7 @@ var LazyLoader = {
         $cardBack.find('.updated-at-value').html(updatedTime);
         $cardBack.find('.last').html(TimeParser.writtenTime(updatedTime));
 
-        $(this).closest('.card').addClass('flipped');
+        $(this).closest('.card').addClass('flipped')
         self.handleExternalLinks();
       }
     });
@@ -230,19 +229,18 @@ var TimeParser = {
 //     $('#container').isotope('updateSortData', $this);
 //   });
 // }
-
+function refresh(){
+  console.log('refresh');
+  LazyLoader.load();
+}
 
 $(document).ready(function() {
   LazyLoader.init();
   DragDrop.init();
   AddACard.init();
-
-  // setInterval(function(){yea()},59000);
-
-  // function yea(){
-  //   LazyLoader.load();
-  // }
-
   LazyLoader.load();
+  setTimeout(refresh, 5000);
+
+  setInterval(refresh,30000);
 
 });
