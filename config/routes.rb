@@ -19,10 +19,11 @@ Stacked::Application.routes.draw do
 
   resources :sessions, only: [:new, :destroy]
 
-  resources :users, only: [:update]
+  resources :users, only: [:edit, :update]
 
   match '/auth/:provider/callback', to: 'sessions#create'
 
+  mount JasmineRails::Engine => "/jasmine" if defined?(JasmineRails)
   mount Foundation::Icons::Rails::Engine => '/fi'
 
   # TODO SEARCH: 

@@ -10,7 +10,7 @@
     = link_to "Destroy", @board, :confirm => 'Are you sure?', method: :delete 
     = link_to "View All", boards_path
     = render partial: "follow_or_unfollow_board_link", locals: { board: @board }
-    
+
 .inline-edit=render 'form'
 
 .filters
