@@ -1,6 +1,6 @@
 .card-wrapper{ :class => classify(card) }
   .flip
-    .card{ :id => "#{card.twitter_handle}" }
+    .card{ :id => "#{card.slug}" }
       .face.front 
         -image_url = "http://res.cloudinary.com/demo/image/twitter_name/w_400,h_400,c_fill/#{card.twitter_handle}.jpg"
         .mega-pic{:style => "background-image: url(#{image_url})"}

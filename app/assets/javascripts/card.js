@@ -211,6 +211,7 @@ var TimeParser = {
 
 }
 
+
 // function cardGrow(){
 //   $('.face.back .footer').on('click', function(){
 //     console.log('grroooow');
