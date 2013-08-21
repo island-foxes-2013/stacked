@@ -1,10 +1,9 @@
+=link_to "Twitter", '/auth/twitter'
+=link_to "Instagram", '/auth/instagram'
 = form_for @user do |f| 
 
   = f.label :name 
   = f.text_field :name 
-
-  = f.label :username
-  = f.text_field :username 
 
   = f.label :email
   = f.email_field :email

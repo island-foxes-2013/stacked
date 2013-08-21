@@ -1,8 +1,14 @@
 class TwitterService
 	include Twitter::Autolink
   def get_posts(card)
+
   	return [] unless card.twitter_handle
-    @api = Twitter.user_timeline(card.twitter_handle, options={count: 10})
+
+    twitter_client = Twitter::Client.new(
+      oauth_token: card.oauth_token('twitter'),
+      oauth_token_secret: card.oauth_secret('twitter')
+    )
+    @api = twitter_client.user_timeline(card.twitter_handle, options={count: 10})
     if @api
       tweets = []
       @api.each_with_index do |tweet,i|

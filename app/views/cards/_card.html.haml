@@ -11,7 +11,7 @@
       .face.back
         .header
           -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
-          %card-info
+          .card-info
             .mini-pic{:style => "background-image: url(#{img_url})",:id => "#{card.twitter_handle}"}
             .name-container
               .name= card.name.downcase
@@ -25,5 +25,4 @@
                 %span{:class => 'updated-at-value'}
                   0
         .news
-        .footer
-          ='...'
+        .footer= '...'

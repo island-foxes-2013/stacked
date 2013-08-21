@@ -25,7 +25,7 @@ class TumblrService
           # tumbls[i][:text]      = "<a href='" + tumbls['url'] + "'>" + tumbls['description'] + "</a>"
         when "video"
           tumbls[i][:content]   = 'text'
-          # tumbls[i][:text]      = "<a href='" + tumbls['source_url'] + "'>" + tumbls['caption'] + "</a>"
+          # tumbls[i][:text]      = "<a href='#{tumbls['source_url']}'>#{tumbls['caption']}</a>"
         when "photo"
           tumbls[i][:content]   = 'image'
           tumbls[i][:text]      = tumbl['caption']

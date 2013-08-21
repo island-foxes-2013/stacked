@@ -2,13 +2,15 @@
 #
 # Table name: authorizations
 #
-#  id         :integer          not null, primary key
-#  provider   :string(255)
-#  uid        :string(255)
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  nickname   :string(255)
+#  id           :integer          not null, primary key
+#  provider     :string(255)
+#  uid          :string(255)
+#  user_id      :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  nickname     :string(255)
+#  oauth_token  :string(255)
+#  oauth_secret :string(255)
 #
 
 class Authorization < ActiveRecord::Base
@@ -25,10 +27,14 @@ class Authorization < ActiveRecord::Base
   end
 
   def self.create_from_hash(hash, user = nil)
+    ap hash
+    # debugger
   	user ||= User.create_from_hash!(hash)
   	auth = Authorization.create(user: user, uid: hash['uid'], provider: hash['provider'])
     if auth.provider == 'twitter'
       auth.nickname = hash['info']['nickname'] 
+      auth.oauth_token = hash['credentials']['token']
+      auth.oauth_secret = hash['credentials']['secret']
       auth.save
     else
       auth.nickname = hash['nickname']
