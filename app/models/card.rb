@@ -18,6 +18,11 @@ class Card < ActiveRecord::Base
   extend FriendlyId 
   include CardHelper
 
+  # scope :twitter_oauth_token, -> { user.authorizations.where(provider: "twitter").oauth_token }
+  # scope :twitter_oauth_secret, -> { user.authorizations.where(provider: "twitter").oauth_secret }
+  # scope :instagram_oauth_token, -> { user.authorizations.where(provider: "instagram").oauth_token }
+  # scope :instagram_oauth_secret, -> { user.authorizations.where(provider: "instagram").oauth_secret }
+
   friendly_id :name, :use => :slugged
 
   attr_accessible :name, :twitter_handle, :instagram_handle, :tumblr_handle
@@ -35,6 +40,14 @@ class Card < ActiveRecord::Base
   def set_instagram_id
     return "" if instagram_handle.to_s == ""
     self.instagram_id = get_instagram_id(instagram_handle)
+  end
+
+  def oauth_token(service)
+    self.user.authorizations.where(provider: service).first.oauth_token
+  end
+
+  def oauth_secret(service)
+    self.user.authorizations.where(provider: service).first.oauth_secret
   end
 
   # def 

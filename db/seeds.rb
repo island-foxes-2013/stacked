@@ -1,3 +1,4 @@
+
 # Ravens Board
 ravens = Board.create(name: 'Super Bowl Ravens', description: 'Ravens')
 
@@ -34,4 +35,18 @@ islfox_array << Card.create(name: 'Mitch Seaman', twitter_handle: 'mitcheljseama
 
 islfox_array.each do |card|
   islfox.cards << card
+end
+
+# Martins
+ravens = Board.create(name: 'Purple Martins', description: 'Next in line')
+
+ravens_array = []
+ravens_array << Card.create(name: 'Anirudh Dhullipalla', twitter_handle: 'anirudh_eka', instagram_handle: 'ravens', tumblr_handle: 'poetprogrammer')
+ravens_array << Card.create(name: 'Anirudh Dhullipalla', twitter_handle: 'anirudh_eka', instagram_handle: 'ravens', tumblr_handle: 'poetprogrammer')
+ravens_array << Card.create(name: 'Anirudh Dhullipalla', twitter_handle: 'anirudh_eka', instagram_handle: 'ravens', tumblr_handle: 'poetprogrammer')
+ravens_array << Card.create(name: 'Anirudh Dhullipalla', twitter_handle: 'anirudh_eka', instagram_handle: 'ravens', tumblr_handle: 'poetprogrammer')
+ravens_array << Card.create(name: 'Anirudh Dhullipalla', twitter_handle: 'anirudh_eka', instagram_handle: 'ravens', tumblr_handle: 'poetprogrammer')
+
+ravens_array.each do |card|
+  ravens.cards << card
 end

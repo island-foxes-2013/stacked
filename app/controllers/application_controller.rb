@@ -14,15 +14,20 @@ class ApplicationController < ActionController::Base
   	!!current_user
   end
 
-  helper_method :current_user, :signed_in?, :instagram_token
+  helper_method :current_user, :signed_in?, :instagram_token, :current_user=
 
   def current_user=(user)
+    session[:user_id] = user.id
+    ap session[:user_id]
   	@current_user = user
-  	session[:user_id] = user.id
   end
 
   def instagram_token
     session[:instagram_token] ||= ENV['INSTAGRAM_TOKEN']
+  end
+
+  def twitter_token
+    session[:twitter_token] ||= ENV['TWITTER_TOKEN']
   end
 	
 end
