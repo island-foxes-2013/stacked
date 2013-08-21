@@ -2,7 +2,7 @@ class TwitterService
 	include Twitter::Autolink
   def get_posts(card)
 
-  	return [] unless card.twitter_handle || !card.user.has_twitter?
+  	return [] unless card.twitter_handle
 
     twitter_client = Twitter::Client.new(
       oauth_token: card.oauth_token('twitter'),

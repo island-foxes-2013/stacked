@@ -22,12 +22,12 @@ class ApplicationController < ActionController::Base
   	@current_user = user
   end
 
-  def instagram_token
-    session[:instagram_token] ||= ENV['INSTAGRAM_TOKEN']
-  end
+  # def instagram_token
+  #   session[:instagram_token] ||= ENV['INSTAGRAM_TOKEN']
+  # end
 
-  def twitter_token
-    session[:twitter_token] ||= ENV['TWITTER_TOKEN']
-  end
+  # def twitter_token
+  #   session[:twitter_token] ||= ENV['TWITTER_TOKEN']
+  # end
 	
 end

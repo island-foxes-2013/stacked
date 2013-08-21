@@ -17,7 +17,8 @@ class SessionsController < ApplicationController
   # 			oauth_token_secret: auth['credentials']['secret']
 		# 	)			
 		# end
-		
+		ap "AUTH"
+		p auth
 		unless @auth = Authorization.find_from_hash(auth)
 			# Create a new user or add an auth to existing user, depending on 
 			# whether there is already a user signed in 
