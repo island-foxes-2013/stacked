@@ -66,9 +66,11 @@ var LazyLoader = {
         htmlString = ''
         xhr = $.parseJSON(xhr.post_json);
         var updatedTime = xhr[0].created;
+        $news = $(this).closest('.face.back').find('.news')
+        $news.empty();
         for (i in xhr) {
           provider = xhr[i].provider;
-          console.log(provider);
+          // console.log(provider);
           var $post = '';
           if (xhr[i].content == 'text') {
             $post = TextFormat.new(xhr[i]);
@@ -76,7 +78,8 @@ var LazyLoader = {
           else {
             $post = PictureFormat.new(xhr[i]);
           }
-          $(this).closest('.face.back').find('.news').append($post.html());
+
+          $news.append($post.html());
         }
 
         $cardBack = $(this).closest('.face.back');
@@ -223,7 +226,11 @@ $(document).ready(function() {
   DragDrop.init();
   AddACard.init();
 
-  
+  setInterval(function(){yea()},59000);
+
+  function yea(){
+    LazyLoader.load();
+  }
 
   LazyLoader.load();
 
