@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130820223800) do
     t.integer  "user_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.boolean  "is_primary"
   end
 
   add_index "cards", ["slug"], :name => "index_cards_on_slug", :unique => true
