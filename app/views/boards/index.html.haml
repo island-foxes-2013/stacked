@@ -11,6 +11,5 @@
       %i 
         %td= board.description 
       %td= board.user.name if board.user
-      %td= link_to "Destroy", board, confirm: 'Are you sure?', method: :delete
       
 %p= link_to "New Board", new_board_path

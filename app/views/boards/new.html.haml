@@ -1,5 +1,7 @@
 %h1 New Board
 
-= render partial: 'board_form',  locals: { board: @board }
+-if current_user
+  = render partial: 'board_form',  locals: { board: @board }
 
-%p= link_to "View All Boards", boards_path
+%p
+  = link_to "view all boards", boards_path

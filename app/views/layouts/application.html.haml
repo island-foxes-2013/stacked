@@ -12,7 +12,7 @@
     / <meta http-equiv="X-UA-Compatible" content="IE=7" />
     / Set the viewport width to device width for mobile
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-    %title= content_for?(:title) ? yield(:title) : "Stacked"
+    %title= content_for?(:title) ? yield(:title) : "stackly"
     = stylesheet_link_tag    "application"
     = csrf_meta_tags
   %body
@@ -20,7 +20,7 @@
       %nav.top-bar
         %ul.title-area
           %li.name
-            %h1= link_to "Stacked", :root
+            %h1= link_to "stackly.me.you.us.dbc@gmail.com", :root
         %section.top-bar-section
           %ul.right
             / global search bar
@@ -47,7 +47,8 @@
     .container
       .row
         .left-sidebar.small-2.large-2.columns.frosty
-          %h4 New Boards
+          %h4 boards
+          %h5 latest
           %ul.side-nav.board-list
             %li.divider
             -Board.order('created_at DESC').limit(10).each do |board|
@@ -55,7 +56,7 @@
                 %li.board-link{ :id => "#{board.slug}" }
                   =link_to "#{board.name}", board_url(board)
               %li.divider
-          %h4 Followed Boards
+          %h5 following
           - if current_user
             %ul.side-nav.board-list
               - current_user.boards_following.each do |board|
