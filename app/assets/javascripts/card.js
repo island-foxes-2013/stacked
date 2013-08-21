@@ -61,7 +61,7 @@ var LazyLoader = {
 
     $('.get-posts').on("ajax:success", function(event, xhr, status, error){
       // xhr = $.parseJSON(xhr.posts);
-      console.log(xhr)
+      console.log($.parseJSON(xhr.post_json));
       // htmlString = ''
       
       // var updatedTime = xhr[0].created;

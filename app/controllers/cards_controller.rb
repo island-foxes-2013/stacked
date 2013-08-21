@@ -106,7 +106,7 @@ class CardsController < ApplicationController
 
     # ServiceManagerWorker.perform_async(card.id)
     ap "*" * 100
-    ap card.posts.first
+    # ap Post.all
     render json: card.posts.first
     
     # render json: ServiceManager.get_posts(card)

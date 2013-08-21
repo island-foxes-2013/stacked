@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Stacked::Application.routes.draw do
 
   root to: 'boards#index'
@@ -22,6 +24,8 @@ Stacked::Application.routes.draw do
   resources :users, only: [:edit, :update]
 
   match '/auth/:provider/callback', to: 'sessions#create'
+
+  mount Sidekiq::Web, at: '/sidekiq'
 
   # mount JasmineRails::Engine => "/jasmine" if defined?(JasmineRails)
 

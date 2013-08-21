@@ -10,10 +10,10 @@ class ServiceManagerWorker
 			# card = Card.find(card_id)
 			posts = ServiceManager.get_posts(card)
 			# ap "HELLO"
-			ap posts
-			# Post.create({updated_epoch: posts[0][:created],
-			# 					   post_json:     posts,
-			# 					   card: 				  card})
+			# ap posts
+			Post.create({updated_epoch: posts[:updated_epoch],
+								   post_json:     posts,
+								   card: 				  card})
 		end
 	end
 end
