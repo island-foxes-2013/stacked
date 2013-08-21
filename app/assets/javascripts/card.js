@@ -149,7 +149,8 @@ var DragDrop = {
       cursor    : 'move',
       cursorAt  : { left : 5 },
       appendTo  : 'body',
-      zIndex    : 999
+      zIndex    : 999,
+      opacity: 0.80
     });
   },
 
@@ -174,6 +175,10 @@ var DragDrop = {
     });
   }
 };
+
+var plusSign = function(){
+
+}
 
 var TimeParser = {
 
