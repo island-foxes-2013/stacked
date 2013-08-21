@@ -50,7 +50,9 @@ function lookup(searchtext) {
 $(document).ready(function(){ 
   $(document).foundation(); 
 
+
   $('#searchtext').on('keyup', function(){
+    // console.log($(this).val() );
     lookup( $(this).val() );
   });
 
