@@ -2,6 +2,7 @@ $purple: #890CFF;
 $blue: #0BAFE8;
 $plus-color: #5f8694;
 $light-blue: #C3D5E8;
+$light-grey: #d3d3d3;
 
 $green: #4CFF3F;
 $yellow: #E8BB0B; 
@@ -78,16 +79,17 @@ $corner_radius: 2px;
 
 
 .dragged-card {
-	width: 16em;
-  height: $card-height;
+  height: $header-size;
   margin: 0.5em;
   position: relative;
-  border: solid 1px green;
   float: left;
+  border-radius: 12px;
+  border: 1px $light-grey dashed;
 
 	.header {
-	  background-color: lighten($card, 30);
-	  height: $header-size;
+	  
+	  height: 100%;
+	  background-color: lighten($card, 20);
 	  
 	  .mini-pic {
 	    width: $header-size;
@@ -97,17 +99,17 @@ $corner_radius: 2px;
 	    position: relative;
 	    @include rounded-top-left-corner($corner_radius);
 	  }
-  }
 
-	.name {
-		display:float;
-		font-size: 1.4em;
-		margin-bottom: $name_padding; 
-		position: relative;
-		float: left;
-		margin: 0.3em;
-		color: darken($card, 60);
-	}
+	  .name {
+		  width: 9em;
+			display:float;
+			font-size: 1.4em;
+			position: relative;
+			float: left;
+			margin: 0.3em;
+			color: darken($card, 60);
+		}
+  }
 }
 
 .texti {
