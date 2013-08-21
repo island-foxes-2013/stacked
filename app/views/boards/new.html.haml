@@ -2,6 +2,7 @@
 
 -if current_user
   = render partial: 'board_form',  locals: { board: @board }
-
+-else
+  = render partial: 'shared/authenticate'
 %p
   = link_to "view all boards", boards_path
