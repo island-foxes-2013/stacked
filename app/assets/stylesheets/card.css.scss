@@ -1,10 +1,13 @@
 $purple: #890CFF;
 $blue: #0BAFE8;
+$plus-color: #5f8694;
+$light-blue: #C3D5E8;
+$light-grey: #d3d3d3;
+
 $green: #4CFF3F;
 $yellow: #E8BB0B; 
 $red: #FF3501;
-$light-blue: #C3D5E8;
-$off-white: rgb(245, 245, 245);
+$off-white: rgb(245, 245, 245); 
 
 $card: white;
 $card-trans: rgba($card, .7);
@@ -74,6 +77,40 @@ $corner_radius: 2px;
 	}
 }
 
+
+.dragged-card {
+  height: $header-size;
+  margin: 0.5em;
+  position: relative;
+  float: left;
+  border-radius: 12px;
+  border: 1px $light-grey dashed;
+
+	.header {
+	  
+	  height: 100%;
+	  background-color: lighten($card, 20);
+	  
+	  .mini-pic {
+	    width: $header-size;
+	    height: $header-size;
+	    background-color: grey;
+	    float: left;
+	    position: relative;
+	    @include rounded-top-left-corner($corner_radius);
+	  }
+
+	  .name {
+		  width: 9em;
+			display:float;
+			font-size: 1.4em;
+			position: relative;
+			float: left;
+			margin: 0.3em;
+			color: darken($card, 60);
+		}
+  }
+}
 
 .texti {
 	width: 90%;
@@ -177,7 +214,8 @@ $corner_radius: 2px;
 		  .plus-sign {
 		  	font-size: 12.5em;
 		  	font-weight: 500;
-		  	color: $blue;
+		  	color: $plus-color;
+		  	opacity:0.3;
 		  	margin:0;
 		  	padding:0;
 		  	cursor: pointer;

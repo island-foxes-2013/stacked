@@ -42,7 +42,14 @@ html, body {
 	margin-bottom: 0;
 }
 
-li.board-link {
+.board-dropzone {
+	width: 350px;
+	height: 2em;
+}
+
+li.board-link a{
+	width: 20em;
+	height: 2em;
 	/*background-color:rgba(250,250,250,0.5);*/
 }
 
@@ -79,7 +86,7 @@ li.board-link {
 }
 
 .drop-hover {
-	background-color:rgba(250,250,250,0.5);
+	background-color:rgba(250,250,250,0.25);
 	border-radius: 2px;
 	/*height:100px;*/
 }

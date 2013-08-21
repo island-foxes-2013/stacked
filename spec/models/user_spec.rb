@@ -11,6 +11,8 @@
 #  primary_card :integer
 #
 
+
+
 require 'spec_helper'
 
 describe User do

@@ -1,11 +1,5 @@
 .templates
 
-  .dragged-card
-    .block
-      = image_tag "nottwittersbird.png", size: "50x50", :class => "profile-pic"
-    .block
-      %h3.name HIII
-
   .image-post
     .pici
       .pic
@@ -20,3 +14,9 @@
       .content
       .link-icon
         =link_to "#", "#"
+
+  .dragged-card
+    .header
+      .mini-pic
+        = image_tag "nottwittersbird.png", size: "50x50", :class => "profile-pic"
+      .name

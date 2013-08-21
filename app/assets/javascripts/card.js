@@ -136,30 +136,32 @@ var DragDrop = {
     $(".card").find(".header").draggable({
       helper    : function(e){
 
-        var $card = $(e.target);
-        var $dragBuddy = $('.dragged-card').clone();
+        var $card = $(e.target).closest('.card');
+        var $draggedCard = $('.dragged-card').clone();
 
-        var imgUrl = $card.find('.mini-pic').attr('id').toString();
+        var twitter_handle = String($card.find('.mini-pic').attr('id'));
+        var imgUrl = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/"+ twitter_handle + ".jpg";
         var cardId = $card.closest('.card').attr("id");
 
-        $dragBuddy.find('.name').text($card.find('.name').text());
+        // Set attributes on clone
+        $draggedCard.find('.name').text($card.find('.name').text());
+        $draggedCard.find('.profile-pic').attr('src',imgUrl);
+        $draggedCard.attr("id",cardId);
 
-        $dragBuddy.find('.profile-pic').attr('src',imgUrl);
-        $dragBuddy.attr("id",cardId);
-
-        // console.log($dragBuddy);
-        return $dragBuddy[0];
+        // console.log($draggedCard);
+        return $draggedCard[0];
       },
       // TODO-JW: figure out positioning
       cursor    : 'move',
       cursorAt  : { left : 5 },
       appendTo  : 'body',
-      zIndex    : 999
+      zIndex    : 999,
+      opacity: 0.80
     });
   },
 
   makeDecksDroppable: function() {
-    $(".board-link").droppable({
+    $(".board-dropzone").droppable({
       drop        : this.addCardToDeck,
       hoverClass  : 'drop-hover'
     });
@@ -168,7 +170,7 @@ var DragDrop = {
   addCardToDeck: function(event, ui) {
     var card = ui.draggable.closest('.card');
     console.log(card);
-    var board = $(this);
+    var board = $(this).find('.board-link');
     console.log( 'The square with ID "' + card.attr('id') + '" was dropped onto ' + board.attr('id'));
     $.ajax({
       url: '/board_cards',
@@ -179,6 +181,10 @@ var DragDrop = {
     });
   }
 };
+
+var plusSign = function(){
+
+}
 
 var TimeParser = {
 
@@ -216,9 +222,14 @@ var TimeParser = {
 
 }
 
-// var timer = $.timer(function() {
-//   console.log("hello!")
-// });
+// function cardGrow(){
+//   $('.face.back .footer').on('click', function(){
+//     console.log('grroooow');
+//     $this = $(this);
+//     $this.closest('.card-wrapper').addClass('large');
+//     $('#container').isotope('updateSortData', $this);
+//   });
+// }
 
 
 $(document).ready(function() {

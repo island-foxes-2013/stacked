@@ -1,5 +1,5 @@
 # Ravens Board
-ravens = Board.create(name: 'Super Bowl Champion Ravens', description: 'Ravens')
+ravens = Board.create(name: 'Super Bowl Ravens', description: 'Ravens')
 
 ravens_array = []
 ravens_array << Card.create(name: 'Ravens', twitter_handle: 'ravens', instagram_handle: 'ravens')
@@ -21,7 +21,7 @@ empty = Board.create(name: 'Fill er up', description: 'no fallow grounds to seed
 islfox = Board.create(name: 'DBC Island Foxes', description: 'Island fox cohort, Graduating Aug 2013.')
 
 islfox_array = []
-islfox_array << Card.create(name: 'Eric Chen', twitter_handle: 'ericchen0121', instagram_handle: 'erichen0121', tumblr_handle: 'ericschen')
+islfox_array << Card.create(name: 'Eric Chen', twitter_handle: 'ericchen0121', instagram_handle: 'ericchen0121', tumblr_handle: 'ericschen')
 islfox_array << Card.create(name: 'Adam Loo', twitter_handle: 'adamloo2')
 islfox_array << Card.create(name: 'Greg Varias', twitter_handle: '180AD')
 islfox_array << Card.create(name: 'Dan Willems', twitter_handle: 'dmkwillems', tumblr_handle: 'danielwillems')

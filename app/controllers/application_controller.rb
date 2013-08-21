@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery
-  # before_filter :print_params
-
+  
   # def search_results
   #   @search_results = {type: 'Board'}
   # end
@@ -25,20 +24,5 @@ class ApplicationController < ActionController::Base
   def instagram_token
     session[:instagram_token] ||= ENV['INSTAGRAM_TOKEN']
   end
-
-  # def twitter_credentials=(credentials)
-  #   ENV['TWITTER_OAUTH_TOKEN']
-  #   ENV['TWITTER_OAUTH_TOKEN_SECRET']
-  # end
-
-  # def twitter_credentials
-  #   {twitter_oauth_token: ENV['TWITTER_OAUTH_TOKEN'],
-  #    twitter_oauth_token_secret: ENV['TWITTER_OAUTH_TOKEN_SECRET']}
-  # end
-
-	private
-
-  def print_params
-  	p params
-  end
+	
 end

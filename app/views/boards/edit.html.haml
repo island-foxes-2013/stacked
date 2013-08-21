@@ -1,8 +1,9 @@
 %h1 Edit Board
 
-=render 'form'
-
+-if current_user
+  = render partial: 'board_form',  locals: { board: @board }
+-else
+  = render partial: 'shared/authenticate'
 %p
-  =link_to "Show", @board
-  =link_to "View All", boards_path
-
+  =link_to "#{@board.name} | ", @board
+  =link_to "view all boards", boards_path

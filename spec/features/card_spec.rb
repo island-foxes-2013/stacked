@@ -94,47 +94,4 @@ require 'spec_helper'
 
 		end
 
-		context "updating Social data" do
-
-			let(:card) { FactoryGirl.create(:card) }
-
-			before [:each] do
-				visit root_path
-				card		
-				visit 'cards/daniel-willems'
-			end
-
-			context 'twitter' do
-
-				it 'should update tweets' do
-					pending 'work on stubbing twitter'
-					twitter_double = double("Twitter::API")
-					twitter_double.stub(:connectable?){raise Exception}
-					twitter_controller = MyApp::TwitterController.new(twitter_double)
-					twitter_controller.connect.should_not raise_error
-				end	
-
-				it 'should fail to update tweet' do
-					pending	
-				end
-
-			end
-
-			context 'instagram' do
-
-				it 'should update instagram' do
-					pending 'instagram tests'
-					click_link('I')
-					response.header['Content-Type'].should include 'json'
-				end	
-
-				it 'should fail to update instagram' do
-					pending
-				end	
-
-			end
-
-		end
-
-
 	end

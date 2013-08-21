@@ -11,7 +11,7 @@
     = link_to "View All", boards_path
     = render partial: "follow_or_unfollow_board_link", locals: { board: @board }
 
-.inline-edit=render 'form'
+.inline-edit=render partial: 'board_form', locals: { board: @board }
 
 .filters
   %dl.sub-nav#filter-by
@@ -25,7 +25,7 @@
     %dd.active= link_to "Date Added", "#original-order"
     %dd= link_to "Updated", "#updated_at"
     %dd= link_to "Name", "#name"
-    %dd= link_to "???", "#random"
+    %dd= link_to "Kamikaze", "#random"
 
 .board#container
   -@board.cards.each do |card|

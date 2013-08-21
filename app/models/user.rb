@@ -11,6 +11,8 @@
 #  primary_card :integer
 #
 
+
+
 class User < ActiveRecord::Base
 
 	extend FriendlyId	

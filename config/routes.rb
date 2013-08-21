@@ -29,8 +29,7 @@ Stacked::Application.routes.draw do
 
   # mount JasmineRails::Engine => "/jasmine" if defined?(JasmineRails)
 
-  # TODO SEARCH: 
-  # match '/search', to: 'boards#index'
+  # SEARCH
   match '/search', to: 'searches#index'
   match '/search/global', to: 'searches#global'
 

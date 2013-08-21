@@ -5,21 +5,22 @@
         -image_url = "http://res.cloudinary.com/demo/image/twitter_name/w_400,h_400,c_fill/#{card.twitter_handle}.jpg"
         .mega-pic{:style => "background-image: url(#{image_url})"}
           
-      .face.back  
+      .face.back
         .header
           -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
-          .mini-pic{:style => "background-image: url(#{img_url})",:id => "#{img_url}"}
-          .name-container
-            .name= card.name.downcase
-          .right-header
-            %span{class: 'delete'}
-              - if board
-                = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
-            .updates
-              = link_to 'U', get_posts_card_path(card), {remote: true, class: 'get-posts'} 
-              %span{class: 'last'}
-              %span{:class => 'updated-at-value'}
-                0
+          %card-info
+            .mini-pic{:style => "background-image: url(#{img_url})",:id => "#{card.twitter_handle}"}
+            .name-container
+              .name= card.name.downcase
+            .right-header
+              %span{class: 'delete'}
+                - if board
+                  = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
+              .updates
+                = link_to 'U', get_posts_card_path(card), {remote: true, class: 'get-posts'} 
+                %span{class: 'last'}
+                %span{:class => 'updated-at-value'}
+                  0
         .news
         .footer
           ='...'
