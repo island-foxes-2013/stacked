@@ -130,10 +130,10 @@ var DragDrop = {
     $(".card").find(".header").draggable({
       helper    : function(e){
 
-        var $card = $(e.target);
+        var $card = $(e.target).closest('.card');
         var $draggedCard = $('.dragged-card').clone();
 
-        var twitter_handle = $card.find('.mini-pic').attr('id').toString();
+        var twitter_handle = String($card.find('.mini-pic').attr('id'));
         var imgUrl = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/"+ twitter_handle + ".jpg";
         var cardId = $card.closest('.card').attr("id");
 
