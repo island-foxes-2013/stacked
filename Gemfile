@@ -15,6 +15,11 @@ gem 'rest-client'
 gem 'httparty'
 gem "friendly_id", "~> 4.0.0.beta8"
 
+# Asyncronous Background Jobs
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
+
 # API and Oauth
 gem 'oauth'
 gem 'omniauth'
@@ -65,6 +70,7 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'underscore-rails'
 # gem 'debugger'
 
 gem 'ransack'
