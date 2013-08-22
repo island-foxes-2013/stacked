@@ -22,4 +22,16 @@ describe 'Twitter OAuth' do
   	page.should have_content("Log In or Sign Up!")
   end
  
+end
+
+describe 'Instagram OAuth' do
+
+	before do
+	  visit root_path
 	end
+
+	it 'should log you in through Instagram' do
+		visit 'auth/instagram'
+	end
+
+end
