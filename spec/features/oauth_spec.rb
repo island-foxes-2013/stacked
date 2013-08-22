@@ -3,8 +3,6 @@ require 'spec_helper'
 describe 'Twitter OAuth' do
 
 	before(:each) do 
-	  # request.env["devise.mapping"] = Devise.mappings[:user] 
-	  # request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter] 
 	  visit root_path
 	  visit 'auth/twitter'
 	end
