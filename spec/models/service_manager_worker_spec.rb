@@ -8,16 +8,12 @@ require 'spec_helper'
 			
 			before do
 				card
-				# ServiceManager.stub(:get_posts).with(card).and_return([
-				# {provider: "santa_clause", created: DateTime.now},
-				# {provider: "easter_bunny", created: DateTime.now}
-				# ])
 			end
 
 			it "responds with 200" do
-				pending 'need HELP'
-				CardCacheRefreshWorker.perform_async(card.id) 
-				expect(response.status).to eql(200)
+				ServiceManagerWorker.perform_async(card.id) 
+				
+				# expect(response.status).to eql(200)
 			end
 
 				

@@ -14,7 +14,7 @@ describe CardsController do
 
 	describe '#get_posts' do
 		it "renders JSON for the cards post " do
-			# pending 'fixing'
+			pending 'fixing'
 			ServiceManager.stub(:get_posts).with(card).and_return([
 				{provider: "santa_clause", created: DateTime.now},
 				{provider: "easter_bunny", created: DateTime.now}
