@@ -142,25 +142,25 @@ $corner_radius: 4px;
 }
 
 .large {
-	/*width: 33em !important;*/
+	width: 33em !important;
 	height: 30.5em !important;
 	margin: 0em 1em 1em 0em !important;
 
-	/*.texti {
+	.texti {
 		width: 45% !important;
 		display: inline-block !important;
 		float: left !important;
-	}*/
+	}
 
-	/*.pici {
+	.pici {
 		width: 45% !important;
 		display: inline-block !important;
 		float: left !important;
 		margin-left: 2%;
-	}*/
+	}
 
 	.flip{
-		/*width: 33em  !important;*/
+		width: 33em  !important;
 		height: 30.5em !important;
 	}
 
@@ -178,17 +178,6 @@ $corner_radius: 4px;
 	margin: 0.5em;
 	position: relative;
 	float: left;
-
-  	
-  .delete {
-		display: none;
-		position: absolute;
-		right: 2px;
-		bottom: -2px;
-		color: #aa2e2e;
-		font-size: 1.2em;
-		text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
-	}
 
   .card.flipped {
   	-webkit-transform: rotatey(-180deg);
@@ -218,6 +207,11 @@ $corner_radius: 4px;
 		  @include rounded-corners($corner_radius);
 		  @include shadow(2px,2px,3px);
 
+		  .delete {
+				display: none;
+				height: 1.5em;
+			}
+			
 		  .plus-sign {
 		  	font-size: 12.5em;
 		  	font-weight: 500;
@@ -298,7 +292,7 @@ $corner_radius: 4px;
 					bottom: -2px;
 					color: #aa2e2e;
 					font-size: 1.2em;
-					text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+					/*text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);*/
 				}
 
 				.right-header {
