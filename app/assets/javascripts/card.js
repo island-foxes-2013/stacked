@@ -180,10 +180,6 @@ var DragDrop = {
   }
 };
 
-var plusSign = function(){
-
-}
-
 var TimeParser = {
 
   makeItLookNice: function(seconds){
@@ -223,15 +219,22 @@ function refresh(){
   LazyLoader.load();
 }
 
-function faceFront(card){
-
-}
+// function cardEdit(){
+//   $(document).on('click', '.edit-card', function(){
+//     console.log('yo')
+//   });
+// }
 
 $(document).ready(function() {
   LazyLoader.init();
   DragDrop.init();
   AddACard.init();
   refresh();
+  $(document).on('click', '.edit-card', function(){
+    $form = $(this).closest('.card-wrapper').find('.edit-form');
+    $(this).closest('.flip').find('.front').html($form.html());
+    $(this).closest('.card').removeClass('flipped')
+  });
   setTimeout(refresh,3000);
   setTimeout(refresh,3000);
   setInterval(refresh,30000);
