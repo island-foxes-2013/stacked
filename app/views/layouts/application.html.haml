@@ -59,6 +59,10 @@
                 %li.divider
                 =link_to board.name, board_path(board)
               %li.divider
+          %a{:href => new_board_path}
+            %h5
+              %span.glyph.general d
+              Add a Board
         .main.small-10.large-10.columns
           = yield
         / .right-sidebar.large-2.small-3.columns
@@ -68,10 +72,12 @@
           .footer-tagline You ain't seen nothin' yet.
           .footer-team Coded up by Eric Chen, Daniel Willems, Clint Mullins, and Mitch Seaman
       -if !signed_in?
-        .reveal-modal#login-modal
+        .reveal-modal#login-modal.medium.centered
           %h2 Welcome to Stacked!
           %h5.subheader Log in using your Twitter or Instagram handle below.
           %a.close-reveal-modal.glyph.general g
+          %span=link_to 'y', '/auth/twitter', class: "glyph social large"
+          %span=link_to 't', '/auth/instagram', class: "glyph social large"
 
 
     = javascript_include_tag "application"
