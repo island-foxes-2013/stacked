@@ -63,12 +63,11 @@ $corner_radius: 4px;
 
 
 	.content {
-		font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 		background-color: rgba(0,0,0,.5);
 		color: white;
 		/*width: 90%;
 		margin-left: 5%;*/
-		padding: .4em;
+		padding: .2em .2em .2em 0em;
 		@include rounded-bottom-corners($corner-radius);
 	}
 
@@ -117,6 +116,14 @@ $corner_radius: 4px;
 }
 
 .texti {
+	width: 90%;
+	color: rgba(darken($card, 70), .6);
+	margin: .2em 0em 0em 0em;
+	padding: .2em .3em;
+	text-align: left;
+	display: inline-block;
+	background-color: rgba(255,255,255,1);
+	overflow: scroll;
 
 	.content {
 		margin-right: 2.2em;
@@ -260,8 +267,7 @@ $corner_radius: 4px;
 		  .header {
 				background-color: lighten($card, 30);
 				height: $header-size;
-				/*margin-bottom: 2px;*/
-				border-bottom: 2px solid #F1EFEA;
+				margin-bottom: 2px;
 				
 				.mini-pic {
 					width: $header-size;
