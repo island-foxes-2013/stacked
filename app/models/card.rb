@@ -43,6 +43,7 @@ class Card < ActiveRecord::Base
   end
 
   def oauth_token(service)
+    # debugger
     self.user.authorizations.where(provider: service).first.oauth_token
   end
 
