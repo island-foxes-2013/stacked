@@ -3,8 +3,7 @@ class TumblrService
   base_uri 'tumblr.com'
 	
   def get_posts(card)
-    ap card.tumblr_handle
-    return [] if card.tumblr_handle.nil? or card.tumblr_handle.blank?
+    return [] if card.tumblr_handle.to_s == ''
     @response =  HTTParty.get("http://api.tumblr.com/v2/blog/#{card.tumblr_handle}.tumblr.com/posts?api_key=e1eKLVbWlHhCyqKgswQUvfnorgQMXmBBcfDCIG9ofleUkvKoZI")
     if @response
       tumbls = []
