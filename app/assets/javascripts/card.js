@@ -60,7 +60,6 @@ var LazyLoader = {
     var self = this;
 
     $('.get-posts').on("ajax:success", function(event, xhr, status, error){
-      // console.log('get-posts success');
       $news = $(this).closest('.face.back').find('.news')
       if (xhr) {
         htmlString = ''
@@ -88,10 +87,6 @@ var LazyLoader = {
         $(this).closest('.card').addClass('flipped')
         self.handleExternalLinks();
       }
-      // else {
-      //   $news.append('No Posts');
-      //   $(this).closest('.card').addClass('flipped')
-      // }
     });
 
     $('.get-posts').on("ajax:error", function(event, xhr, status, error){
@@ -224,17 +219,12 @@ var TimeParser = {
   }
 }
 
-// function cardGrow(){
-//   $('.face.back .footer').on('click', function(){
-//     console.log('grroooow');
-//     $this = $(this);
-//     $this.closest('.card-wrapper').addClass('large');
-//     $('#container').isotope('updateSortData', $this);
-//   });
-// }
 function refresh(){
-  // console.log('refresh');
   LazyLoader.load();
+}
+
+function faceFront(card){
+
 }
 
 $(document).ready(function() {
@@ -242,6 +232,8 @@ $(document).ready(function() {
   DragDrop.init();
   AddACard.init();
   refresh();
-  setInterval(refresh,3000);
+  setTimeout(refresh,3000);
+  setTimeout(refresh,3000);
+  setInterval(refresh,30000);
 
 });
