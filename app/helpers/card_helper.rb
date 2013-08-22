@@ -12,6 +12,7 @@ module CardHelper
 		
 		classes << "twitter" unless card.twitter_handle.to_s == ""
 		classes << "instagram" unless card.instagram_handle.to_s == ""
+		classes << "tumblr" unless card.tumblr_handle.to_s == ""
 		classes.join(" ")
 		# Sort classes
 	end
