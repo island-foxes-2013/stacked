@@ -8,7 +8,6 @@ class BoardCardsController < ApplicationController
 	end
 
 	def destroy
-		ap params
 		kill_me = BoardCard.where(board_id: params[:format], card_id: params[:id]).first
 		kill_me.destroy if kill_me
 	end
