@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-	describe CardCacheRefreshWorker do
+	describe ServiceManagerWorker do
 
 		let(:card) { FactoryGirl.create(:card) }
 				
