@@ -46,6 +46,7 @@
           .divider-top
           %h5 LATEST
           %ul.side-nav.board-list
+            %li.divider
             -Board.order('created_at DESC').limit(10).each do |board|
               .board-dropzone
                 %li.board-link{ :id => "#{board.slug}" }
