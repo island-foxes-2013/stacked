@@ -63,11 +63,12 @@ $corner_radius: 4px;
 
 
 	.content {
+		font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 		background-color: rgba(0,0,0,.5);
 		color: white;
 		/*width: 90%;
 		margin-left: 5%;*/
-		padding: .2em .2em .2em 0em;
+		padding: .4em;
 		@include rounded-bottom-corners($corner-radius);
 	}
 
