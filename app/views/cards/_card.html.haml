@@ -18,9 +18,11 @@
             .name-container
               .name= card.name.downcase
             .right-header
+              = link_to 'E', edit_card_path(card), {remote: true, class: 'edit-card'}
               %span{class: 'delete'}
                 - if board
                   = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
+
               .updates
                 = link_to 'U', get_posts_card_path(card), {remote: true, class: 'get-posts'} 
                 %span{class: 'last'}
@@ -28,3 +30,22 @@
                   0
         .news
         .footer= '...'
+        
+  .edit-form
+    = form_for card do |f| 
+      -if board
+        = f.hidden_field :board, value: board.slug
+
+      = f.label :name 
+      = f.text_field :name 
+
+      = f.label :twitter_handle
+      = f.text_field :twitter_handle 
+
+      = f.label :instagram_handle
+      = f.text_field :instagram_handle 
+
+      = f.label :tumblr_handle
+      = f.text_field :tumblr_handle 
+
+      = f.submit 
