@@ -223,7 +223,7 @@ function refresh(){
   LazyLoader.load();
 }
 
-function faceFront(card){
+function cardEdit(card){
 
 }
 
