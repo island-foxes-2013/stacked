@@ -25,9 +25,9 @@ Stacked::Application.routes.draw do
 
   match '/auth/:provider/callback', to: 'sessions#create'
 
-  mount Foundation::Icons::Rails::Engine => '/fi'
+  # mount Foundation::Icons::Rails::Engine => '/fi'
 
-  mount Sidekiq::Web, at: '/sidekiq'
+  # mount Sidekiq::Web, at: '/sidekiq'
 
   # mount JasmineRails::Engine => "/jasmine" if defined?(JasmineRails)
 
