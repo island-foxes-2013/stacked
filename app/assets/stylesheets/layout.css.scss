@@ -7,7 +7,9 @@ html, body {
 
 .container {
 	/*background-image: #F8F8F8;*/
-	background: url(stripes.png); 
+	background-image: url('http://static.colourlovers.com/images/v4.0/_/bg.png'); 
+/*background: #f7ec95; /* Old browsers */
+	/*background-color: #FFFCFC;*/
 }
 
 .left-sidebar {
@@ -17,7 +19,7 @@ html, body {
 }
 
 .main {
-	background-color:rgba(250,250,250,0.5);
+	/*background-color:rgba(250,250,250,0.5);*/
 	text-align: center;
 	padding: 1.5em;
 	/*min-height: 100%;*/
