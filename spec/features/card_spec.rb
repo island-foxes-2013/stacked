@@ -88,10 +88,6 @@ require 'spec_helper'
       	expect(page).to have_content 'Edit Card'
 			end
 
-			it 'should have content on delete path' do
-				pending 'until we have the right UI'
-			end
-
 		end
 
 	end

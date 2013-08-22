@@ -17,31 +17,10 @@ require 'spec_helper'
 				visit root_path
 				visit '/search'
 			end
-	
-			it "can find board" do
-				pending 'need to get this in the right search bar'
-				first(:css, "input[id$='q']").set("Cool")
-				click_button('Search')
-				page.should have_content('Cool')
-			end
 
 		end
 
 		context "find a card" do
-	
-			# before do
-			# 	visit root_path
-			# 	visit 'cards/new'
-			# 	fill_in 'card_twitter_handle', :with => 'dmkwillems'
-   #    	fill_in 'card_instagram_handle', :with => 'danielwillems'
-   #  		click_button 'Create Card'
-   #  	end
-
-			# it 'can find card', :js => true do
-			# 	first(:css, "input[id$='q']").set("Daniel")
-			# 	click_button('Search')
-			# 	page.should have_content('Daniel')
-			# end
 	
 		end
 

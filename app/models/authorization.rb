@@ -27,13 +27,9 @@ class Authorization < ActiveRecord::Base
   end
 
   def self.create_from_hash(hash, user = nil)
-    ap hash
-    # debugger
   	user ||= User.create_from_hash!(hash)
   	auth = Authorization.create(user: user, uid: hash['uid'], provider: hash['provider'])
     if auth.provider == 'twitter'
-      p "*" * 100
-      p hash
       auth.nickname = hash['info']['nickname'] 
       auth.oauth_token = hash['credentials']['token']
       auth.oauth_secret = hash['credentials']['secret']

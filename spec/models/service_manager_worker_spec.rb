@@ -35,14 +35,6 @@ require 'spec_helper'
 				worker = ServiceManagerWorker.new
 				expect { worker.perform(card)}.to raise_error
 			end
-			# context 'it updates posts if empty' do
-	
-			# 	# posts = JSON.parse response.body
-			# 	# posts.first["provider"].should eq "santa_clause"
-			# 	# posts.last["provider"].should eq "easter_bunny"
-			# 	it { should be_a CardCacheRefreshWorker }
-			# end
-
 		end
 	
 	end 

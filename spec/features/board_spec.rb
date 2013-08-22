@@ -5,7 +5,6 @@ require 'spec_helper'
 
  			let(:board) { FactoryGirl.create(:board) }
 			let(:user) { FactoryGirl.create(:user) }
-			# let(:auth_hash) { { 'provider'=> "Twitter", 'uid'=> '1234567890', 'info'=>{ 'name'=>"Eric Chen" } } }
 
 			before :each do 
 				board
@@ -13,16 +12,10 @@ require 'spec_helper'
 			end
  
 		describe "creating one board" do
-
-		# 	before {
-		# 		ApplicationController.stub(:current_user).and_return(user)
-		# #	request.env["rack.session"] = { user_id: user.id } 	
-		# 	}
 				
 			before [:each] do
 				visit root_path
 				visit 'auth/twitter'
-				# request.env["rack.session"] = { user_id: user.id }
 			end
 
 			it "should have a link to create a new board on home page" do
@@ -94,14 +87,6 @@ require 'spec_helper'
 			let(:board) { FactoryGirl.create(:board) }
 
     		it "should destroy board" do
-    			# board
-    			# visit root_path
-    			# visit 'auth/twitter'
-    			# visit "boards/#{board}"
-    			# click_link('Destroy')
-    			# this is not testing to see that is works.  It is just clicking the button.
-    			# page.driver.browser.switch_to.alert.accept
-    			# page.should have_no_content('Destroy')
     		end
 
 		end

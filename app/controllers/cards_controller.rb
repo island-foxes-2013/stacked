@@ -40,7 +40,6 @@ class CardsController < ApplicationController
 
   def create
     board_slug = params[:card][:board]
-    p board_slug
     @card = Card.new(
       name:             params[:card][:twitter_handle], 
       twitter_handle:   params[:card][:twitter_handle],
@@ -54,7 +53,6 @@ class CardsController < ApplicationController
     if @card.save
       ServiceManagerWorker.perform_async(@card.id)
       if board_slug
-        p "going to board_path"
         redirect_to board_path(board)
       else
       # instagram = Instagram.client(access_token: instagram_token)
@@ -73,7 +71,6 @@ class CardsController < ApplicationController
   end
 
   def update
-    ap params
     @card = Card.find(params[:id])
     cardtributes = params[:card]
     if @card.update_attributes(name:             cardtributes[:name],
@@ -113,8 +110,6 @@ class CardsController < ApplicationController
     end
 
     # ServiceManagerWorker.perform_async(card.id)
-    ap "*" * 100
-    # ap Post.all
     render json: card.posts.first
     
     # render json: ServiceManager.get_posts(card)

@@ -27,21 +27,3 @@ end
 ServiceManager.configure do |config|
   config.services = [:twitter, :instagram, :tumblr]
 end
-
-
-# class APIFactory
-#   def self.get(service_name)
-#     SERVICES[service_name].new
-#   end
-# end
-
-# class BaseAPI
-#   def posts
-#     # do whatever initialization is necessary
-#     get_posts
-#   end
-
-#   def get_posts
-#     raise NotImplementedError, "subclasses must define this"
-#   end
-# end

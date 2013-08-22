@@ -36,7 +36,6 @@ describe Authorization do
   end
 
   describe ".find_from_hash" do 
-    # let(:auth_hash) { { 'provider'=> "Twitter", 'uid'=> '1234567890' } }
     before do 
       create(:authorization)
     end
@@ -48,7 +47,6 @@ describe Authorization do
   end
 
    describe ".create_from_hash" do 
-    # let(:auth_hash) { { 'provider'=> "Twitter", 'uid'=> '1234567890' } }
     subject { Authorization.create_from_hash(auth_hash) }
 
     context "given the info for an existing authorization" do 
