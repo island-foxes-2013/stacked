@@ -73,8 +73,13 @@ class CardsController < ApplicationController
   end
 
   def update
+    ap params
     @card = Card.find(params[:id])
-    if @card.update_attributes(params[:card])
+    cardtributes = params[:card]
+    if @card.update_attributes(name:             cardtributes[:name],
+                               twitter_handle:   cardtributes[:twitter_handle],
+                               instagram_handle: cardtributes[:instagram_handle],
+                               tumblr_handle:    cardtributes[:tumblr_handle])
       redirect_to @card, :notice  => "Successfully updated card."
     else
       render :action => 'edit'
