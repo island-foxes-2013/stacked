@@ -4,7 +4,8 @@
       .face.front 
         %span{class: 'delete'}
           - if board
-            = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
+            .glyph.general
+              = link_to 'g', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete-front'}
         -image_url = "http://res.cloudinary.com/demo/image/twitter_name/w_325,h_325,c_fill/#{card.twitter_handle}.jpg"
         .img
           .mega-pic{:style => "background-image: url(#{image_url})"}
@@ -20,8 +21,9 @@
             .right-header
               %span{class: 'delete'}
                 - if board
-                  = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
-
+                  .glyph.general
+                    = link_to 'g', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
+                    / %a{href:board_card_path(card.id, board.id), remote:true}
               .updates
                 = link_to 'E', edit_card_path(card), {remote: true, class: 'edit-card'}
                 = link_to 'U', get_posts_card_path(card), {remote: true, class: 'get-posts'} 

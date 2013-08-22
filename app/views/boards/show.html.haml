@@ -6,9 +6,9 @@
 %p.board_actions
   - if current_user
     - hideFollow = !BoardUser.where(user_id: current_user.id, board_id: @board.id).empty?
+    %span.glyph.general [
     = link_to 'Edit', '#' ,class: 'board-edit', remote: true
-    = link_to "Destroy", @board, :confirm => 'Are you sure?', method: :delete 
-    = link_to "View All", boards_path
+    %span.glyph.general o
     = render partial: "follow_or_unfollow_board_link", locals: { board: @board }
 
 .inline-edit=render partial: 'board_form', locals: { board: @board }
