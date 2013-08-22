@@ -258,7 +258,7 @@ $corner_radius: 4px;
 		  -webkit-transform: rotatey(-180deg);
 		  background: blue;
 		  background: white;
-		  background-color: #8f1723;
+		  background-color: white;
 		  position: relative;
 		  @include rounded-corners($corner_radius);
 		  @include shadow(0px,2px,2px);
