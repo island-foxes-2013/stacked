@@ -23,6 +23,17 @@ $less-rounded: 4px;
   margin: 0;
 }
 
+.main .board-name {
+  display: inline-block;
+}
+
+.main .board_desc{
+  display: inline-block;
+}
+.main .board_actions{
+  display: inline-block;
+}
+
 /*.board {
 	overflow: auto !important;
 }*/
