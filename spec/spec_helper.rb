@@ -65,6 +65,17 @@ RSpec.configure do |config|
     }
   }
 
+   OmniAuth.config.mock_auth[:instagram] = {
+    'uid' => '7331',
+    'provider' => 'instagram',
+    'info' => {
+      'name' => 'Daniel Willems'
+    },
+    'credentials' => {
+      'token' => '9876543210'
+    }
+  }
+
 end
 
 
