@@ -16,3 +16,5 @@
 /coverage
 /Gemfile.lock
 
+dump.rdb
+.DS_Store
