@@ -11,11 +11,11 @@
       = link_to 'Edit', '#' ,class: 'board-edit', remote: true
       %span.glyph.general o
       = render partial: "follow_or_unfollow_board_link", locals: { board: @board }
-  .board-card-imgs
-    - @board.cards.each do |card|
-      .board-card-face
-        -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card[:twitter_handle]}.jpg"
-        =image_tag(img_url)
+  / .board-card-imgs
+  /   - @board.cards.each do |card|
+  /     .board-card-face
+  /       -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card[:twitter_handle]}.jpg"
+  /       =image_tag(img_url)
 
 .board-filters
   .inline-edit=render partial: 'board_form', locals: { board: @board }
@@ -26,14 +26,13 @@
       %dd.active= link_to "All", "#", data: { :filter => "*" }
       %dd= link_to "Twitter", "#", data: { :filter => ".twitter, .always-show" }
       %dd= link_to "Instagram", "#", data: { :filter => ".instagram, .always-show" }
+      %dd= link_to "Tumblr", "#", data: { :filter => ".tumblr, .always-show" }
 
     %dl.sub-nav#sort-by
       %dt Sort by:
       %dd.active= link_to "Date Added", "#original-order"
-      %dd= link_to "Updated", "#updated_at"
       %dd= link_to "Name", "#name"
       %dd= link_to "Kamikaze", "#random"
-
 .board#container
   -@board.cards.each do |card|
     = render partial: 'cards/card', locals: { card: card, board: @board }

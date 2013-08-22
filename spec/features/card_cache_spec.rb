@@ -7,14 +7,15 @@ require 'spec_helper'
 	
 		describe '.perform' do
 			
-			# before do
+			before do
 				
-			# 	# request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
-			# 	card.save
-			# 	board.save
-			# 	board.cards << card
-			# 	visit root_path
-			# end
+				# request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
+				card.save
+				board.save
+				board.cards << card
+				visit root_path
+				visit '/auth/provider'
+			end
 
 			# it 'refreshes tweets', :js => true do
 			# 	visit "/boards/#{board.slug}"
