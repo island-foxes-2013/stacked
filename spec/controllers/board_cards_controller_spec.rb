@@ -3,10 +3,7 @@ require 'spec_helper'
 describe BoardCardsController do
 
 	let(:board) { FactoryGirl.create(:board) }
-	let(:card) { FactoryGirl.create(:card) }
-
-	describe "#create" do
-
+	let(:card) { FactoryGirl.create(:card) } 
 		before [:each] do
 			board
 			card

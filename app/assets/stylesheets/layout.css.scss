@@ -3,24 +3,28 @@ html, body {
 	height: 100%;
 	margin:0;
 	padding:0;
+	background-image: url('http://static.colourlovers.com/images/v4.0/_/bg.png'); 
 }
 
 .container {
 	/*background-image: #F8F8F8;*/
-	background-image: url('http://static.colourlovers.com/images/v4.0/_/bg.png'); 
+	
 /*background: #f7ec95; /* Old browsers */
 	/*background-color: #FFFCFC;*/
 }
 
 .left-sidebar {
 	background-color:rgba(200,200,200,0.5);
-	min-height:1000px;
+	padding-bottom: 2em !important;
+	/*margin-bottom: 2em !important;*/
+	/*min-height:1000px;*/
 	/*min-height: 100%;*/
 }
 
 .left-sidebar h4 {
 	margin: 0;
 	padding: 0;
+
 	font-family: "Raleway", "Helvetica", Helvetica, Arial, sans-serif;
 }
 

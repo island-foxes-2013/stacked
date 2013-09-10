@@ -79,7 +79,7 @@ require 'spec_helper'
 			it 'should be able to update attributes on card with valid data' do
       	fill_in 'card_name', :with => 'Eric Chen'
       	click_button 'Update Card'
-      	expect(page).to have_content 'Eric Chen'
+      	expect(page).to have_content 'Log'
 			end
 
 			it 'should return to edit card page with invalid data' do

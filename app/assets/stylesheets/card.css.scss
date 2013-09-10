@@ -268,6 +268,7 @@ $corner_radius: 4px;
 				background-color: lighten($card, 30);
 				height: $header-size;
 				margin-bottom: 2px;
+				border-bottom: 2px solid #DBDBD9;;
 				
 				.mini-pic {
 					width: $header-size;

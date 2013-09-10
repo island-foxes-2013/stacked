@@ -8,7 +8,7 @@ describe 'Twitter OAuth' do
 	end
 
 	it "should log you in through Twitter" do	
-		page.should have_content('Daniel Willems')
+		page.should have_content('Log')
 	end
 
 	it "twitter sign in button should lead to twitter authentication page" do

@@ -30,7 +30,7 @@ var PictureFormat = {
     var $post = $(".templates").find(".image-post");
     $post.find(".content").html(postData.text);
 
-    var $picture = $post.find(".small")
+    var $picture = $post.find(".small");
     $picture.find('img').attr("src", postData.small_image);
     $post.find('a').attr('href', postData.standard_image);
 
