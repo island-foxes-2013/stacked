@@ -15,6 +15,11 @@ gem 'rest-client'
 gem 'httparty'
 gem "friendly_id", "~> 4.0.0.beta8"
 
+# Asyncronous Background Jobs
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
+
 # API and Oauth
 gem 'oauth'
 gem 'omniauth'
@@ -25,6 +30,8 @@ gem 'twitter'
 gem 'twitter-text'
 gem 'instagram'
 
+# For printing
+gem 'awesome_print'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -32,6 +39,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'compass-rails'
   gem 'zurb-foundation'
+  gem 'foundation-icons-rails'
   # gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -42,7 +50,6 @@ end
 
 group :development, :test do
   gem 'annotate'
-  gem 'awesome_print'
   gem 'meta_request'
   gem 'rspec-rails'
   gem 'capybara'
@@ -55,6 +62,7 @@ group :development, :test do
 #   gem 'faker'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
+  gem 'jasmine-rails'
 #   gem 'launchy'
   gem 'simplecov', require: false
   gem 'dotenv-rails' # Dot env, saves keys in the environment
@@ -62,7 +70,8 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-# gem 'debugger'
+gem 'underscore-rails'
+gem 'debugger'
 
 gem 'ransack'
 

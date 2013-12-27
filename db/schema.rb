@@ -11,14 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130818223406) do
+ActiveRecord::Schema.define(:version => 20130821215023) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "nickname"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
   end
 
   create_table "board_cards", :force => true do |t|
@@ -51,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130818223406) do
     t.string   "twitter_handle"
     t.string   "instagram_handle"
     t.string   "instagram_id"
+    t.string   "tumblr_handle"
     t.string   "slug",             :null => false
     t.integer  "user_id"
     t.datetime "created_at",       :null => false
@@ -59,13 +63,21 @@ ActiveRecord::Schema.define(:version => 20130818223406) do
 
   add_index "cards", ["slug"], :name => "index_cards_on_slug", :unique => true
 
+  create_table "posts", :force => true do |t|
+    t.integer  "updated_epoch"
+    t.text     "post_json"
+    t.integer  "card_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.string   "username"
-    t.string   "slug",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "slug",         :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "primary_card"
   end
 
   add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true

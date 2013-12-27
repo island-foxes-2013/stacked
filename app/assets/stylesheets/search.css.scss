@@ -1,5 +1,11 @@
-.result {
-  display: inline-block;
-  padding: 1.5em 1em;
-  background-color: rgba(0,0,0,.2);
+.result-img {
+	display: inline-block 
 }
+.result-link {
+	display: inline-block 
+}
+
+.search-suggestions p result{
+	text-align: left !important;
+}
+

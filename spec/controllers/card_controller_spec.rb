@@ -1,27 +1,31 @@
-require 'spec_helper'
+require 'spec_helper' 
 
 describe CardsController do
-	describe "GET #index" do
-		it "responds successfully with an HTTP 200 status code" do
-			get :index
-			expect(response).to be_success
-			expect(response.status).to eq(200)
-		end
+
+	let(:card) { FactoryGirl.create(:card) }
+
+	before :each do 
+		card
 	end
 
-	describe "gets cards#new" do
-		it "should get a response fron new route" do
-			pending
-			get :new
-			expect(response.status).to eq(200)
-		end
+	it "deletes the card" do 
+		expect{ delete :destroy, id: card }.to change(Card,:count).by(-1) 
 	end
 
-	describe "gets cards#create" do
-		it "should get a response from create route" do
-			pending
-			get :create
-			expect(response.status).to eq(200)
+	describe '#get_posts' do
+		it "renders JSON for the cards post " do
+			# pending 'fixing'
+			ServiceManager.stub(:get_posts).with(card).and_return([
+				{provider: "tweeterz", created: DateTime.now},
+				{provider: "instumgrumz", created: DateTime.now}
+			])
+			get :get_posts, id: card.slug
+			# status = response.status
+			# status == 200
+			# expect { status }.to eq(200)
+			# posts = JSON.parse response.body
+			# posts.first["provider"].should eq "tweeterz"
+			# posts.last["provider"].should eq "instumgrumz"
 		end
 	end
 

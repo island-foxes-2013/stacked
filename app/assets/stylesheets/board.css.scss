@@ -2,17 +2,93 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$more-rounded: 12px;
+$less-rounded: 4px;
 
-
-.board {
-	padding: 0.5em;
-	overflow: auto !important;
+.boards-all {
+  margin: auto;
+  border-radius: $more-rounded;
 }
+
+.board_form input {
+  border-radius: $less-rounded; 
+}
+
+.board_form {
+  width: 350px;
+  margin: auto;
+}
+
+.board-name h2{
+  margin: 0;
+}
+.board-card-face {
+  display: inline-block;
+  -webkit-filter: sepia(50%);
+  -webkit-filter: saturate(150%); 
+}
+
+.board-card-face img {
+  border-radius: 23px;
+  -webkit-border-radius: 23px;
+  -moz-border-radius: 23px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 2px rgba(0, 0, 0, .8);
+}
+
+.board-overlay {
+  valign: bottom;
+  /*height: 5em;*/
+}
+
+.main .board-name {
+  display: inline-block;
+  font-weight: bold;
+  /*float: left;*/
+}
+
+.main .board-desc{
+  display: inline-block;
+  /*float: left;*/
+  margin-left: 2em;
+  font-size: .8em;
+}
+
+.main .board-actions{
+  display: inline-block;
+  margin-left: 1em;
+  /*float: left;*/
+}
+
+.main .board-card-imgs{
+  display: inline-block;
+  /*float: right;*/
+}
+
+/*.divide-me {
+  padding: 1em;  
+}*/
+
+/*.board {
+	overflow: auto !important;
+}*/
 
 .inline-edit{
 	display: none;
 }
 
-.unfollow {
+.hidden {
 	display: none;
 }
+
+dl.sub-nav {
+	display:inline-block;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+/*
+dd a:hover {
+	color: gray !important;
+}*/

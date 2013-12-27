@@ -1,0 +1,10 @@
+.card-wrapper.always-show
+  .flip
+    .card#add-card
+      .face.front
+        %span.glyph.general.plus-sign d
+      .face.back  
+        .header
+          .name Add a Card
+        .news.large-12.columns
+          =render partial: 'cards/form', locals: { card: card, board: board }

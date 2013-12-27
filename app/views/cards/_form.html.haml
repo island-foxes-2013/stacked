@@ -1,18 +1,18 @@
 = form_for card do |f| 
 
-  %p
-    = f.label :name 
-    %br
-    = f.text_field :name 
-  
-  %p
-    = f.label :twitter_handle
-    %br
-    = f.text_field :twitter_handle 
+  -if board
+    = f.hidden_field :board, value: board.slug
 
-    %p
-    = f.label :instagram_handle
-    %br
-    = f.text_field :instagram_handle 
-  
-  %p= f.submit 
+  = f.label :name 
+  = f.text_field :name 
+
+  = f.label :twitter_handle
+  = f.text_field :twitter_handle 
+
+  = f.label :instagram_handle
+  = f.text_field :instagram_handle 
+
+  = f.label :tumblr_handle
+  = f.text_field :tumblr_handle 
+
+  = f.submit 

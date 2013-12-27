@@ -1,22 +1,39 @@
-.board-name
-  %strong= @board.name
+.board-overlay
+  .board-name
+    %h2= @board.name
 
-.board_desc
-  %em= "#{@board.description}" 
-%p
-  = link_to 'Edit', '#' ,class: 'board-edit', remote: true
-  = link_to "Destroy", @board, :confirm => 'Are you sure?', method: :delete 
-  = link_to "View All", boards_path
-  = link_to 'Unfollow', board_user_path(@board.id), method: :delete, remote: true, class: 'unfollow'
-  = link_to 'Follow', board_users_path(@board.id), method: :post, remote: true, class: 'follow'
-.inline-edit=render 'form'
+  .board-desc
+    %h4.subheader= "#{@board.description}" 
+  %p.board-actions
+    - if current_user
+      - hideFollow = !BoardUser.where(user_id: current_user.id, board_id: @board.id).empty?
+      %span.glyph.general [
+      = link_to 'Edit', '#' ,class: 'board-edit', remote: true
+      %span.glyph.general o
+      = render partial: "follow_or_unfollow_board_link", locals: { board: @board }
+  / .board-card-imgs
+  /   - @board.cards.each do |card|
+  /     .board-card-face
+  /       -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card[:twitter_handle]}.jpg"
+  /       =image_tag(img_url)
 
-%dl.sub-nav#card-filters
-  %dt Filter by:
-  %dd.active= link_to "All", "#", data: { :filter => "*" }
-  %dd= link_to "Twitter", "#", data: { :filter => ".twitter" }
-  %dd= link_to "Instagram", "#", data: { :filter => ".instagram" }
+.board-filters
+  .inline-edit=render partial: 'board_form', locals: { board: @board }
+  .divide-me
+  .filters
+    %dl.sub-nav#filter-by
+      %dt Filter by:
+      %dd.active= link_to "All", "#", data: { :filter => "*" }
+      %dd= link_to "Twitter", "#", data: { :filter => ".twitter, .always-show" }
+      %dd= link_to "Instagram", "#", data: { :filter => ".instagram, .always-show" }
+      %dd= link_to "Tumblr", "#", data: { :filter => ".tumblr, .always-show" }
 
+    %dl.sub-nav#sort-by
+      %dt Sort by:
+      %dd.active= link_to "Date Added", "#original-order"
+      %dd= link_to "Name", "#name"
+      %dd= link_to "Kamikaze", "#random"
 .board#container
   -@board.cards.each do |card|
     = render partial: 'cards/card', locals: { card: card, board: @board }
+  = render partial: 'cards/add_card', locals: { board: @board, card: @card }

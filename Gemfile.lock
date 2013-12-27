@@ -40,18 +40,28 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    celluloid (0.14.1)
+      timers (>= 1.0.0)
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     chunky_png (1.2.8)
     coderay (1.0.9)
+    columnize (0.3.6)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    connection_pool (1.1.0)
     daemons (1.1.9)
     database_cleaner (1.1.1)
+    debugger (1.6.1)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.3)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.4)
     dotenv (0.8.0)
     dotenv-rails (0.8.0)
@@ -71,6 +81,9 @@ GEM
       faraday (>= 0.7.4, < 0.9)
     ffi (1.9.0)
     formatador (0.2.4)
+    foundation-icons-rails (0.0.1.2)
+      rails (~> 3.0)
+      sass
     friendly_id (4.0.10)
     fssm (0.2.10)
     guard (1.8.2)
@@ -101,6 +114,11 @@ GEM
       faraday_middleware (~> 0.8)
       hashie (>= 0.4.0)
       multi_json (~> 1.0, >= 1.0.3)
+    jasmine-core (1.3.1)
+    jasmine-rails (0.4.5)
+      jasmine-core (~> 1.3)
+      rails (>= 3.1.0)
+      sprockets-rails
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -166,6 +184,8 @@ GEM
       rack (>= 0.4)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
+    rack-protection (1.5.0)
+      rack
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
@@ -197,6 +217,9 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (3.0.4)
+    redis-namespace (1.3.0)
+      redis (~> 3.0.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.14.1)
@@ -227,23 +250,40 @@ GEM
       websocket (~> 1.0.4)
     shoulda-matchers (2.3.0)
       activesupport (>= 3.0.0)
+    sidekiq (2.13.0)
+      celluloid (>= 0.14.1)
+      connection_pool (>= 1.0.0)
+      json
+      redis (>= 3.0)
+      redis-namespace
     simple_oauth (0.2.0)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    sinatra (1.4.3)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    slim (2.0.1)
+      temple (~> 0.6.6)
+      tilt (>= 1.3.3, < 2.1)
     slop (3.4.6)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sprockets-rails (0.0.1)
+      sprockets (>= 1.0.2)
+    temple (0.6.6)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     thor (0.18.1)
     tilt (1.4.1)
+    timers (1.1.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -257,6 +297,7 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    underscore-rails (1.5.1)
     unf (0.0.5)
       unf_ext
     unf_ext (0.0.6)
@@ -275,13 +316,16 @@ DEPENDENCIES
   capybara
   compass-rails
   database_cleaner
+  debugger
   dotenv-rails
   factory_girl_rails
+  foundation-icons-rails
   friendly_id (~> 4.0.0.beta8)
   guard-rspec
   haml-rails
   httparty
   instagram
+  jasmine-rails
   jquery-rails
   jquery-ui-rails
   meta_request
@@ -297,9 +341,13 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   selenium-webdriver
   shoulda-matchers
+  sidekiq
   simplecov
+  sinatra
+  slim
   thin
   twitter
   twitter-text
   uglifier (>= 1.0.3)
+  underscore-rails
   zurb-foundation

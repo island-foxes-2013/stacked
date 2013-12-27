@@ -1,27 +1,39 @@
+require 'sidekiq/web'
+
 Stacked::Application.routes.draw do
 
   root to: 'boards#index'
 
-  resources :boards
+  resources :boards do
+    resources :board_users, only: [:create]
+  end
 
+  resources :board_users, only: [:destroy]
   resources :board_cards, only: [:create, :destroy]
-  resources :board_users, only: [:create, :destroy]
+
+  
 
   resources :cards, only: [:index, :new, :create, :show, :edit, :destroy, :update] do
     member do
-      get 'get_tweets'
-      get "get_instagrams"
+      get 'get_posts'
     end
   end
 
   resources :sessions, only: [:new, :destroy]
 
-  resources :users, only: [:update]
+  resources :users, only: [:edit, :update]
 
   match '/auth/:provider/callback', to: 'sessions#create'
 
-  # TODO SEARCH: 
-  match '/search', to: 'boards#index'
+  # mount Foundation::Icons::Rails::Engine => '/fi'
+
+  # mount Sidekiq::Web, at: '/sidekiq'
+
+  # mount JasmineRails::Engine => "/jasmine" if defined?(JasmineRails)
+
+  # SEARCH
+  match '/search', to: 'searches#index'
+  match '/search/global', to: 'searches#global'
 
   # match '/boards/:board_id/cards/:card_id/remove', to: 'boards#remove_card'
 

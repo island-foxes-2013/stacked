@@ -1,0 +1,27 @@
+%h1 Search
+
+.searchbox-board
+  = form_tag search_path, method: :get do
+    .field
+      = text_field_tag :q, nil, placeholder: "Search for boards and cards"
+
+    %h2 Search Results
+    .search-suggestions
+      %p
+        Results for <b>Boards</b>
+        - if @boards_results
+          - @boards_results.each do |board|
+            .result
+              =link_to board.name, board_path(board)        
+
+      %p
+        Results for <b>Cards</b>
+        / #container
+        -if @cards_results
+          - @cards_results.each do |card|
+            .card{ :id => "#{card.slug}"}
+              .header
+                .result-img
+                  =image_tag "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
+                .result-link
+                  = link_to card.name, card_path(card)

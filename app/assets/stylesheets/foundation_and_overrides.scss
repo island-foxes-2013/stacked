@@ -53,8 +53,8 @@ $default-float: left;
 
 // $body-bg: #fff;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-// $body-font-weight: normal;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-weight: 300;
 // $body-font-style: normal;
 
 // Font-smoothing
@@ -161,7 +161,8 @@ $column-gutter: emCalc(30);
 // Control header font styles
 
  //$header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
- //$header-font-weight: bold;
+ $header-font-family: "Raleway", "Helvetica", Helvetica, Arial, sans-serif;
+ $header-font-weight: 100;
  //$header-font-style: normal;
  //$header-font-color: #222;
  //$header-line-height: 1.4;
@@ -194,7 +195,7 @@ $column-gutter: emCalc(30);
 // Style paragraphs
 
 // $paragraph-font-family: inherit;
-// $paragraph-font-weight: normal;
+$paragraph-font-weight: 300;
 // $paragraph-font-size: 1em;
 // $paragraph-line-height: 1.6;
 // $paragraph-margin-bottom: emCalc(20);
@@ -287,10 +288,10 @@ $column-gutter: emCalc(30);
 // $form-label-font-weight: 500;
 // $form-label-font-color: lighten(#000, 30%);
 // $form-label-bottom-margin: emCalc(3);
-// $input-font-family: inherit;
+// $-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: emCalc(14);
-// $input-bg-color: #fff;
+// $input-bg-color: yellow;//#fff;
 // $input-focus-bg-color: darken(#fff, 2%);
 // $input-border-color: darken(#fff, 20%);
 // $input-focus-border-color: darken(#fff, 40%);
@@ -1234,8 +1235,8 @@ $column-gutter: emCalc(30);
 
 // Background color for the top bar
 
-$topbar-bg:#A0A0A0;
-$topbar-dropdown-bg:#A0A0A0;
+$topbar-bg:black;
+$topbar-dropdown-bg:black;
 // $topbar-bg: rgba(255,255,255,0.5);
 // $topbar-dropdown-bg: rgba(255,255,255,0.5);
 
@@ -1250,8 +1251,8 @@ $topbar-dropdown-bg:#A0A0A0;
 
 // Controlling the styles for the title in the top bar
 
-// $topbar-title-weight: bold;
-// $topbar-title-font-size: emCalc(17);
+ $topbar-title-weight: 50;
+ $topbar-title-font-size: emCalc(35);
 
 // Style the top bar dropdown elements
 

@@ -2,12 +2,15 @@
 #
 # Table name: authorizations
 #
-#  id         :integer          not null, primary key
-#  provider   :string(255)
-#  uid        :string(255)
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  provider     :string(255)
+#  uid          :string(255)
+#  user_id      :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  nickname     :string(255)
+#  oauth_token  :string(255)
+#  oauth_secret :string(255)
 #
 
 require 'spec_helper'
@@ -33,7 +36,6 @@ describe Authorization do
   end
 
   describe ".find_from_hash" do 
-    # let(:auth_hash) { { 'provider'=> "Twitter", 'uid'=> '1234567890' } }
     before do 
       create(:authorization)
     end
@@ -45,7 +47,6 @@ describe Authorization do
   end
 
    describe ".create_from_hash" do 
-    # let(:auth_hash) { { 'provider'=> "Twitter", 'uid'=> '1234567890' } }
     subject { Authorization.create_from_hash(auth_hash) }
 
     context "given the info for an existing authorization" do 

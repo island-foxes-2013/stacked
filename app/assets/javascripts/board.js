@@ -7,17 +7,33 @@ $(document).ready(function(){
 		$('.inline-edit').slideToggle();
 		$('.delete').slideToggle();
 		$('.last').slideToggle();
+		$('.updates').toggle();
 	});
 
-	$('.follow').on('ajax:success', function(){
-		console.log('follow');
-		$(this).hide();
-		$('.unfollow').fadeIn();
-	});
 
-	$('.unfollow').on('ajax:success', function(){
-		console.log('unfollow');
-		$(this).hide();
-		$('.follow').fadeIn();
-	});
+	var swapFollowLink = function(e, link) {
+		$(this).remove();
+		link = $(link).hide();
+		$('.board_actions').append(link);
+		link.fadeIn();
+	}
+
+	$('.board_actions').on('ajax:success', '.follow', swapFollowLink);
+	$('.board_actions').on('ajax:success', '.unfollow', swapFollowLink);
+
+	$('dd a').click(function() {
+		$link = $(this);
+		$link.closest('dl').find('dd').removeClass('active');
+		$link.closest('dd').addClass('active');
+	})
+
+	// $('dd').mouseover(function() {
+	// 	$button = $(this);
+	// 	$button.addClass('active');
+	// })
+
+	// $('dd').mouseout(function() {
+	// 	$button = $(this);
+	// 	$button.removeClass('active');
+	// })
 });

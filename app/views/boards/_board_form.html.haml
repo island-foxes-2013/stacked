@@ -1,0 +1,10 @@
+.board_form
+  = form_for board do |f| 
+    %p
+      = f.label :name
+      %input{id:'board_name', name: 'board[name]', size: 30, type: 'text', value: board.name, autofocus: 'autofocus'}
+
+    %p
+      = f.label :description
+      = f.text_field :description 
+    %p= f.submit 'Edit'

@@ -1,23 +1,27 @@
 $purple: #890CFF;
 $blue: #0BAFE8;
+$plus-color: #5f8694;
+$light-blue: #C3D5E8;
+$light-grey: #d3d3d3;
+
 $green: #4CFF3F;
 $yellow: #E8BB0B; 
 $red: #FF3501;
-$light-blue: #C3D5E8;
+$off-white: rgb(245, 245, 245); 
 
-$card: $light-blue;
+$card: white;
 $card-trans: rgba($card, .7);
 
 $card-height: 20em; /*this*/
 $header-size: 2.5em; /*minus this*/
-$content-size: 20em; /*equals this*/
+$content-size: 17.2em; /*equals this*/
 $name-padding: 1em;
-$corner_radius: 5px;
+$corner_radius: 4px;
 
 @mixin shadow($x,$y, $blur){
-	-webkit-box-shadow: $x $y $blur rgba(50, 50, 50, 0.58);
-	-moz-box-shadow:    $x $y $blur rgba(50, 50, 50, 0.58);
-	box-shadow:         $x $y $blur rgba(50, 50, 50, 0.58);
+	-webkit-box-shadow: $x $y $blur rgba(200, 200, 200, 0.58);
+	-moz-box-shadow:    $x $y $blur rgba(200, 200, 200, 0.58);
+	box-shadow:         $x $y $blur rgba(200, 200, 200, 0.58);
 }
 
 @mixin rounded-corners($radius) {
@@ -50,49 +54,133 @@ $corner_radius: 5px;
 	border-top-right-radius: $radius;
 }
 
-.tweet {
-	width: 100%;
+.pici {
+	/*border-left: solid rgba(0,0,0,.5) 2px;*/
+	padding: .05em;
+	width: 90%;
+	margin-left: 5%;
+	margin-bottom: 1em;
+
+
+	.content {
+		background-color: rgba(0,0,0,.5);
+		color: white;
+		/*width: 90%;
+		margin-left: 5%;*/
+		padding: .2em .2em .2em 0em;
+		@include rounded-bottom-corners($corner-radius);
+	}
+
+	.pic {
+		/*width: 90%;
+		margin-left: 5%;*/
+	}
+}
+
+.edit-form {
+	display:none;
+}
+
+.dragged-card {
+  height: $header-size;
+  margin: 0.5em;
+  position: relative;
+  float: left;
+  border-radius: 12px;
+  border: 1px $light-grey dashed;
+
+	.header {
+	  
+	  height: 100%;
+	  background-color: lighten($card, 20);
+	  
+	  .mini-pic {
+	    width: $header-size;
+	    height: $header-size;
+	    background-color: grey;
+	    float: left;
+	    position: relative;
+	    @include rounded-top-left-corner($corner_radius);
+	  }
+
+	  .name {
+		  width: 9em;
+			display:float;
+			font-size: 1.4em;
+			position: relative;
+			float: left;
+			margin: 0.3em;
+			color: darken($card, 60);
+		}
+  }
+}
+
+.texti {
+	width: 90%;
 	color: rgba(darken($card, 70), .6);
-	margin: .2em .2em .5em .8em;
-	padding-left: .3em;
-	text-align: left !important;
+	margin: .2em 0em 0em 0em;
+	padding: .2em .3em;
+	text-align: left;
 	display: inline-block;
-	float: left;
-	position: relative;
-	border-left: solid rgba(0,0,0,.5) 2px;
+	background-color: rgba(255,255,255,1);
+	overflow: scroll;
 
 	.content {
 		margin-right: 2.2em;
 	}
 
-	a img {
+	.link-icon {
 		display: inline-block;
 		float: right;
 		opacity: .3;
-		position: absolute;
+		position: relative;
 		top: 0;
 		right: 1em;
 
 		&:hover {
 			opacity: .7;
 		}
+		
+	}
+}
+
+.large {
+	width: 33em !important;
+	height: 30.5em !important;
+	margin: 0em 1em 1em 0em !important;
+
+	.texti {
+		width: 45% !important;
+		display: inline-block !important;
+		float: left !important;
+	}
+
+	.pici {
+		width: 45% !important;
+		display: inline-block !important;
+		float: left !important;
+		margin-left: 2%;
+	}
+
+	.flip{
+		width: 33em  !important;
+		height: 30.5em !important;
+	}
+
+	.news {
+		height: 27.6em !important;
+		overflow: scroll !important;
 	}
 }
 
 .flip {
 	-webkit-perspective: 800;
-	/*width: 32%;*/
-	width: 250px;
-	height: $card-height;
+	width: 16em;
 	height: $card-height;
 	display: none;
-/*	min-width: 250px;
-	max-width: 310px;*/
-	margin-top: 1em;
-	margin-left: 1em;
+	margin: 0.5em;
 	position: relative;
 	float: left;
-
 
   .card.flipped {
   	-webkit-transform: rotatey(-180deg);
@@ -117,19 +205,52 @@ $corner_radius: 5px;
 		  z-index: 1;
 		  background-color: darken($card, 8);
 		  color: white;
-		  cursor: pointer;
 		  height: 100%;
 		  border: solid $card-trans 2px;
 		  @include rounded-corners($corner_radius);
 		  @include shadow(2px,2px,3px);
 
-		  .mega-pic {
+		  .delete {
+				display: none;
+				height: 1.5em;
+			}
+			
+		  .plus-sign {
+		  	font-size: 12.5em;
+		  	font-weight: 500;
+		  	color: $plus-color;
+		  	opacity:0.3;
+		  	margin:0;
+		  	padding:0;
+		  	cursor: pointer;
+		  }
+
+		  .img {
+		  position: relative;
+		  height: 100%;
+		  width: 100%;
+		  }
+
+		  .img .mega-pic {
 		  	width: 100%;
 		  	height: 100%;
-
 		  	border: solid $card-trans 2px;
+		  	-webkit-filter: sepia(15%) opacity(100%) saturate(200%);
 		  	@include rounded-corners($corner_radius);
 		  }
+
+	  	.mega-pic:before {
+			content: "";
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    bottom: 0;
+		    left: 0;
+		    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, .15)), to(rgba(0, 0, 0, .75))), -webkit-gradient(linear, left top, right bottom, color-stop(0, rgba(255, 255, 255, 0)), color-stop(0.5, rgba(255, 255, 255, .1)), color-stop(0.501, rgba(255, 255, 255, 0)), color-stop(1, rgba(255, 255, 255, 0)));
+		    background: -moz-linear-gradient(top, rgba(255, 255, 255, .15), rgba(0, 0, 0, .25)), -moz-linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));
+		    background: linear-gradient(top, rgba(255, 255, 255, .15), rgba(0, 0, 0, .25)), linear-gradient(left top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .1) 50%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0));
+			}
+
 
 		}
 
@@ -137,18 +258,17 @@ $corner_radius: 5px;
 		  -webkit-transform: rotatey(-180deg);
 		  background: blue;
 		  background: white;
-		  cursor: pointer;
-		  background-color: $card-trans;
+		  background-color: white;
 		  position: relative;
 		  @include rounded-corners($corner_radius);
-		  @include shadow(2px,2px,3px);
+		  @include shadow(0px,2px,2px);
 		  
 
 		  .header {
 				background-color: lighten($card, 30);
 				height: $header-size;
-				@include shadow(0px, 2px, 8px);
 				margin-bottom: 2px;
+				border-bottom: 2px solid #DBDBD9;;
 				
 				.mini-pic {
 					width: $header-size;
@@ -160,11 +280,12 @@ $corner_radius: 5px;
 				}
 
 				.name {
-					font-size: 1.25em;
+					display:inline;
+					font-size: 1.4em;
 					margin-bottom: $name_padding; 
-					font-family: sans-serif;
 					position: relative;
 					float: left;
+					margin: 0 0.3em;
 					color: darken($card, 60);
 				}
 
@@ -175,34 +296,52 @@ $corner_radius: 5px;
 					bottom: -2px;
 					color: #aa2e2e;
 					font-size: 1.2em;
-					text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+					/*text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);*/
 				}
 
-				.last-updated {
+				.right-header {
 					float: right;
-					position: relative;
+					position: absolute;
 					margin-top: 20px;
-					color: $card;
+					right: 0;
+
+					.last{
+						margin-right: .5em;
+						font-size: .7em;
+						color: darken($card,30);
+					}
+
+					.updated-at-value {
+						display: none;
+					}
 				}
+
 				@include rounded-top-corners($corner_radius);
 			}
 
 			.news {
-				font-size: .85em;
-				color: black !important;
 				height: $content-size;
-			  overflow: hidden;
+				overflow: hidden;
 			}
 
 			.footer {
+				cursor: pointer;
 				background-color: white;
 				height: .9em;
 				position: absolute;
 				bottom: 0;
 				width: 100%;
 				text-align: center;
-				@include shadow(2px, 0px, 8px);
 				@include rounded-bottom-corners($corner_radius);
+				transition: height 1s;
+				opacity: .9;
+
+				&:hover{
+					height: 1.5em;
+					background-color: $light-blue;
+					color: white;
+					opacity: .5;
+				}
 			}
 		}
 	}

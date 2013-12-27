@@ -1,150 +1,242 @@
-$(document).ready(function() {
-  // $('.frosty').blurjs({
-  //   source: 'body',
-  //   radius: 10,
-  //   overlay: 'rgba(255,255,255,0.4)'
-  // });
-
-  // $(document).on('mouseover','.flip', function(){
-  //   $(this).find('.card').addClass('flipped').mouseleave(function(){
-  //       $(this).removeClass('flipped');
-  //   });
-  //   return false;
-  // });
-
-  $('.update-twitter').on("ajax:success", function(event, xhr, status, error){
-    console.log(xhr)
-    htmlString = ''
-    for (i in xhr) {
-      htmlString += tweet(xhr[i])
-    }
-    $(this).closest('.face.back').find('.news').append(htmlString);
-    $(this).closest('.card').addClass('flipped');
-    handleExternalLinks();
-  });
-  $('.update-twitter').on("ajax:error", function(event, xhr, status, error){
-    console.log('errrrrrrorr')
-    $(this).closest('.card').addClass('flipped');
-    handleExternalLinks();
-  });
-
-  $(document).on('ajax:success','.delete', function(event, xhr, status, error) {
-    console.log(event)
-    $('#container').isotope('remove', $(event.target).closest('.card-wrapper'));
-    // $(this).closest('.flip').fadeOut('slow');  
-  });
-
-  $('.update-twitter').click();
-    
-  // $(document).on('click','.card.flipped',function(){
-  //   console.log(this);
-  //   var handle = '@CrabCaker'
-  //   var content = 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam erat volutpat. Pellentesque in erat cras amet.'
-  //   $(this).find('.face.back').append(tweetFormat(handle,content));
-  // });
-
-  $(window).resize(function() {
-    // loadCards();
-    // $('.card').addClass('flipped');
-    makeCardsDraggable();
-    makeDecksDroppable();
-    $('.flip').fadeIn(600);
-  });
-
-});
-
-// function loadCards(){
-//   var windowSize = $(window).width();
-//   // console.log(windowSize);
-
-//   if (windowSize <= 500){
-//     // $('.flip').removeClass().addClass('flip large-10 columns');
-//     $('.flip').css('width', '100%')
-//   }
-//   else if (windowSize <= 767){
-//     // $('.flip').removeClass().addClass('flip small-5 columns');
-//     $('.flip').css('width', '47%')
-//   }
-//   else if (windowSize <= 1000){
-//     // $('.flip').removeClass().addClass('flip large-4 columns');
-//     $('.flip').css('width', '30%')
-//   }
-//   else if (windowSize <= 1500){
-//     // $('.flip').removeClass().addClass('flip large-3 columns');
-//     $('.flip').css('width', '23%')
-//   }
-//   else if (windowSize > 1500) {
-//     // $('.flip').removeClass().addClass('flip large-2 columns');
-//     $('.flip').css('width', '18%')
-//   }
-// }
-
-function tweet(tweet){
-  return tweetFormat(tweet.tweet_id, tweet.text, tweet.user_id)
+function getIcon(provider) {
+  switch(provider) {
+    case 'twitter':
+      return "<span class='glyph social'>e</span>";
+    case 'instagram':
+      return "<span class='glyph social'>t</span>";
+    case 'tumblr':
+      return "<span class='glyph social'>y</span>";
+  }
 }
 
-function tweetFormat(tweet_id, text, user_id) {
-  return "<div class='tweet'>"+
-            "<div class='content'>" +
-              text +
-            "</div>" +
-            "<a href='https://twitter.com/"+user_id+"/statuses/"+tweet_id+"'>"+
-              "<img alt='t' src='/assets/nottwittersbird.png'>" +
-            "</a>"+
-          "</div>"
-}
-
-function instaFormat(instagram) {
-  var $post = $(".templates").find(".image_post");
-  $post.find(".content").text(instagram.text);
-  $post.find(".source").find("img").attr("src");
+function formatIcon($post, postData) {
+  $icon = $post.find(".link-icon").find('a');
+  $icon.attr("href", postData.url);
+  $icon.html(getIcon(postData.provider));
   return $post;
 }
 
-// function tweetPicture(tweet_id, content, picUrl) {
-//   return "<div class='tweet'>"+
-//             "<img border='0' src='http://i.stack.imgur.com/skvx1.png' width='200' height='200'>" +
-//             "<div class='content'>" +
-//               content +
-//             "</div>" +
-//           "</div>"
+var TextFormat = {
+  new: function(postData) {
+    var $post = $(".templates").find(".text-post");
+    $post.find(".content").html(postData.text);
+
+    return formatIcon($post, postData);
+  }
+};
+
+var PictureFormat = {
+  new: function(postData) {
+    var $post = $(".templates").find(".image-post");
+    $post.find(".content").html(postData.text);
+
+    var $picture = $post.find(".small");
+    $picture.find('img').attr("src", postData.small_image);
+    $post.find('a').attr('href', postData.standard_image);
+
+    return formatIcon($post, postData);
+  }
+};
+
+var AddACard = { 
+  init: function() {
+    
+    $("#add-card").click(function(){
+      console.log("in flip card");
+      $card = $(this);
+      $card.addClass('flipped');
+      console.log($("#add-card.flipped"));
+    });
+    // $(".container").on('click', $("#add-card.flipped"), function(e){
+    //   console.log("in unflip card");
+    //   $card = $("#add-card.flipped");
+    //   $card.removeClass('flipped');
+    // });
+  }
+}
+
+var LazyLoader = {
+  init: function() {
+    var self = this;
+
+    $('.get-posts').on("ajax:success", function(event, xhr, status, error){
+      $news = $(this).closest('.face.back').find('.news')
+      if (xhr) {
+        htmlString = ''
+        xhr = $.parseJSON(xhr.post_json);
+        var updatedTime = xhr[0].created;
+        $news.empty();
+        for (i in xhr) {
+          provider = xhr[i].provider;
+          // console.log(provider);
+          var $post = '';
+          if (xhr[i].content == 'text') {
+            $post = TextFormat.new(xhr[i]);
+          }
+          else {
+            $post = PictureFormat.new(xhr[i]);
+          }
+
+          $news.append($post.html());
+        }
+
+        $cardBack = $(this).closest('.face.back');
+        $cardBack.find('.updated-at-value').html(updatedTime);
+        $cardBack.find('.last').html(TimeParser.writtenTime(updatedTime));
+
+        $(this).closest('.card').addClass('flipped')
+        self.handleExternalLinks();
+      }
+    });
+
+    $('.get-posts').on("ajax:error", function(event, xhr, status, error){
+      console.log('errrrrrrorr')
+      $(this).closest('.card').addClass('flipped');
+      self.handleExternalLinks();
+    });
+
+    $(document).on('ajax:success','.delete', function(event, xhr, status, error) {
+      console.log(event)
+      $('#container').isotope('remove', $(event.target).closest('.card-wrapper'));
+      // $(this).closest('.flip').fadeOut('slow');  
+    }); 
+  },
+
+  handleExternalLinks: function() {
+    $("a[href^=http]").each(function(){
+      if(this.href.indexOf(location.hostname) == -1) {
+         $(this).attr({
+            target: "_blank",
+            title: "Opens in a new window"
+         });
+      }
+    });
+  },
+
+  load: function(giveUp) {
+    $('.get-posts').click();
+  }
+};
+
+var DragDrop = {
+  init: function() {
+    var self = this;
+    $(window).resize(function() {
+      // loadCards();
+      // $('.card').addClass('flipped');
+      self.makeCardsDraggable();
+      self.makeDecksDroppable();
+      $('.flip').fadeIn(600);
+    });    
+  },
+
+  makeCardsDraggable: function() {
+    $(".card").find(".header").draggable({
+      helper    : function(e){
+
+        var $card = $(e.target).closest('.card');
+        var $draggedCard = $('.dragged-card').clone();
+
+        var twitter_handle = String($card.find('.mini-pic').attr('id'));
+        var imgUrl = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/"+ twitter_handle + ".jpg";
+        var cardId = $card.closest('.card').attr("id");
+
+        // Set attributes on clone
+        $draggedCard.find('.name').text($card.find('.name').text());
+        $draggedCard.find('.profile-pic').attr('src',imgUrl);
+        $draggedCard.attr("id",cardId);
+
+        // console.log($draggedCard);
+        return $draggedCard[0];
+      },
+      // TODO-JW: figure out positioning
+      cursor    : 'move',
+      cursorAt  : { left : 5 },
+      appendTo  : 'body',
+      zIndex    : 999,
+      opacity: 0.80
+    });
+  },
+
+  makeDecksDroppable: function() {
+    $(".board-dropzone").droppable({
+      drop        : this.addCardToDeck,
+      hoverClass  : 'drop-hover'
+    });
+  },
+
+  addCardToDeck: function(event, ui) {
+    var card = ui.draggable.closest('.card');
+    console.log(card);
+    var board = $(this).find('.board-link');
+    console.log( 'The square with ID "' + card.attr('id') + '" was dropped onto ' + board.attr('id'));
+    $.ajax({
+      url: '/board_cards',
+      method: 'post',
+      data: {board_slug: board.attr('id'), card_slug: card.attr('id')}
+    }).done(function(data) {
+      console.log(data)
+    });
+  }
+};
+
+var TimeParser = {
+
+  makeItLookNice: function(seconds){
+    var times = [1,60,60,24,7,52]
+    var labels = ['s','m','h','d','w','y']
+    var i = 0;
+    while (seconds/times[i] >= 1){
+      seconds = seconds/times[i]
+      i++;
+    }
+    return (String(Math.floor(seconds))+labels[i-1])
+  },
+
+  writtenTime: function(epoch){
+    var months = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec'];
+    var now = Math.floor(new Date()/1000);
+    var timeAgo = now - (epoch-3);
+    if (timeAgo < 0){
+      return 'the future'; //should never happen     unless....oh my god, the FLUXXXXXX
+    }
+    else if (timeAgo < 2419000) {
+      return this.makeItLookNice(timeAgo); //gives time ago ie '2d' or '4s'
+    }
+    else {
+      actualDate = new Date(epoch*1000);
+      if (timeAgo < 31557600) {
+        return (actualDate.getDay() +", "+ months[actualDate.getMonth()]);
+      } 
+      else {
+        return (months[actualDate.getMonth()] +" "+actualDate.getFullYear());
+      }
+    }
+  }
+}
+
+function refresh(){
+  LazyLoader.load();
+}
+
+// function cardEdit(){
+//   $(document).on('click', '.edit-card', function(){
+//     console.log('yo')
+//   });
 // }
 
-function handleExternalLinks() {
- $("a[href^=http]").each(function(){
-    if(this.href.indexOf(location.hostname) == -1) {
-       $(this).attr({
-          target: "_blank",
-          title: "Opens in a new window"
-       });
-    }
- });
-}
-
-function makeCardsDraggable() {
-  $(".card").find(".header").draggable({
-    helper: 'clone',
-    cursor: 'move'
+$(document).ready(function() {
+  LazyLoader.init();
+  DragDrop.init();
+  AddACard.init();
+  refresh();
+  $(document).on('click', '.edit-card', function(){
+    $form = $(this).closest('.card-wrapper').find('.edit-form');
+    $(this).closest('.flip').find('.front').html($form.html());
+    $(this).closest('.card').removeClass('flipped')
   });
-}
+  setTimeout(refresh,3000);
+  setTimeout(refresh,3000);
+  setInterval(refresh,30000);
 
-function makeDecksDroppable() {
-  $(".board-link").droppable({
-    drop: addCardToDeck
-  })
-}
-
-function addCardToDeck(event,ui) {
-  var card = ui.draggable.closest('.card');
-  var board = $(this);
-  console.log( 'The square with ID "' + card.attr('id') + '" was dropped onto ' + board.attr('id'));
-  $.ajax({
-    url: '/board_cards',
-    method: 'post',
-    data: {board_slug: board.attr('id'), card_slug: card.attr('id')}
-  }).done(function(data) {
-    console.log(data)
-  })
-}
-
-
+});

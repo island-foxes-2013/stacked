@@ -1,28 +1,53 @@
-.card-wrapper{ :class => "#{card.instagram_handle ? "instagram" : ""} #{card.twitter_handle ? "twitter" : ""}" }
+.card-wrapper{ :class => classify(card) }
   .flip
     .card{ :id => "#{card.slug}" }
       .face.front 
-        -image_url = "http://res.cloudinary.com/demo/image/twitter_name/w_400,h_400,c_fill/#{card.twitter_handle}.jpg"
-        .mega-pic{:style => "background-image: url(#{image_url})"}
+        %span{class: 'delete'}
+          - if board
+            .glyph.general
+              = link_to 'g', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete-front'}
+        -image_url = "http://res.cloudinary.com/demo/image/twitter_name/w_325,h_325,c_fill/#{card.twitter_handle}.jpg"
+        .img
+          .mega-pic{:style => "background-image: url(#{image_url})"}
+
           
-      .face.back  
+      .face.back
         .header
           -img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card.twitter_handle}.jpg"
-          .mini-pic{:style => "background-image: url(#{img_url})"}
-          .name
-            =card.name
-          .last-updated
-            %span{class: 'delete'}
-              - if board
-                = link_to 'X', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
-            = link_to 'T', get_tweets_card_path(card), {remote: true, class: 'update-twitter'} 
-            = link_to 'I', get_instagrams_card_path(card), {remote: true, class: 'update-instagram'} 
-            %span{class: 'last'}
-              37m
+          .card-info
+            .mini-pic{:style => "background-image: url(#{img_url})",:id => "#{card.twitter_handle}"}
+            .name-container
+              .name= card.name.downcase
+            .right-header
+              %span{class: 'delete'}
+                - if board
+                  .glyph.general
+                    = link_to 'g', board_card_path(card.id, board.id), {remote: true, method: 'delete', class: 'delete'}
+                    / %a{href:board_card_path(card.id, board.id), remote:true}
+              .updates
+                = link_to 'E', edit_card_path(card), {remote: true, class: 'edit-card'}
+                = link_to 'U', get_posts_card_path(card), {remote: true, class: 'get-posts'} 
+                %span{class: 'last'}
+                %span{:class => 'updated-at-value'}
+                  0
         .news
-        .footer
-          ='...'
-.templates
-  .image-post
-    .content
-    =link_to image_tag(""), "#", :class => "source"
+        .footer= '...'
+        
+  .edit-form
+    = form_for card do |f| 
+      -if board
+        = f.hidden_field :board, value: board.slug
+
+      = f.label :name 
+      = f.text_field :name 
+
+      = f.label :twitter_handle
+      = f.text_field :twitter_handle 
+
+      = f.label :instagram_handle
+      = f.text_field :instagram_handle 
+
+      = f.label :tumblr_handle
+      = f.text_field :tumblr_handle 
+
+      = f.submit 

@@ -1,0 +1,16 @@
+%p#searchresults
+
+  %span.searchresult-container
+    - unless cards_results.nil? || cards_results.empty? 
+      - cards_results.each do |card|
+        =link_to card_path(card) do
+          %span.searchresult
+            - img_url = "http://res.cloudinary.com/demo/image/twitter_name/w_45,h_45,c_fill/#{card[:twitter_handle]}.jpg"
+            = image_tag(img_url)
+            %span.searchheading= '  ' + card[:name]
+    
+    - unless boards_results.nil? || boards_results.empty?
+      - boards_results.each do |board|
+        =link_to board_path(board) do
+          %span.searchresult
+            %span.searchheading= board[:name]

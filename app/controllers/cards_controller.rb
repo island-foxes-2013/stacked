@@ -9,6 +9,7 @@ class CardsController < ApplicationController
   end
 
   def show
+    #TODO: fix this route
     @card = Card.find(params[:id])
     @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
     if @api
@@ -38,21 +39,26 @@ class CardsController < ApplicationController
   # end
 
   def create
+    board_slug = params[:card][:board]
     @card = Card.new(
-      name: params[:card][:twitter_handle], 
-      twitter_handle: params[:card][:twitter_handle],
-      instagram_handle: params[:card][:instagram_handle])
-    @card.user = current_user
-
-    if @card.instagram_handle
-      ap instagram_id(@card.instagram_handle)
-      @card.instagram_id = instagram_id(@card.instagram_handle)
+      name:             params[:card][:twitter_handle], 
+      twitter_handle:   params[:card][:twitter_handle],
+      instagram_handle: params[:card][:instagram_handle],
+      tumblr_handle:    params[:card][:tumblr_handle])
+    if board_slug
+      board = Board.find_by_slug(board_slug)
+      @card.boards << board
     end
-
+    @card.user = current_user
     if @card.save
+      ServiceManagerWorker.perform_async(@card.id)
+      if board_slug
+        redirect_to board_path(board)
+      else
       # instagram = Instagram.client(access_token: instagram_token)
       # ap instagram.user_recent_media(@card.instagram_id, count: 4)
-      redirect_to @card, :notice => "Successfully created card."
+        redirect_to @card, :notice => "Successfully created card."
+      end
     else
       render action: 'new'
     end
@@ -66,52 +72,47 @@ class CardsController < ApplicationController
 
   def update
     @card = Card.find(params[:id])
-    if @card.update_attributes(params[:card])
+    cardtributes = params[:card]
+    if @card.update_attributes(name:             cardtributes[:name],
+                               twitter_handle:   cardtributes[:twitter_handle],
+                               instagram_handle: cardtributes[:instagram_handle],
+                               tumblr_handle:    cardtributes[:tumblr_handle])
       redirect_to @card, :notice  => "Successfully updated card."
     else
       render :action => 'edit'
     end
   end
 
-  def get_tweets
-    @card = Card.find(params[:id])
-    @api = Twitter.user_timeline(@card.twitter_handle, options={count: 10})
-    if @api
-      tweets = []
-      @api.each_with_index do |tweet,i|
-        tweets[i] = {}
-        tweets[i][:tweet_id] = String(tweet.id)
-        tweets[i][:text]     = auto_link(tweet.text)
-        tweets[i][:created]  = tweet.created_at
-        tweets[i][:user_id]  = tweet.user.screen_name
-      end
-      render json: tweets 
-    else
-      [].to_json
+  # TODO-JW: Build a Factory to handle each services
+  #   - put in the lib folder
+  #   - standardize subset of JSON that is common across
+  #     all services, add "service_name" attribute as well
+  #   - on JS side, add contstructor-style factory renderers
+  #
+  # TODO-JW: example of above
+  #
+  # def get_posts
+  #   @card = Card.find(params[:id])
+  #   #[:twitter, :instagram].each do |service|
+  #   SERVICES.each do |service|
+  #     @api = CardAPI.new(params[:service_name])
+  #     posts += @api.get_posts
+  #   end
+  #   render json: posts
+  # end
+
+
+  def get_posts
+    card = Card.find_by_slug(params[:id])
+    posts = Post.find_by_card_id(card.id)
+    if !posts || posts.updated_epoch < (Time.now - 15.minutes).to_i
+      ServiceManagerWorker.perform_async(card.id)
     end
+
+    # ServiceManagerWorker.perform_async(card.id)
+    render json: card.posts.first
+    
+    # render json: ServiceManager.get_posts(card)
   end
-
-  def get_instagrams
-    # Possibly move later
-    instagram = Instagram.client(access_token: instagram_token)
-    @card = Card.find(params[:id])
-    @response = instagram.user_recent_media(@card.instagram_id)
-    instagrams = []
-    @response.each_with_index do |instagram,i|
-      instagrams[i] = {}
-      instagrams[i][:instagram_id] = instagram['id']
-      instagrams[i][:text] = instagram['caption']['text']
-      instagrams[i][:thumbnail] = instagram['images']['thumbnail']['url']
-      instagrams[i][:small_image] = instagram['images']['low_resolution']['url']
-      instagrams[i][:standard_image] = instagram['images']['standard_resolution']['url']
-      instagrams[i][:created]  = instagram['created_time']
-      instagrams[i][:url] = instagram['link']
-    end
-    ap instagrams
-    render json: instagrams
-    # ap instagram.user_recent_media(@card.instagram_id)
-  end
-
-
 
 end
